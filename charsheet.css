@@ -1,0 +1,50 @@
+.bordered {
+	border: 0.05em solid;
+	border-radius: 0.5em;
+}
+
+body {
+	font-family: sans-serif;
+	font-variant: small-caps;
+}
+
+th {
+	vertical-align: bottom;
+  	font-variant: small-caps;
+}
+
+td {
+  	font-variant: small-caps;
+}
+
+h3 {
+	background-color: black;
+	color: white;
+	display: inline-block;
+	padding: 0.1em;
+   	font-variant: small-caps;
+}
+
+h4 {
+	font-family: monospace;
+	background-color: black;
+	color: white;
+    font-size: 1.2em;
+    margin-top: 0em;
+    margin-bottom: 0em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.05em;
+   	font-variant: small-caps;
+}
+
+h6 {
+    margin-top: 0em;
+    margin-bottom: 0em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: normal;
+   	font-variant: small-caps;
+}
