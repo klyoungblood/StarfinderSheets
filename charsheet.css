@@ -1,11 +1,25 @@
+input[type=text] {
+	width: 100%;
+	border: none;
+	text-align: center;
+}
+
 .bordered {
-	border: 0.05em solid;
+	border: 1px solid;
 	border-radius: 0.5em;
+}
+
+.halfwidth {
+	width: 48%;
 }
 
 body {
 	font-family: sans-serif;
 	font-variant: small-caps;
+}
+
+.right-aligned {
+	text-align: right;
 }
 
 th {
@@ -15,14 +29,18 @@ th {
 
 td {
   	font-variant: small-caps;
+  	white-space: nowrap;
 }
 
 h3 {
+	font-size: 1.2em;
 	background-color: black;
 	color: white;
 	display: inline-block;
 	padding: 0.1em;
-   	font-variant: small-caps;
+	font-variant: small-caps;
+    margin-top: 0em;
+    margin-bottom: 0em;
 }
 
 h4 {
@@ -36,7 +54,7 @@ h4 {
     margin-right: 0;
     font-weight: bold;
     display: inline-block;
-    padding: 0.05em;
+    padding: 0.075em;
    	font-variant: small-caps;
 }
 

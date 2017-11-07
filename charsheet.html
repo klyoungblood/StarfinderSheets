@@ -5,7 +5,7 @@
 	<body>
 		<table>
 			<tr>
-				<td>
+				<td class="halfwidth">
 					<h3>Ability Scores</h3>
 					<table class="bordered">
 						<tr>
@@ -62,6 +62,7 @@
 					<table>
 						<tr>
 							<th></th>
+							<th></th>
 							<th>Total</th>
 							<th></th>
 							<th>Ranks</ht>
@@ -73,16 +74,160 @@
 							<th>Misc<br />Mod</th>
 						</tr>
 						<tr>
-							<td>Acrobatics</td>
+							<td class="right-aligned"><input type="checkbox" id="AcrobaticsClass"></input></td>
+							<td>Acrobatics<sup>*</sup> (Dex)</td>
 							<td class="bordered"><input type="text" id="AcrobaticsTotal"></input></td>
 							<td>=</td>
 							<td class="bordered"><input type="text" id="AcrobaticsRanks"></input></td>
 							<td>+</td>
-							<td class="bordered"><input type="text" id="AcrobaticsClass"></input></td>
+							<td class="bordered"><input type="text" id="AcrobaticsClassB"></input></td>
 							<td>+</td>
 							<td class="bordered"><input type="text" id="AcrobaticsAbility"></input></td>
 							<td>+</td>
 							<td class="bordered"><input type="text" id="AcrobaticsMisc"></input></td>
+						</tr>
+						<tr>
+							<td class="right-aligned"><input type="checkbox" id="AthleticsClass"></input></td>
+							<td>Athletics<sup>*</sup> (Str)</td>
+							<td class="bordered"><input type="text" id="AthleticsTotal"></input></td>
+							<td>=</td>
+							<td class="bordered"><input type="text" id="AthleticsRanks"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="AthleticsClassB"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="AthleticsAbility"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="AthleticsMisc"></input></td>
+						</tr>
+						<tr>
+							<td class="right-aligned"><input type="checkbox" id="BluffClass"></input></td>
+							<td>Bluff (Cha)</td>
+							<td class="bordered"><input type="text" id="BluffTotal"></input></td>
+							<td>=</td>
+							<td class="bordered"><input type="text" id="BluffRanks"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="BluffClassB"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="BluffAbility"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="BluffMisc"></input></td>
+						</tr>
+						<tr>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="ComputersClass"></input></td>
+							<td>Computers (Int)</td>
+							<td class="bordered"><input type="text" id="ComputersTotal"></input></td>
+							<td>=</td>
+							<td class="bordered"><input type="text" id="ComputersRanks"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="ComputersClassB"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="ComputersAbility"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="ComputersMisc"></input></td>
+						</tr>
+						<tr>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="CultureClass"></input></td>
+							<td>Culture (Int)</td>
+							<td class="bordered"><input type="text" id="CultureTotal"></input></td>
+							<td>=</td>
+							<td class="bordered"><input type="text" id="CultureRanks"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="CultureClassB"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="CultureAbility"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="CultureMisc"></input></td>
+						</tr>
+						<tr>
+							<td class="right-aligned"><input type="checkbox" id="DiplomacyClass"></input></td>
+							<td>Diplomacy (Cha)</td>
+							<td class="bordered"><input type="text" id="DiplomacyTotal"></input></td>
+							<td>=</td>
+							<td class="bordered"><input type="text" id="DiplomacyRanks"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="DiplomacyClassB"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="DiplomacyAbility"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="DiplomacyMisc"></input></td>
+						</tr>
+						<tr>
+							<td class="right-aligned"><input type="checkbox" id="DisguiseClass"></input></td>
+							<td>Disguise (Cha)</td>
+							<td class="bordered"><input type="text" id="DisguiseTotal"></input></td>
+							<td>=</td>
+							<td class="bordered"><input type="text" id="DisquiseRanks"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="DisquiseClassB"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="DisquiseAbility"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="DisquiseMisc"></input></td>
+						</tr>
+					</table>
+				</td>
+				<td class="halfwidth">
+					<table>
+						<tr>
+							<th rowspan="2"><h3>Initiative</h3></th>
+							<th>Total</th>
+							<th></th>
+							<th>Dex Modifier</th>
+							<th></th>
+							<th>Misc Modifier</th>
+						</tr>
+						<tr>
+							<td class="bordered"><input type="text" id="InitTotal"></input></td>
+							<td>=</td>
+							<td class="bordered"><input type="text" id="InitDexMod"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="InitMiscMod"></input></td>
+						</tr>
+					</table>
+					<h3>Health and Resolve</h3>
+					<table class="bordered">
+						<tr>
+							<th></th>
+							<th>Stamina Points</th>
+							<th>Hit Points</th>
+							<th>Resolve Points</th>
+						</tr>
+						<tr>
+							<th class="right-aligned">Total</th>
+							<td class="bordered"><input type="text" id="SPTotal"></input></td>
+							<td class="bordered"><input type="text" id="HPTotal"></input></td>
+							<td class="bordered"><input type="text" id="RPTotal"></input></td>
+						</tr>
+						<tr>
+							<th class="right-aligned">Current</th>
+							<td class="bordered"><input type="text" id="SPCurrent"></input></td>
+							<td class="bordered"><input type="text" id="HPCurrent"></input></td>
+							<td class="bordered"><input type="text" id="RPCurrent"></input></td>
+						</tr>
+					</table>
+					<h3>Armor Class</h3>
+					<table class="bordered">
+						<tr>
+							<th></th>
+							<th></th>
+							<th>Total</th>
+							<th></th>
+							<th>Armor<br />Bonus</th>
+							<th></th>
+							<th>Dex<br />Mod</th>
+							<th></th>
+							<th>Misc<br />Mod</th>							
+						</tr>
+						<tr>
+							<td><h4>EAC</h4></td>
+							<td>Energy<br />Armor Class</td>
+							<td class="bordered"><input type="text" id="EACTotal"></input></td>
+							<td>= 10 +</td>
+							<td class="bordered"><input type="text" id="EACArmor"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="EACDexMod"></input></td>
+							<td>+</td>
+							<td class="bordered"><input type="text" id="EACMiscMod"></input></td>
 						</tr>
 					</table>
 				</td>
