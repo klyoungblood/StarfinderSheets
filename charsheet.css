@@ -1,16 +1,42 @@
 input[type=text] {
 	width: 100%;
+}
+
+.input_u{
 	border: none;
+	border-bottom: 1px solid;
+	text-align: center;
+}
+
+.input_ubig{
+	font-size: 1.2em;
+	border: none;
+	border-bottom: 1px solid;
+	text-align: center;
+}
+
+.input_b{
+	border: 1px solid;
+	border-radius: 0.5em;
 	text-align: center;
 }
 
 .bordered {
-	border: 1px solid;
+	border: 2px solid;
 	border-radius: 0.5em;
 }
 
 .halfwidth {
 	width: 48%;
+}
+
+textarea {
+    resize: none;
+	width: 100%;
+}
+
+.fullwidth {
+	width: 100%;
 }
 
 body {
