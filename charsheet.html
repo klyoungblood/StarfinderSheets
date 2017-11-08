@@ -1,6 +1,7 @@
 <html>
 	<head>
 	<link rel="stylesheet" href="charsheet.css"> 
+	<script src="charsheet.js"></script>
 	</head>
 	<body>
 		<table class="fullwidth">
@@ -8,7 +9,9 @@
 				<td><h2>Starfinder</h2></td>
 				<td><input type="text" id="Charname" class="input_ubig"></input><br />Character Name</td>
 				<td><input type="text" id="SFSID" class="input_ubig"></input><br />Starfinder Society #</td>
+				<td><a onclick="SaveChar()">Save</a><br /><span id="DownloadLink"></span></td>
 				<td class="right-aligned"><h2>Page 1</h2></td>
+
 			</tr>
 		</table>
 		<table class="fullwidth">
@@ -374,7 +377,7 @@
 							<td><input type="text" id="SurvivalMisc" class="input_b"></input></td>
 						</tr>						
 					</table>
-					&dagger;Trained only <input type="checkbox" checked></input>Class skill *Armor check penanty applies</td>
+					&dagger;Trained only <input type="checkbox" id="alwaystrue" checked></input>Class skill *Armor check penanty applies</td>
 				</td>
 				<td class="halfwidth">
 					<table>
