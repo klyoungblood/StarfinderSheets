@@ -2,11 +2,27 @@ input[type=text] {
 	width: 100%;
 }
 
+@media print {
+  .nonprinting {
+    visibility: hidden;
+  }
+}
+
+.breaking{
+	break-before: always;
+}
+
 .input_u{
 	border: none;
 	border-bottom: 1px solid;
 	text-align: center;
 }
+
+.input_w{
+	border: none;
+	text-align: center;
+}
+
 
 .input_ubig{
 	font-size: 1.2em;
@@ -33,6 +49,7 @@ input[type=text] {
 textarea {
     resize: none;
 	width: 100%;
+	overflow: auto;
 }
 
 .fullwidth {

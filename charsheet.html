@@ -9,9 +9,7 @@
 				<td><h2>Starfinder</h2></td>
 				<td><input type="text" id="Charname" class="input_ubig"></input><br />Character Name</td>
 				<td><input type="text" id="SFSID" class="input_ubig"></input><br />Starfinder Society #</td>
-				<td><a onclick="SaveChar()">Save</a><br /><span id="DownloadLink"></span></td>
-				<td class="right-aligned"><h2>Page 1</h2></td>
-
+				<td class="nonprinting">Load:<input type="file" id="inputfile" onchange="LoadFile()"></input><br /><span id="DownloadLink"></span></td>
 			</tr>
 		</table>
 		<table class="fullwidth">
@@ -19,7 +17,7 @@
 				<td colspan="3"><input type="text" id="ClassLevels" class="input_u"></input><br />Class/Level</td>
 				<td><input type="text" id="Race" class="input_u"></input><br />Race</td>
 				<td><input type="text" id="Theme" class="input_u"></input><br />Theme</td>
-				<th rowspan=3>Description<br /><textarea rows="8" cols="30"></textarea></th>
+				<th rowspan=3>Description<br /><textarea rows="8" cols="30" id="CharDesc"></textarea></th>
 			</tr>
 			<tr>
 				<td><input type="text" id="Size" class="input_u"></input><br />Size</td>
@@ -377,7 +375,10 @@
 							<td><input type="text" id="SurvivalMisc" class="input_b"></input></td>
 						</tr>						
 					</table>
-					&dagger;Trained only <input type="checkbox" id="alwaystrue" checked></input>Class skill *Armor check penanty applies</td>
+					<p>&dagger;Trained only <input type="checkbox" id="alwaystrue" checked></input>Class skill *Armor check penalty applies</p>
+					<p><h3>Skill Notes</h3></p>
+					<textarea rows="8" cols="50" id="SkillNotes"></textarea>
+					
 				</td>
 				<td class="halfwidth">
 					<table>
@@ -571,8 +572,74 @@
 							<td><input type="text" id="ThrownMisc" class="input_b"></input></td>
 						</tr>						
 					</table>
+					<h3>Weapons</h3>
+					<table class="bordered">
+						<tr>
+							<td colspan="3"><input type="text" id="Weap1Name" class="input_u"></input><br /><sup>Weapon</sup></td>
+							<td><input type="text" id="Weap1Level" class="input_u"></input><br /><sup>Level</sup></td>
+							<td><input type="text" id="Weap1Bonus" class="input_u"></input><br /><sup>Attack Bonus</sup></td>
+							<td><input type="text" id="Weap1Damage" class="input_u"></input><br /><sup>Damage</sup></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="Weap1Critical" class="input_u"></input><br /><sup>Critical</sup></td>
+							<td><input type="text" id="Weap1Range" class="input_u"></input><br /><sup>Range</sup></td>
+							<td><input type="text" id="Weap1Type" class="input_u"></input><br /><sup>Type</sup></td>
+							<td colspan="2"><input type="text" id="Weap1Ammo" class="input_u"></input><br /><sup>Ammo/Usage</sup></td>
+							<td><input type="text" id="Weap1Special" class="input_u"></input><br /><sup>Special</sup></td>
+					</table>
+					<table class="bordered">
+						<tr>
+							<td colspan="3"><input type="text" id="Weap2Name" class="input_u"></input><br /><sup>Weapon</sup></td>
+							<td><input type="text" id="Weap2Level" class="input_u"></input><br /><sup>Level</sup></td>
+							<td><input type="text" id="Weap2Bonus" class="input_u"></input><br /><sup>Attack Bonus</sup></td>
+							<td><input type="text" id="Weap2Damage" class="input_u"></input><br /><sup>Damage</sup></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="Weap2Critical" class="input_u"></input><br /><sup>Critical</sup></td>
+							<td><input type="text" id="Weap2Range" class="input_u"></input><br /><sup>Range</sup></td>
+							<td><input type="text" id="Weap2Type" class="input_u"></input><br /><sup>Type</sup></td>
+							<td colspan="2"><input type="text" id="Weap2Ammo" class="input_u"></input><br /><sup>Ammo/Usage</sup></td>
+							<td><input type="text" id="Weap2Special" class="input_u"></input><br /><sup>Special</sup></td>
+					</table>
+					<table class="bordered">
+						<tr>
+							<td colspan="3"><input type="text" id="Weap3Name" class="input_u"></input><br /><sup>Weapon</sup></td>
+							<td><input type="text" id="Weap3Level" class="input_u"></input><br /><sup>Level</sup></td>
+							<td><input type="text" id="Weap3Bonus" class="input_u"></input><br /><sup>Attack Bonus</sup></td>
+							<td><input type="text" id="Weap3Damage" class="input_u"></input><br /><sup>Damage</sup></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="Weap3Critical" class="input_u"></input><br /><sup>Critical</sup></td>
+							<td><input type="text" id="Weap3Range" class="input_u"></input><br /><sup>Range</sup></td>
+							<td><input type="text" id="Weap3Type" class="input_u"></input><br /><sup>Type</sup></td>
+							<td colspan="2"><input type="text" id="Weap3Ammo" class="input_u"></input><br /><sup>Ammo/Usage</sup></td>
+							<td><input type="text" id="Weap3Special" class="input_u"></input><br /><sup>Special</sup></td>
+					</table>
+					<table class="bordered">
+						<tr>
+							<td colspan="3"><input type="text" id="Weap4Name" class="input_u"></input><br /><sup>Weapon</sup></td>
+							<td><input type="text" id="Weap4Level" class="input_u"></input><br /><sup>Level</sup></td>
+							<td><input type="text" id="Weap4Bonus" class="input_u"></input><br /><sup>Attack Bonus</sup></td>
+							<td><input type="text" id="Weap4Damage" class="input_u"></input><br /><sup>Damage</sup></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="Weap4Critical" class="input_u"></input><br /><sup>Critical</sup></td>
+							<td><input type="text" id="Weap4Range" class="input_u"></input><br /><sup>Range</sup></td>
+							<td><input type="text" id="Weap4Type" class="input_u"></input><br /><sup>Type</sup></td>
+							<td colspan="2"><input type="text" id="Weap4Ammo" class="input_u"></input><br /><sup>Ammo/Usage</sup></td>
+							<td><input type="text" id="Weap4Special" class="input_u"></input><br /><sup>Special</sup></td>
+					</table>
 				</td>
 			</tr>
 		</table>
+		<table class="fullwidth breaking">
+			<tr>
+				<td><h2>Starfinder</h2></td>
+				<td><input type="text" id="Charname2" class="input_ubig"></input><br />Character Name</td>
+				<td><input type="text" id="SFSID2" class="input_ubig"></input><br />Starfinder Society #</td>
+				<td class="right-aligned"><h2>Page 2</h2></td>
+			</tr>
+		</table>		
 	</body>
+	<script>AttachListeners()</script>
 </html>
