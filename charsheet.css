@@ -56,6 +56,10 @@ textarea {
 	width: 100%;
 }
 
+.onethirdwidth {
+	width: 33%;
+}
+
 body {
 	font-family: sans-serif;
 	font-variant: small-caps;

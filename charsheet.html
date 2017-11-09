@@ -1,34 +1,36 @@
+ <!DOCTYPE html>
 <html>
 	<head>
 	<link rel="stylesheet" href="charsheet.css"> 
 	<script src="charsheet.js"></script>
+	<title>Starfinder Character Sheet</title>
 	</head>
 	<body>
 		<table class="fullwidth">
 			<tr>
 				<td><h2>Starfinder</h2></td>
-				<td><input type="text" id="Charname" class="input_ubig"></input><br />Character Name</td>
-				<td><input type="text" id="SFSID" class="input_ubig"></input><br />Starfinder Society #</td>
-				<td class="nonprinting">Load:<input type="file" id="inputfile" onchange="LoadFile()"></input><br /><span id="DownloadLink"></span></td>
+				<td><input type="text" id="Charname" class="input_ubig"><br />Character Name</td>
+				<td><input type="text" id="SFSID" class="input_ubig"><br />Starfinder Society #</td>
+				<td class="nonprinting">Load:<input type="file" id="inputfile" onchange="LoadFile()"><br /><span id="DownloadLink"></span></td>
 			</tr>
 		</table>
 		<table class="fullwidth">
 			<tr>
-				<td colspan="3"><input type="text" id="ClassLevels" class="input_u"></input><br />Class/Level</td>
-				<td><input type="text" id="Race" class="input_u"></input><br />Race</td>
-				<td><input type="text" id="Theme" class="input_u"></input><br />Theme</td>
+				<td colspan="3"><input type="text" id="ClassLevels" class="input_u"><br />Class/Level</td>
+				<td><input type="text" id="Race" class="input_u"><br />Race</td>
+				<td><input type="text" id="Theme" class="input_u"><br />Theme</td>
 				<th rowspan=3>Description<br /><textarea rows="8" cols="30" id="CharDesc"></textarea></th>
 			</tr>
 			<tr>
-				<td><input type="text" id="Size" class="input_u"></input><br />Size</td>
-				<td><input type="text" id="Speed" class="input_u"></input><br />Speed</td>
-				<td><input type="text" id="Gender" class="input_u"></input><br />Gender</td>
-				<td colspan="2"><input type="text" id="Homeworld" class="input_u"></input><br />Homeworld</td>
+				<td><input type="text" id="Size" class="input_u"><br />Size</td>
+				<td><input type="text" id="Speed" class="input_u"><br />Speed</td>
+				<td><input type="text" id="Gender" class="input_u"><br />Gender</td>
+				<td colspan="2"><input type="text" id="Homeworld" class="input_u"><br />Homeworld</td>
 			</tr>
 			<tr>
-				<td><input type="text" id="Alignment" class="input_u"></input><br />Alignment</td>
-				<td colspan="2"><input type="text" id="Deity" class="input_u"></input><br />Deity</td>
-				<td colspan="2"><input type="text" id="Player" class="input_u"></input><br />Player</td>
+				<td><input type="text" id="Alignment" class="input_u"><br />Alignment</td>
+				<td colspan="2"><input type="text" id="Deity" class="input_u"><br />Deity</td>
+				<td colspan="2"><input type="text" id="Player" class="input_u"><br />Player</td>
 			</tr>
 		</table>
 		<table class="fullwidth">
@@ -39,51 +41,51 @@
 						<tr>
 							<th></th>
 							<th>Score</th>
-							<th>Modifier</ht>
+							<th>Modifier</th>
 							<th>Upgraded<br />Score</th>
 							<th>Upgraded<br />Modifier</th>
 						</tr>
 						<tr>
 							<td><b>Str</b>ength</td>
-							<td><input type="text" id="StrScore" class="input_b"></input></td>
-							<td><input type="text" id="StrMod" class="input_b"></input></td>
-							<td><input type="text" id="StrUpScore" class="input_b"></input></td>
-							<td><input type="text" id="StrUpMod" class="input_b"></input></td>
+							<td><input type="text" id="StrScore" class="input_b"></td>
+							<td><input type="text" id="StrMod" class="input_b"></td>
+							<td><input type="text" id="StrUpScore" class="input_b"></td>
+							<td><input type="text" id="StrUpMod" class="input_b"></td>
 						</tr>
 						<tr>
 							<td><b>Dex</b>terity</td>
-							<td><input type="text" id="DexScore" class="input_b"></input></td>
-							<td><input type="text" id="DexMod" class="input_b"></input></td>
-							<td><input type="text" id="DexUpScore" class="input_b"></input></td>
-							<td><input type="text" id="DexUpMod" class="input_b"></input></td>
+							<td><input type="text" id="DexScore" class="input_b"></td>
+							<td><input type="text" id="DexMod" class="input_b"></td>
+							<td><input type="text" id="DexUpScore" class="input_b"></td>
+							<td><input type="text" id="DexUpMod" class="input_b"></td>
 						</tr>
 						<tr>
 							<td><b>Con</b>stitution</td>
-							<td><input type="text" id="ConScore" class="input_b"></input></td>
-							<td><input type="text" id="ConMod" class="input_b"></input></td>
-							<td><input type="text" id="ConUpScore" class="input_b"></input></td>
-							<td><input type="text" id="ConUpMod" class="input_b"></input></td>
+							<td><input type="text" id="ConScore" class="input_b"></td>
+							<td><input type="text" id="ConMod" class="input_b"></td>
+							<td><input type="text" id="ConUpScore" class="input_b"></td>
+							<td><input type="text" id="ConUpMod" class="input_b"></td>
 						</tr>
 						<tr>
 							<td><b>Int</b>elligence</td>
-							<td><input type="text" id="IntScore" class="input_b"></input></td>
-							<td><input type="text" id="IntMod" class="input_b"></input></td>
-							<td><input type="text" id="IntUpScore" class="input_b"></input></td>
-							<td><input type="text" id="IntUpMod" class="input_b"></input></td>
+							<td><input type="text" id="IntScore" class="input_b"></td>
+							<td><input type="text" id="IntMod" class="input_b"></td>
+							<td><input type="text" id="IntUpScore" class="input_b"></td>
+							<td><input type="text" id="IntUpMod" class="input_b"></td>
 						</tr>
 						<tr>
 							<td><b>Wis</b>dom</td>
-							<td><input type="text" id="WisScore" class="input_b"></input></td>
-							<td><input type="text" id="WisMod" class="input_b"></input></td>
-							<td><input type="text" id="WisUpScore" class="input_b"></input></td>
-							<td><input type="text" id="WisUpMod" class="input_b"></input></td>
+							<td><input type="text" id="WisScore" class="input_b"></td>
+							<td><input type="text" id="WisMod" class="input_b"></td>
+							<td><input type="text" id="WisUpScore" class="input_b"></td>
+							<td><input type="text" id="WisUpMod" class="input_b"></td>
 						</tr>
 						<tr>
 							<td><b>Cha</b>risma</td>
-							<td><input type="text" id="ChaScore" class="input_b"></input></td>
-							<td><input type="text" id="ChaMod" class="input_b"></input></td>
-							<td><input type="text" id="ChaUpScore" class="input_b"></input></td>
-							<td><input type="text" id="ChaUpMod" class="input_b"></input></td>
+							<td><input type="text" id="ChaScore" class="input_b"></td>
+							<td><input type="text" id="ChaMod" class="input_b"></td>
+							<td><input type="text" id="ChaUpScore" class="input_b"></td>
+							<td><input type="text" id="ChaUpMod" class="input_b"></td>
 						</tr>
 					</table>
 					<h3>Skills</h3>
@@ -93,7 +95,7 @@
 							<th></th>
 							<th>Total</th>
 							<th></th>
-							<th>Ranks</ht>
+							<th>Ranks</th>
 							<th></th>
 							<th>Class<br />Bonus</th>
 							<th></th>
@@ -102,282 +104,282 @@
 							<th>Misc<br />Mod</th>
 						</tr>
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="AcrobaticsClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="AcrobaticsClass"></td>
 							<td>Acrobatics<sup>*</sup> (Dex)</td>
-							<td><input type="text" id="AcrobaticsTotal" class="input_b"></input></td>
+							<td><input type="text" id="AcrobaticsTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="AcrobaticsRanks" class="input_b"></input></td>
+							<td><input type="text" id="AcrobaticsRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="AcrobaticsClassB" class="input_b"></input></td>
+							<td><input type="text" id="AcrobaticsClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="AcrobaticsAbility" class="input_b"></input></td>
+							<td><input type="text" id="AcrobaticsAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="AcrobaticsMisc" class="input_b"></input></td>
+							<td><input type="text" id="AcrobaticsMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="AthleticsClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="AthleticsClass"></td>
 							<td>Athletics<sup>*</sup> (Str)</td>
-							<td><input type="text" id="AthleticsTotal" class="input_b"></input></td>
+							<td><input type="text" id="AthleticsTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="AthleticsRanks" class="input_b"></input></td>
+							<td><input type="text" id="AthleticsRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="AthleticsClassB" class="input_b"></input></td>
+							<td><input type="text" id="AthleticsClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="AthleticsAbility" class="input_b"></input></td>
+							<td><input type="text" id="AthleticsAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="AthleticsMisc" class="input_b"></input></td>
+							<td><input type="text" id="AthleticsMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="BluffClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="BluffClass"></td>
 							<td>Bluff (Cha)</td>
-							<td><input type="text" id="BluffTotal" class="input_b"></input></td>
+							<td><input type="text" id="BluffTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="BluffRanks" class="input_b"></input></td>
+							<td><input type="text" id="BluffRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="BluffClassB" class="input_b"></input></td>
+							<td><input type="text" id="BluffClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="BluffAbility" class="input_b"></input></td>
+							<td><input type="text" id="BluffAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="BluffMisc" class="input_b"></input></td>
+							<td><input type="text" id="BluffMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="ComputersClass"></input></td>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="ComputersClass"></td>
 							<td>Computers (Int)</td>
-							<td><input type="text" id="ComputersTotal" class="input_b"></input></td>
+							<td><input type="text" id="ComputersTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="ComputersRanks" class="input_b"></input></td>
+							<td><input type="text" id="ComputersRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="ComputersClassB" class="input_b"></input></td>
+							<td><input type="text" id="ComputersClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="ComputersAbility" class="input_b"></input></td>
+							<td><input type="text" id="ComputersAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="ComputersMisc" class="input_b"></input></td>
+							<td><input type="text" id="ComputersMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="CultureClass"></input></td>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="CultureClass"></td>
 							<td>Culture (Int)</td>
-							<td><input type="text" id="CultureTotal" class="input_b"></input></td>
+							<td><input type="text" id="CultureTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="CultureRanks" class="input_b"></input></td>
+							<td><input type="text" id="CultureRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="CultureClassB" class="input_b"></input></td>
+							<td><input type="text" id="CultureClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="CultureAbility" class="input_b"></input></td>
+							<td><input type="text" id="CultureAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="CultureMisc" class="input_b"></input></td>
+							<td><input type="text" id="CultureMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="DiplomacyClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="DiplomacyClass"></td>
 							<td>Diplomacy (Cha)</td>
-							<td><input type="text" id="DiplomacyTotal" class="input_b"></input></td>
+							<td><input type="text" id="DiplomacyTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="DiplomacyRanks" class="input_b"></input></td>
+							<td><input type="text" id="DiplomacyRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DiplomacyClassB" class="input_b"></input></td>
+							<td><input type="text" id="DiplomacyClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DiplomacyAbility" class="input_b"></input></td>
+							<td><input type="text" id="DiplomacyAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DiplomacyMisc" class="input_b"></input></td>
+							<td><input type="text" id="DiplomacyMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="DisguiseClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="DisguiseClass"></td>
 							<td>Disguise (Cha)</td>
-							<td><input type="text" id="DisguiseTotal" class="input_b"></input></td>
+							<td><input type="text" id="DisguiseTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="DisquiseRanks" class="input_b"></input></td>
+							<td><input type="text" id="DisquiseRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DisquiseClassB" class="input_b"></input></td>
+							<td><input type="text" id="DisquiseClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DisquiseAbility" class="input_b"></input></td>
+							<td><input type="text" id="DisquiseAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DisquiseMisc" class="input_b"></input></td>
+							<td><input type="text" id="DisquiseMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="EngineeringClass"></input></td>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="EngineeringClass"></td>
 							<td>Engineering (Int)</td>
-							<td><input type="text" id="EngineeringTotal" class="input_b"></input></td>
+							<td><input type="text" id="EngineeringTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="EngineeringRanks" class="input_b"></input></td>
+							<td><input type="text" id="EngineeringRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="EngineeringClassB" class="input_b"></input></td>
+							<td><input type="text" id="EngineeringClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="EngineeringAbility" class="input_b"></input></td>
+							<td><input type="text" id="EngineeringAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="EngineeringMisc" class="input_b"></input></td>
+							<td><input type="text" id="EngineeringMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="IntimidateClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="IntimidateClass"></td>
 							<td>Intimidate (Cha)</td>
-							<td><input type="text" id="IntimidateTotal" class="input_b"></input></td>
+							<td><input type="text" id="IntimidateTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="IntimidateRanks" class="input_b"></input></td>
+							<td><input type="text" id="IntimidateRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="IntimidateClassB" class="input_b"></input></td>
+							<td><input type="text" id="IntimidateClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="IntimidateAbility" class="input_b"></input></td>
+							<td><input type="text" id="IntimidateAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="IntimidateMisc" class="input_b"></input></td>
+							<td><input type="text" id="IntimidateMisc" class="input_b"></td>
 						</tr>		
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="LifeSciClass"></input></td>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="LifeSciClass"></td>
 							<td>Life Science (Int)</td>
-							<td><input type="text" id="LifeSciTotal" class="input_b"></input></td>
+							<td><input type="text" id="LifeSciTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="LifeSciRanks" class="input_b"></input></td>
+							<td><input type="text" id="LifeSciRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="LifeSciClassB" class="input_b"></input></td>
+							<td><input type="text" id="LifeSciClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="LifeSciAbility" class="input_b"></input></td>
+							<td><input type="text" id="LifeSciAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="LifeSciMisc" class="input_b"></input></td>
+							<td><input type="text" id="LifeSciMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="MedicineClass"></input></td>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="MedicineClass"></td>
 							<td>Medicine (Int)</td>
-							<td><input type="text" id="MedicineTotal" class="input_b"></input></td>
+							<td><input type="text" id="MedicineTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="MedicineRanks" class="input_b"></input></td>
+							<td><input type="text" id="MedicineRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MedicineClassB" class="input_b"></input></td>
+							<td><input type="text" id="MedicineClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MedicineAbility" class="input_b"></input></td>
+							<td><input type="text" id="MedicineAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MedicineMisc" class="input_b"></input></td>
+							<td><input type="text" id="MedicineMisc" class="input_b"></td>
 						</tr>								
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="MysticismClass"></input></td>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="MysticismClass"></td>
 							<td>Mysticism (Wis)</td>
-							<td><input type="text" id="MysticismTotal" class="input_b"></input></td>
+							<td><input type="text" id="MysticismTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="MysticismRanks" class="input_b"></input></td>
+							<td><input type="text" id="MysticismRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MysticismClassB" class="input_b"></input></td>
+							<td><input type="text" id="MysticismClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MysticismAbility" class="input_b"></input></td>
+							<td><input type="text" id="MysticismAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MysticismMisc" class="input_b"></input></td>
+							<td><input type="text" id="MysticismMisc" class="input_b"></td>
 						</tr>		
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="PerceptionClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="PerceptionClass"></td>
 							<td>Perception (Wis)</td>
-							<td><input type="text" id="PerceptionTotal" class="input_b"></input></td>
+							<td><input type="text" id="PerceptionTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="PerceptionRanks" class="input_b"></input></td>
+							<td><input type="text" id="PerceptionRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PerceptionClassB" class="input_b"></input></td>
+							<td><input type="text" id="PerceptionClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PerceptionAbility" class="input_b"></input></td>
+							<td><input type="text" id="PerceptionAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PerceptionMisc" class="input_b"></input></td>
+							<td><input type="text" id="PerceptionMisc" class="input_b"></td>
 						</tr>	
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="PhysSciClass"></input></td>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="PhysSciClass"></td>
 							<td>Physical Science (Int)</td>
-							<td><input type="text" id="PhysSciTotal" class="input_b"></input></td>
+							<td><input type="text" id="PhysSciTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="PhysSciRanks" class="input_b"></input></td>
+							<td><input type="text" id="PhysSciRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PhysSciClassB" class="input_b"></input></td>
+							<td><input type="text" id="PhysSciClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PyhsSciAbility" class="input_b"></input></td>
+							<td><input type="text" id="PyhsSciAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PhysSciMisc" class="input_b"></input></td>
+							<td><input type="text" id="PhysSciMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="PilotClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="PilotClass"></td>
 							<td>Piloting (Dex)</td>
-							<td><input type="text" id="PilotTotal" class="input_b"></input></td>
+							<td><input type="text" id="PilotTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="PilotRanks" class="input_b"></input></td>
+							<td><input type="text" id="PilotRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PilotClassB" class="input_b"></input></td>
+							<td><input type="text" id="PilotClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PilotAbility" class="input_b"></input></td>
+							<td><input type="text" id="PilotAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PilotMisc" class="input_b"></input></td>
+							<td><input type="text" id="PilotMisc" class="input_b"></td>
 						</tr>	
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="Profession1Class"></input></td>
-							<td>Profession (Cha, Int, or Wis)<br /><input type="text" id="Profession1Type" class="input_u"></input></td></td>
-							<td><input type="text" id="Profession1Total" class="input_b"></input></td>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="Profession1Class"></td>
+							<td>Profession (Cha, Int, or Wis)<br /><input type="text" id="Profession1Type" class="input_u"></td>
+							<td><input type="text" id="Profession1Total" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="Profession1Ranks" class="input_b"></input></td>
+							<td><input type="text" id="Profession1Ranks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="Profession1ClassB" class="input_b"></input></td>
+							<td><input type="text" id="Profession1ClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="Profession1Ability" class="input_b"></input></td>
+							<td><input type="text" id="Profession1Ability" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="Profession1Misc" class="input_b"></input></td>
+							<td><input type="text" id="Profession1Misc" class="input_b"></td>
 						</tr>						
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="Profession2Class"></input></td>
-							<td>Profession (Cha, Int, or Wis)<br /><input type="text" id="Profession2Type" class="input_u"></input></td></td>
-							<td><input type="text" id="Profession2Total" class="input_b"></input></td>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="Profession2Class"></td>
+							<td>Profession (Cha, Int, or Wis)<br /><input type="text" id="Profession2Type" class="input_u"></td>
+							<td><input type="text" id="Profession2Total" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="Profession2Ranks" class="input_b"></input></td>
+							<td><input type="text" id="Profession2Ranks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="Profession2ClassB" class="input_b"></input></td>
+							<td><input type="text" id="Profession2ClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="Profession2Ability" class="input_b"></input></td>
+							<td><input type="text" id="Profession2Ability" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="Profession2Misc" class="input_b"></input></td>
+							<td><input type="text" id="Profession2Misc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="SenseClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="SenseClass"></td>
 							<td>Sense Motive (Wis)</td>
-							<td><input type="text" id="SenseTotal" class="input_b"></input></td>
+							<td><input type="text" id="SenseTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="SenseRanks" class="input_b"></input></td>
+							<td><input type="text" id="SenseRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SenseClassB" class="input_b"></input></td>
+							<td><input type="text" id="SenseClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SenseAbility" class="input_b"></input></td>
+							<td><input type="text" id="SenseAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SenseMisc" class="input_b"></input></td>
+							<td><input type="text" id="SenseMisc" class="input_b"></td>
 						</tr>		
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="SleightClass"></input></td>
+							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="SleightClass"></td>
 							<td>Sleight of Hand (Dex)<sup>*</sup></td>
-							<td><input type="text" id="SleightTotal" class="input_b"></input></td>
+							<td><input type="text" id="SleightTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="SleightRanks" class="input_b"></input></td>
+							<td><input type="text" id="SleightRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SleightClassB" class="input_b"></input></td>
+							<td><input type="text" id="SleightClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SleightAbility" class="input_b"></input></td>
+							<td><input type="text" id="SleightAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SleightMisc" class="input_b"></input></td>
+							<td><input type="text" id="SleightMisc" class="input_b"></td>
 						</tr>		
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="StealthClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="StealthClass"></td>
 							<td>Stealth (Dex)<sup>*</sup></td>
-							<td><input type="text" id="StealthTotal" class="input_b"></input></td>
+							<td><input type="text" id="StealthTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="StealthRanks" class="input_b"></input></td>
+							<td><input type="text" id="StealthRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="StealthClassB" class="input_b"></input></td>
+							<td><input type="text" id="StealthClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="StealthAbility" class="input_b"></input></td>
+							<td><input type="text" id="StealthAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="StealthMisc" class="input_b"></input></td>
+							<td><input type="text" id="StealthMisc" class="input_b"></td>
 						</tr>						
 						<tr>
-							<td class="right-aligned"><input type="checkbox" id="SurvivalClass"></input></td>
+							<td class="right-aligned"><input type="checkbox" id="SurvivalClass"></td>
 							<td>Survival (Wis)</td>
-							<td><input type="text" id="SurvivalTotal" class="input_b"></input></td>
+							<td><input type="text" id="SurvivalTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="SurvivalRanks" class="input_b"></input></td>
+							<td><input type="text" id="SurvivalRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SurvivalClassB" class="input_b"></input></td>
+							<td><input type="text" id="SurvivalClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SurvivalAbility" class="input_b"></input></td>
+							<td><input type="text" id="SurvivalAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SurvivalMisc" class="input_b"></input></td>
+							<td><input type="text" id="SurvivalMisc" class="input_b"></td>
 						</tr>						
 					</table>
-					<p>&dagger;Trained only <input type="checkbox" id="alwaystrue" checked></input>Class skill *Armor check penalty applies</p>
+					<p>&dagger;Trained only <input type="checkbox" id="alwaystrue" checked>Class skill *Armor check penalty applies</p>
 					<p><h3>Skill Notes</h3></p>
-					<textarea rows="8" cols="50" id="SkillNotes"></textarea>
+					<textarea rows="6" cols="50" id="SkillNotes"></textarea>
 					
 				</td>
 				<td class="halfwidth">
@@ -391,11 +393,11 @@
 							<th>Misc Modifier</th>
 						</tr>
 						<tr>
-							<td><input type="text" id="InitTotal" class="input_b"></input></td>
+							<td><input type="text" id="InitTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="InitDexMod" class="input_b"></input></td>
+							<td><input type="text" id="InitDexMod" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="InitMiscMod" class="input_b"></input></td>
+							<td><input type="text" id="InitMiscMod" class="input_b"></td>
 						</tr>
 					</table>
 					<h3>Health and Resolve</h3>
@@ -408,15 +410,15 @@
 						</tr>
 						<tr>
 							<th class="right-aligned">Total</th>
-							<td><input type="text" id="SPTotal" class="input_b"></input></td>
-							<td><input type="text" id="HPTotal" class="input_b"></input></td>
-							<td><input type="text" id="RPTotal" class="input_b"></input></td>
+							<td><input type="text" id="SPTotal" class="input_b"></td>
+							<td><input type="text" id="HPTotal" class="input_b"></td>
+							<td><input type="text" id="RPTotal" class="input_b"></td>
 						</tr>
 						<tr>
 							<th class="right-aligned">Current</th>
-							<td><input type="text" id="SPCurrent" class="input_b"></input></td>
-							<td><input type="text" id="HPCurrent" class="input_b"></input></td>
-							<td><input type="text" id="RPCurrent" class="input_b"></input></td>
+							<td><input type="text" id="SPCurrent" class="input_b"></td>
+							<td><input type="text" id="HPCurrent" class="input_b"></td>
+							<td><input type="text" id="RPCurrent" class="input_b"></td>
 						</tr>
 					</table>
 					<h3>Armor Class</h3>
@@ -433,27 +435,27 @@
 						</tr>
 						<tr>
 							<td><b>E</b>nergy <b>A</b>rmor <b>C</b>lass</td>
-							<td><input type="text" id="EACTotal" class="input_b"></input></td>
+							<td><input type="text" id="EACTotal" class="input_b"></td>
 							<td>= 10 +</td>
-							<td><input type="text" id="EACArmor" class="input_b"></input></td>
+							<td><input type="text" id="EACArmor" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="EACDexMod" class="input_b"></input></td>
+							<td><input type="text" id="EACDexMod" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="EACMiscMod" class="input_b"></input></td>
+							<td><input type="text" id="EACMiscMod" class="input_b"></td>
 						</tr>
 						<tr>
 							<td><b>K</b>inetic <b>A</b>rmor <b>C</b>lass</td>
-							<td><input type="text" id="KACTotal" class="input_b"></input></td>
+							<td><input type="text" id="KACTotal" class="input_b"></td>
 							<td>= 10 +</td>
-							<td><input type="text" id="KACArmor" class="input_b"></input></td>
+							<td><input type="text" id="KACArmor" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="KACDexMod" class="input_b"></input></td>
+							<td><input type="text" id="KACDexMod" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="KACMiscMod" class="input_b"></input></td>
+							<td><input type="text" id="KACMiscMod" class="input_b"></td>
 						</tr>
 						<tr>
 							<td>AC vs. Combat Maneuvers</td>
-							<td><input type="text" id="MACTotal" class="input_b"></input></td>
+							<td><input type="text" id="MACTotal" class="input_b"></td>
 							<td>= 8 +</td>
 							<td><b>KAC</b></td>
 							<td></td>
@@ -462,8 +464,8 @@
 							<td></td>
 						</tr>
 						<tr>
-							<td><input type="text" id="DR" class="input_u"></input><br />DR</td>
-							<td colspan="7"><input type="text" id="Resists" class="input_u"></input><br />Resistances</td>
+							<td><input type="text" id="DR" class="input_u"><br />DR</td>
+							<td colspan="7"><input type="text" id="Resists" class="input_u"><br />Resistances</td>
 						</tr>
 					</table>
 					<h3>Saving Throws</h3>
@@ -480,33 +482,33 @@
 						</tr>
 						<tr>
 							<td>Fortitude (Con)</td>
-							<td><input type="text" id="FortTotal" class="input_b"></input></td>
+							<td><input type="text" id="FortTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="FortBase" class="input_b"></input></td>
+							<td><input type="text" id="FortBase" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="FortAbility" class="input_b"></input></td>
+							<td><input type="text" id="FortAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="FortMisc" class="input_b"></input></td>
+							<td><input type="text" id="FortMisc" class="input_b"></td>
 						</tr>
 						<tr>
 							<td>Reflex (Dex)</td>
-							<td><input type="text" id="RefTotal" class="input_b"></input></td>
+							<td><input type="text" id="RefTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="RefBase" class="input_b"></input></td>
+							<td><input type="text" id="RefBase" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="RefAbility" class="input_b"></input></td>
+							<td><input type="text" id="RefAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="RefMisc" class="input_b"></input></td>
+							<td><input type="text" id="RefMisc" class="input_b"></td>
 						</tr>
 						<tr>
 							<td>Will (Wis)</td>
-							<td><input type="text" id="WillTotal" class="input_b"></input></td>
+							<td><input type="text" id="WillTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="WillBase" class="input_b"></input></td>
+							<td><input type="text" id="WillBase" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="WillAbility" class="input_b"></input></td>
+							<td><input type="text" id="WillAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="WillMisc" class="input_b"></input></td>
+							<td><input type="text" id="WillMisc" class="input_b"></td>
 						</tr>						
 					</table>
 					<h3>Attack Bonuses</h3>
@@ -523,13 +525,13 @@
 						</tr>
 						<tr>
 							<td>Melee Attack</td>
-							<td><input type="text" id="MeleeTotal" class="input_b"></input></td>
+							<td><input type="text" id="MeleeTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="MeleeBAB" class="input_b"></input></td>
+							<td><input type="text" id="MeleeBAB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MeleeAbility" class="input_b"></input></td>
+							<td><input type="text" id="MeleeAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MeleeMisc" class="input_b"></input></td>
+							<td><input type="text" id="MeleeMisc" class="input_b"></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -543,13 +545,13 @@
 						</tr>
 						<tr>
 							<td>Ranged Attack</td>
-							<td><input type="text" id="RangedTotal" class="input_b"></input></td>
+							<td><input type="text" id="RangedTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="RangedBAB" class="input_b"></input></td>
+							<td><input type="text" id="RangedBAB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="RangedAbility" class="input_b"></input></td>
+							<td><input type="text" id="RangedAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="RangedMisc" class="input_b"></input></td>
+							<td><input type="text" id="RangedMisc" class="input_b"></td>
 						</tr>
 						<tr>
 							<td></td>
@@ -563,83 +565,350 @@
 						</tr>
 						<tr>
 							<td>Thrown Attack</td>
-							<td><input type="text" id="ThrownTotal" class="input_b"></input></td>
+							<td><input type="text" id="ThrownTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="ThrownBAB" class="input_b"></input></td>
+							<td><input type="text" id="ThrownBAB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="ThrownAbility" class="input_b"></input></td>
+							<td><input type="text" id="ThrownAbility" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="ThrownMisc" class="input_b"></input></td>
+							<td><input type="text" id="ThrownMisc" class="input_b"></td>
 						</tr>						
 					</table>
 					<h3>Weapons</h3>
 					<table class="bordered">
 						<tr>
-							<td colspan="3"><input type="text" id="Weap1Name" class="input_u"></input><br /><sup>Weapon</sup></td>
-							<td><input type="text" id="Weap1Level" class="input_u"></input><br /><sup>Level</sup></td>
-							<td><input type="text" id="Weap1Bonus" class="input_u"></input><br /><sup>Attack Bonus</sup></td>
-							<td><input type="text" id="Weap1Damage" class="input_u"></input><br /><sup>Damage</sup></td>
+							<td colspan="3"><input type="text" id="Weap1Name" class="input_u"><br /><sup>Weapon</sup></td>
+							<td><input type="text" id="Weap1Level" class="input_u"><br /><sup>Level</sup></td>
+							<td><input type="text" id="Weap1Bonus" class="input_u"><br /><sup>Attack Bonus</sup></td>
+							<td><input type="text" id="Weap1Damage" class="input_u"><br /><sup>Damage</sup></td>
 						</tr>
 						<tr>
-							<td><input type="text" id="Weap1Critical" class="input_u"></input><br /><sup>Critical</sup></td>
-							<td><input type="text" id="Weap1Range" class="input_u"></input><br /><sup>Range</sup></td>
-							<td><input type="text" id="Weap1Type" class="input_u"></input><br /><sup>Type</sup></td>
-							<td colspan="2"><input type="text" id="Weap1Ammo" class="input_u"></input><br /><sup>Ammo/Usage</sup></td>
-							<td><input type="text" id="Weap1Special" class="input_u"></input><br /><sup>Special</sup></td>
+							<td><input type="text" id="Weap1Critical" class="input_u"><br /><sup>Critical</sup></td>
+							<td><input type="text" id="Weap1Range" class="input_u"><br /><sup>Range</sup></td>
+							<td><input type="text" id="Weap1Type" class="input_u"><br /><sup>Type</sup></td>
+							<td colspan="2"><input type="text" id="Weap1Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
+							<td><input type="text" id="Weap1Special" class="input_u"><br /><sup>Special</sup></td>
 					</table>
 					<table class="bordered">
 						<tr>
-							<td colspan="3"><input type="text" id="Weap2Name" class="input_u"></input><br /><sup>Weapon</sup></td>
-							<td><input type="text" id="Weap2Level" class="input_u"></input><br /><sup>Level</sup></td>
-							<td><input type="text" id="Weap2Bonus" class="input_u"></input><br /><sup>Attack Bonus</sup></td>
-							<td><input type="text" id="Weap2Damage" class="input_u"></input><br /><sup>Damage</sup></td>
+							<td colspan="3"><input type="text" id="Weap2Name" class="input_u"><br /><sup>Weapon</sup></td>
+							<td><input type="text" id="Weap2Level" class="input_u"><br /><sup>Level</sup></td>
+							<td><input type="text" id="Weap2Bonus" class="input_u"><br /><sup>Attack Bonus</sup></td>
+							<td><input type="text" id="Weap2Damage" class="input_u"><br /><sup>Damage</sup></td>
 						</tr>
 						<tr>
-							<td><input type="text" id="Weap2Critical" class="input_u"></input><br /><sup>Critical</sup></td>
-							<td><input type="text" id="Weap2Range" class="input_u"></input><br /><sup>Range</sup></td>
-							<td><input type="text" id="Weap2Type" class="input_u"></input><br /><sup>Type</sup></td>
-							<td colspan="2"><input type="text" id="Weap2Ammo" class="input_u"></input><br /><sup>Ammo/Usage</sup></td>
-							<td><input type="text" id="Weap2Special" class="input_u"></input><br /><sup>Special</sup></td>
+							<td><input type="text" id="Weap2Critical" class="input_u"><br /><sup>Critical</sup></td>
+							<td><input type="text" id="Weap2Range" class="input_u"><br /><sup>Range</sup></td>
+							<td><input type="text" id="Weap2Type" class="input_u"><br /><sup>Type</sup></td>
+							<td colspan="2"><input type="text" id="Weap2Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
+							<td><input type="text" id="Weap2Special" class="input_u"><br /><sup>Special</sup></td>
 					</table>
 					<table class="bordered">
 						<tr>
-							<td colspan="3"><input type="text" id="Weap3Name" class="input_u"></input><br /><sup>Weapon</sup></td>
-							<td><input type="text" id="Weap3Level" class="input_u"></input><br /><sup>Level</sup></td>
-							<td><input type="text" id="Weap3Bonus" class="input_u"></input><br /><sup>Attack Bonus</sup></td>
-							<td><input type="text" id="Weap3Damage" class="input_u"></input><br /><sup>Damage</sup></td>
+							<td colspan="3"><input type="text" id="Weap3Name" class="input_u"><br /><sup>Weapon</sup></td>
+							<td><input type="text" id="Weap3Level" class="input_u"><br /><sup>Level</sup></td>
+							<td><input type="text" id="Weap3Bonus" class="input_u"><br /><sup>Attack Bonus</sup></td>
+							<td><input type="text" id="Weap3Damage" class="input_u"><br /><sup>Damage</sup></td>
 						</tr>
 						<tr>
-							<td><input type="text" id="Weap3Critical" class="input_u"></input><br /><sup>Critical</sup></td>
-							<td><input type="text" id="Weap3Range" class="input_u"></input><br /><sup>Range</sup></td>
-							<td><input type="text" id="Weap3Type" class="input_u"></input><br /><sup>Type</sup></td>
-							<td colspan="2"><input type="text" id="Weap3Ammo" class="input_u"></input><br /><sup>Ammo/Usage</sup></td>
-							<td><input type="text" id="Weap3Special" class="input_u"></input><br /><sup>Special</sup></td>
+							<td><input type="text" id="Weap3Critical" class="input_u"><br /><sup>Critical</sup></td>
+							<td><input type="text" id="Weap3Range" class="input_u"><br /><sup>Range</sup></td>
+							<td><input type="text" id="Weap3Type" class="input_u"><br /><sup>Type</sup></td>
+							<td colspan="2"><input type="text" id="Weap3Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
+							<td><input type="text" id="Weap3Special" class="input_u"><br /><sup>Special</sup></td>
 					</table>
 					<table class="bordered">
 						<tr>
-							<td colspan="3"><input type="text" id="Weap4Name" class="input_u"></input><br /><sup>Weapon</sup></td>
-							<td><input type="text" id="Weap4Level" class="input_u"></input><br /><sup>Level</sup></td>
-							<td><input type="text" id="Weap4Bonus" class="input_u"></input><br /><sup>Attack Bonus</sup></td>
-							<td><input type="text" id="Weap4Damage" class="input_u"></input><br /><sup>Damage</sup></td>
+							<td colspan="3"><input type="text" id="Weap4Name" class="input_u"><br /><sup>Weapon</sup></td>
+							<td><input type="text" id="Weap4Level" class="input_u"><br /><sup>Level</sup></td>
+							<td><input type="text" id="Weap4Bonus" class="input_u"><br /><sup>Attack Bonus</sup></td>
+							<td><input type="text" id="Weap4Damage" class="input_u"><br /><sup>Damage</sup></td>
 						</tr>
 						<tr>
-							<td><input type="text" id="Weap4Critical" class="input_u"></input><br /><sup>Critical</sup></td>
-							<td><input type="text" id="Weap4Range" class="input_u"></input><br /><sup>Range</sup></td>
-							<td><input type="text" id="Weap4Type" class="input_u"></input><br /><sup>Type</sup></td>
-							<td colspan="2"><input type="text" id="Weap4Ammo" class="input_u"></input><br /><sup>Ammo/Usage</sup></td>
-							<td><input type="text" id="Weap4Special" class="input_u"></input><br /><sup>Special</sup></td>
+							<td><input type="text" id="Weap4Critical" class="input_u"><br /><sup>Critical</sup></td>
+							<td><input type="text" id="Weap4Range" class="input_u"><br /><sup>Range</sup></td>
+							<td><input type="text" id="Weap4Type" class="input_u"><br /><sup>Type</sup></td>
+							<td colspan="2"><input type="text" id="Weap4Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
+							<td><input type="text" id="Weap4Special" class="input_u"><br /><sup>Special</sup></td>
 					</table>
 				</td>
 			</tr>
 		</table>
-		<table class="fullwidth breaking">
+		<p style='overflow:hidden;page-break-before:always;'></p>
+		<table class="fullwidth">
 			<tr>
 				<td><h2>Starfinder</h2></td>
-				<td><input type="text" id="Charname2" class="input_ubig"></input><br />Character Name</td>
-				<td><input type="text" id="SFSID2" class="input_ubig"></input><br />Starfinder Society #</td>
+				<td><input type="text" id="Charname2" class="input_ubig"><br />Character Name</td>
+				<td><input type="text" id="SFSID2" class="input_ubig"><br />Starfinder Society #</td>
 				<td class="right-aligned"><h2>Page 2</h2></td>
 			</tr>
-		</table>		
-	</body>
+		</table>
+		<table class="fullwidth">
+			<tr>
+				<td colspan="2">
+					<h3>Abilities</h3><br>
+					<input type="text" id="AbilityText1" class="input_u"><br>
+					<input type="text" id="AbilityText2" class="input_u"><br>
+					<input type="text" id="AbilityText3" class="input_u"><br>
+					<input type="text" id="AbilityText4" class="input_u"><br>
+					<input type="text" id="AbilityText5" class="input_u"><br>
+					<input type="text" id="AbilityText6" class="input_u"><br>
+					<input type="text" id="AbilityText7" class="input_u"><br>
+					<input type="text" id="AbilityText8" class="input_u"><br>
+					<input type="text" id="AbilityText9" class="input_u"><br>
+					<input type="text" id="AbilityText10" class="input_u"><br>
+					<input type="text" id="AbilityText11" class="input_u"><br>
+					<input type="text" id="AbilityText12" class="input_u"><br>
+					<input type="text" id="AbilityText13" class="input_u"><br>
+					<input type="text" id="AbilityText14" class="input_u"><br>
+					<input type="text" id="AbilityText15" class="input_u"><br>
+					<input type="text" id="AbilityText16" class="input_u"><br>
+					<input type="text" id="AbilityText17" class="input_u"><br>
+					<input type="text" id="AbilityText18" class="input_u"><br>
+					<input type="text" id="AbilityText19" class="input_u"><br>
+					<input type="text" id="AbilityText20" class="input_u">
+				</td>
+				<td rowspan="3" class="onethirdwidth">
+					<h3>Spells</h3>
+					<table>
+						<tr>
+							<th>0</th>
+							<td>Spells Known</td>
+							<td><input type="text" id="SpellsKnown0" class="input_b"></td>
+						</tr>
+					</table>
+					<input type="text" id="SpellText01" class="input_u"><br>
+					<input type="text" id="SpellText02" class="input_u"><br>
+					<input type="text" id="SpellText03" class="input_u"><br>
+					<input type="text" id="SpellText04" class="input_u"><br>
+					<input type="text" id="SpellText05" class="input_u"><br>
+					<input type="text" id="SpellText06" class="input_u">
+					<table>
+						<tr>
+							<th rowspan="2">1</th>
+							<td>Spells Known</td>
+							<td>Spells Per Day</td>
+							<td>Spells Used</td>
+						</tr>
+						<tr>
+							<td><input type="text" id="SpellsKnown1" class="input_b"></td>
+							<td><input type="text" id="SpellsDaily1" class="input_b"></td>
+							<td><input type="text" id="SpellsUsed1" class="input_b"></td>
+						</tr>
+					</table>
+					<input type="text" id="SpellText11" class="input_u"><br>
+					<input type="text" id="SpellText12" class="input_u"><br>
+					<input type="text" id="SpellText13" class="input_u"><br>
+					<input type="text" id="SpellText14" class="input_u"><br>
+					<input type="text" id="SpellText15" class="input_u"><br>
+					<input type="text" id="SpellText16" class="input_u">
+					<table>
+						<tr>
+							<th rowspan="2">2</th>
+							<td>Spells Known</td>
+							<td>Spells Per Day</td>
+							<td>Spells Used</td>
+						</tr>
+						<tr>
+							<td><input type="text" id="SpellsKnown2" class="input_b"></td>
+							<td><input type="text" id="SpellsDaily2" class="input_b"></td>
+							<td><input type="text" id="SpellsUsed2" class="input_b"></td>
+						</tr>
+					</table>
+					<input type="text" id="SpellText21" class="input_u"><br>
+					<input type="text" id="SpellText22" class="input_u"><br>
+					<input type="text" id="SpellText23" class="input_u"><br>
+					<input type="text" id="SpellText24" class="input_u"><br>
+					<input type="text" id="SpellText25" class="input_u"><br>
+					<input type="text" id="SpellText26" class="input_u">
+					<table>
+						<tr>
+							<th rowspan="2">3</th>
+							<td>Spells Known</td>
+							<td>Spells Per Day</td>
+							<td>Spells Used</td>
+						</tr>
+						<tr>
+							<td><input type="text" id="SpellsKnown3" class="input_b"></td>
+							<td><input type="text" id="SpellsDaily3" class="input_b"></td>
+							<td><input type="text" id="SpellsUsed3" class="input_b"></td>
+						</tr>
+					</table>
+					<input type="text" id="SpellText31" class="input_u"><br>
+					<input type="text" id="SpellText32" class="input_u"><br>
+					<input type="text" id="SpellText33" class="input_u"><br>
+					<input type="text" id="SpellText34" class="input_u"><br>
+					<input type="text" id="SpellText35" class="input_u"><br>
+					<input type="text" id="SpellText36" class="input_u">
+					<table>
+						<tr>
+							<th rowspan="2">4</th>
+							<td>Spells Known</td>
+							<td>Spells Per Day</td>
+							<td>Spells Used</td>
+						</tr>
+						<tr>
+							<td><input type="text" id="SpellsKnown4" class="input_b"></td>
+							<td><input type="text" id="SpellsDaily4" class="input_b"></td>
+							<td><input type="text" id="SpellsUsed4" class="input_b"></td>
+						</tr>
+					</table>
+					<input type="text" id="SpellText41" class="input_u"><br>
+					<input type="text" id="SpellText42" class="input_u"><br>
+					<input type="text" id="SpellText43" class="input_u"><br>
+					<input type="text" id="SpellText44" class="input_u"><br>
+					<input type="text" id="SpellText45" class="input_u">
+					<table>
+						<tr>
+							<th rowspan="2">5</th>
+							<td>Spells Known</td>
+							<td>Spells Per Day</td>
+							<td>Spells Used</td>
+						</tr>
+						<tr>
+							<td><input type="text" id="SpellsKnown5" class="input_b"></td>
+							<td><input type="text" id="SpellsDaily5" class="input_b"></td>
+							<td><input type="text" id="SpellsUsed5" class="input_b"></td>
+						</tr>
+					</table>
+					<input type="text" id="SpellText51" class="input_u"><br>
+					<input type="text" id="SpellText52" class="input_u"><br>
+					<input type="text" id="SpellText53" class="input_u"><br>
+					<input type="text" id="SpellText54" class="input_u">
+					<table>
+						<tr>
+							<th rowspan="2">6</th>
+							<td>Spells Known</td>
+							<td>Spells Per Day</td>
+							<td>Spells Used</td>
+						</tr>
+						<tr>
+							<td><input type="text" id="SpellsKnown6" class="input_b"></td>
+							<td><input type="text" id="SpellsDaily6" class="input_b"></td>
+							<td><input type="text" id="SpellsUsed6" class="input_b"></td>
+						</tr>
+					</table>
+					<input type="text" id="SpellText61" class="input_u"><br>
+					<input type="text" id="SpellText62" class="input_u"><br>
+					<input type="text" id="SpellText63" class="input_u"><br>
+					<input type="text" id="SpellText64" class="input_u">
+				</td>
+			</tr>
+			<tr>
+				<td class="onethirdwidth">
+					<h3>Feats</h3><br>
+					<input type="text" id="FeatText1" class="input_u"><br>
+					<input type="text" id="FeatText2" class="input_u"><br>
+					<input type="text" id="FeatText3" class="input_u"><br>
+					<input type="text" id="FeatText4" class="input_u"><br>
+					<input type="text" id="FeatText5" class="input_u"><br>
+					<input type="text" id="FeatText6" class="input_u"><br>
+					<input type="text" id="FeatText7" class="input_u"><br>
+					<input type="text" id="FeatText8" class="input_u"><br>
+					<input type="text" id="FeatText9" class="input_u"><br>
+					<input type="text" id="FeatText10" class="input_u"><br>
+					<input type="text" id="FeatText11" class="input_u"><br>
+					<input type="text" id="FeatText12" class="input_u"><br>
+					<input type="text" id="FeatText13" class="input_u"><br>
+					<input type="text" id="FeatText14" class="input_u"><br>
+					<input type="text" id="FeatText15" class="input_u"><br>
+					<input type="text" id="FeatText16" class="input_u"><br>
+					<input type="text" id="FeatText17" class="input_u"><br>
+					<input type="text" id="FeatText18" class="input_u"><br>
+					<input type="text" id="FeatText19" class="input_u"><br>
+					<input type="text" id="FeatText20" class="input_u"><br>
+				</td>
+				<td>
+					<h3>Proficiencies</h3>
+					<table>
+						<tr>
+							<td><input type="checkbox" id="ProfLightArmor"></td>
+							<td>Light Armor</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfHeavyArmor"></td>
+							<td>Heavy Armor</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfPowerArmor"></td>
+							<td>Power Armor</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfBasicMelee"></td>
+							<td>Basic Melee</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfAdvmelee"></td>
+							<td>Advanced Melee</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfSmallArms"></td>
+							<td>Small Arms</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfLongarms"></td>
+							<td>Longarms</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfHeavyWeapons"></td>
+							<td>Heavy Weapons</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfSniper"></td>
+							<td>Sniper Weapons</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfGrenades"></td>
+							<td>Grenades</td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfSpecial1"></td>
+							<td><input type="text" id="Special1Type" class="input_u"><br /><sup>Special</sup></td>
+						</tr>
+						<tr>
+							<td><input type="checkbox" id="ProfSpecial2"></td>
+							<td><input type="text" id="Special2Type" class="input_u"><br /><sup>Special</sup></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<h3>Languages</h3><br>
+					<input type="text" id="LanguagesText1" class="input_u"><br>
+					<input type="text" id="LanguagesText2" class="input_u"><br>
+					<input type="text" id="LanguagesText3" class="input_u"><br>
+					<input type="text" id="LanguagesText4" class="input_u"><br>
+					<input type="text" id="LanguagesText5" class="input_u"><br>
+					<input type="text" id="LanguagesText6" class="input_u"><br>
+					<input type="text" id="LanguagesText7" class="input_u"><br>
+					<input type="text" id="LanguagesText8" class="input_u"><br>
+				</td>
+				<td>
+					<h3>Experience</h3>
+					<table>
+						<tr>
+							<th>XP Earned</th>
+							<th>Next Level</th>
+						</tr>
+						<tr>
+							<td><input type="text" id="XPCurrent" class="input_b"></td>
+							<td><input type="text" id="XPNext" class="input_b"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<br>This character sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.
+		<p style='overflow:hidden;page-break-before:always;'></p>
+		<table class="fullwidth">
+			<tr>
+				<td><h2>Starfinder</h2></td>
+				<td><input type="text" id="Charname2" class="input_ubig"><br />Character Name</td>
+				<td><input type="text" id="SFSID2" class="input_ubig"><br />Starfinder Society #</td>
+				<td class="right-aligned"><h2>Page 3</h2></td>
+			</tr>
+		</table>
 	<script>AttachListeners()</script>
+	</body>
 </html>
