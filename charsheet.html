@@ -6,12 +6,16 @@
 	<title>Starfinder Character Sheet</title>
 	</head>
 	<body>
+		<span class="nonprinting fixedcontrols">
+			Load:<input type="file" id="inputfile" onchange="LoadFile()">
+			<span id="DownloadLink"></span>
+		</span>
 		<table class="fullwidth">
 			<tr>
 				<td><h2>Starfinder</h2></td>
 				<td><input type="text" id="Charname" class="input_ubig"><br />Character Name</td>
 				<td><input type="text" id="SFSID" class="input_ubig"><br />Starfinder Society #</td>
-				<td class="nonprinting">Load:<input type="file" id="inputfile" onchange="LoadFile()"><br /><span id="DownloadLink"></span></td>
+				<td class="right-aligned"><h2>Page 1</h2>
 			</tr>
 		</table>
 		<table class="fullwidth">
@@ -907,6 +911,541 @@
 				<td><input type="text" id="Charname2" class="input_ubig"><br />Character Name</td>
 				<td><input type="text" id="SFSID2" class="input_ubig"><br />Starfinder Society #</td>
 				<td class="right-aligned"><h2>Page 3</h2></td>
+			</tr>
+		</table>
+		<table class="fullwidth"> 
+			<tr>
+				<td class="right-aligned"><h3>Credits</h3></td>
+				<td><input type="text" id="Credits" class="input_b"></td>
+				<td class="right-aligned"><h3>Other Wealth</h3></td>
+				<td>
+					<input type="text" id="OtherWealth1" class="input_u"><br>
+					<input type="text" id="OtherWealth2" class="input_u"><br>
+					<input type="text" id="OtherWealth3" class="input_u">
+				</td>
+			</tr>
+		</table>
+		<table class="fullwidth bordered">
+			<tr>
+				<td class="halfwidth"><h3>Equipment</h3></td>
+				<th>Current Ammo/Charge</th>
+				<th>Ammo/Charge Capacity</th>
+				<th>Level</th>
+				<th>Value</th>
+				<th>Bulk</th>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName1" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge1" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity1" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel1" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue1" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk1" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName2" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge2" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity2" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel2" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue2" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk2" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName3" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge3" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity3" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel3" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue3" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk3" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName4" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge4" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity4" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel4" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue4" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk4" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName5" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge5" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity5" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel5" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue5" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk5" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName6" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge6" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity6" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel6" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue6" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk6" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName7" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge7" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity7" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel7" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue7" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk7" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName8" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge8" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity8" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel8" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue8" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk8" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName9" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge9" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity9" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel9" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue9" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk9" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName10" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge10" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity10" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel10" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue10" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk10" class="input_u"><br></td>
+			</tr>			
+			<tr>
+				<td><input type="text" id="ItemName11" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge11" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity11" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel11" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue11" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk11" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName12" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge12" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity12" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel12" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue12" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk12" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName13" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge13" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity13" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel13" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue13" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk13" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName14" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge14" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity14" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel14" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue14" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk14" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName15" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge15" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity15" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel15" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue15" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk15" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName16" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge16" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity16" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel16" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue16" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk16" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName17" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge17" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity17" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel17" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue17" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk17" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName18" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge18" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity18" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel18" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue18" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk18" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName19" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge19" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity19" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel19" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue19" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk19" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName20" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge20" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity20" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel20" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue20" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk20" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName21" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge21" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity21" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel21" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue21" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk21" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName22" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge22" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity22" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel22" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue22" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk22" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName23" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge23" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity23" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel23" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue23" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk23" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName24" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge24" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity24" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel24" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue24" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk24" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName25" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge25" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity25" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel25" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue25" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk25" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName26" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge26" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity26" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel26" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue26" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk26" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName27" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge27" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity27" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel27" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue27" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk27" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName28" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge28" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity28" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel28" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue28" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk28" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName29" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge29" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity29" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel29" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue29" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk29" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName30" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge30" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity30" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel30" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue30" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk30" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName31" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge31" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity31" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel31" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue31" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk31" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName32" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge32" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity32" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel32" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue32" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk32" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName33" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge33" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity33" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel33" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue33" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk33" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName34" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge34" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity34" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel34" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue34" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk34" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName35" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge35" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity35" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel35" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue35" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk35" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName36" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge36" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity36" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel36" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue36" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk36" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName37" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge37" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity37" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel37" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue37" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk37" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName38" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge38" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity38" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel38" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue38" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk38" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName39" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge39" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity39" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel39" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue39" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk39" class="input_u"><br></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="ItemName40" class="input_u"><br></td>
+				<td><input type="text" id="ItemCharge40" class="input_u"><br></td>
+				<td><input type="text" id="ItemCapacity40" class="input_u"><br></td>
+				<td><input type="text" id="ItemLevel40" class="input_u"><br></td>
+				<td><input type="text" id="ItemValue40" class="input_u"><br></td>
+				<td><input type="text" id="ItemBulk40" class="input_u"><br></td>
+			</tr>						
+		</table>
+		<table class="fullwidth">
+			<tr>
+				<td class="halfwidth">
+					<h3>Other Notes</h3><br>
+					<textarea rows="6" cols="50" id="SkillNotes"></textarea>
+				</td>
+				<td class="halfwidth top-aligned">
+					<h3>Carrying Capacity</h3>
+					<table>
+						<tr>
+							<th>Unencumbered</th>
+							<th>Encumbered</th>
+							<th>Overburdened</th>
+							<th>Current</th>
+						</tr>
+						<tr>
+							<td><input type="text" id="CapacityU" class="input_b"></td>
+							<td><input type="text" id="CapacityE" class="input_b"></td>
+							<td><input type="text" id="CapacityO" class="input_b"></td>
+							<td><input type="text" id="CapacityC" class="input_b"></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+		<p style='overflow:hidden;page-break-before:always;'></p>
+		<table class="fullwidth">
+			<tr>
+				<td><h2>Starfinder</h2></td>
+				<td><input type="text" id="Charname4" class="input_ubig"><br />Character Name</td>
+				<td><input type="text" id="SFSID4" class="input_ubig"><br />Starfinder Society #</td>
+				<td class="right-aligned"><h2>Page 4</h2></td>
+			</tr>
+		</table>
+		<h3>Inventory Log</h3>
+		<table class="fullwidth bordered">
+			<tr>
+				<td class="halfwidth">
+					<table>
+						<tr>
+							<th class="halfwidth">Item</th>
+							<th>Cost</th>
+							<th>Bought</th>
+							<th>Sold</th>
+							<th>Expended</th>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName1" class="input_u"></td>
+							<td><input type="text" id="LogCost1" class="input_u"></td>
+							<td><input type="text" id="LogBought1" class="input_b"></td>
+							<td><input type="text" id="LogSold1" class="input_b"></td>
+							<td><input type="text" id="LogUsed1" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName2" class="input_u"></td>
+							<td><input type="text" id="LogCost2" class="input_u"></td>
+							<td><input type="text" id="LogBought2" class="input_b"></td>
+							<td><input type="text" id="LogSold2" class="input_b"></td>
+							<td><input type="text" id="LogUsed2" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName3" class="input_u"></td>
+							<td><input type="text" id="LogCost3" class="input_u"></td>
+							<td><input type="text" id="LogBought3" class="input_b"></td>
+							<td><input type="text" id="LogSold3" class="input_b"></td>
+							<td><input type="text" id="LogUsed3" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName4" class="input_u"></td>
+							<td><input type="text" id="LogCost4" class="input_u"></td>
+							<td><input type="text" id="LogBought4" class="input_b"></td>
+							<td><input type="text" id="LogSold4" class="input_b"></td>
+							<td><input type="text" id="LogUsed4" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName5" class="input_u"></td>
+							<td><input type="text" id="LogCost5" class="input_u"></td>
+							<td><input type="text" id="LogBought5" class="input_b"></td>
+							<td><input type="text" id="LogSold5" class="input_b"></td>
+							<td><input type="text" id="LogUsed5" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName6" class="input_u"></td>
+							<td><input type="text" id="LogCost6" class="input_u"></td>
+							<td><input type="text" id="LogBought6" class="input_b"></td>
+							<td><input type="text" id="LogSold6" class="input_b"></td>
+							<td><input type="text" id="LogUsed6" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName7" class="input_u"></td>
+							<td><input type="text" id="LogCost7" class="input_u"></td>
+							<td><input type="text" id="LogBought7" class="input_b"></td>
+							<td><input type="text" id="LogSold7" class="input_b"></td>
+							<td><input type="text" id="LogUsed7" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName8" class="input_u"></td>
+							<td><input type="text" id="LogCost8" class="input_u"></td>
+							<td><input type="text" id="LogBought8" class="input_b"></td>
+							<td><input type="text" id="LogSold8" class="input_b"></td>
+							<td><input type="text" id="LogUsed8" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName9" class="input_u"></td>
+							<td><input type="text" id="LogCost9" class="input_u"></td>
+							<td><input type="text" id="LogBought9" class="input_b"></td>
+							<td><input type="text" id="LogSold9" class="input_b"></td>
+							<td><input type="text" id="LogUsed9" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName10" class="input_u"></td>
+							<td><input type="text" id="LogCost10" class="input_u"></td>
+							<td><input type="text" id="LogBought10" class="input_b"></td>
+							<td><input type="text" id="LogSold10" class="input_b"></td>
+							<td><input type="text" id="LogUsed10" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName11" class="input_u"></td>
+							<td><input type="text" id="LogCost11" class="input_u"></td>
+							<td><input type="text" id="LogBought11" class="input_b"></td>
+							<td><input type="text" id="LogSold11" class="input_b"></td>
+							<td><input type="text" id="LogUsed11" class="input_b"></td>
+						</tr>	
+						<tr>
+							<td><input type="text" id="LogName12" class="input_u"></td>
+							<td><input type="text" id="LogCost12" class="input_u"></td>
+							<td><input type="text" id="LogBought12" class="input_b"></td>
+							<td><input type="text" id="LogSold12" class="input_b"></td>
+							<td><input type="text" id="LogUsed12" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName13" class="input_u"></td>
+							<td><input type="text" id="LogCost13" class="input_u"></td>
+							<td><input type="text" id="LogBought13" class="input_b"></td>
+							<td><input type="text" id="LogSold13" class="input_b"></td>
+							<td><input type="text" id="LogUsed13" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName14" class="input_u"></td>
+							<td><input type="text" id="LogCost14" class="input_u"></td>
+							<td><input type="text" id="LogBought14" class="input_b"></td>
+							<td><input type="text" id="LogSold14" class="input_b"></td>
+							<td><input type="text" id="LogUsed14" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName15" class="input_u"></td>
+							<td><input type="text" id="LogCost15" class="input_u"></td>
+							<td><input type="text" id="LogBought15" class="input_b"></td>
+							<td><input type="text" id="LogSold15" class="input_b"></td>
+							<td><input type="text" id="LogUsed15" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName16" class="input_u"></td>
+							<td><input type="text" id="LogCost16" class="input_u"></td>
+							<td><input type="text" id="LogBought16" class="input_b"></td>
+							<td><input type="text" id="LogSold16" class="input_b"></td>
+							<td><input type="text" id="LogUsed16" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName17" class="input_u"></td>
+							<td><input type="text" id="LogCost17" class="input_u"></td>
+							<td><input type="text" id="LogBought17" class="input_b"></td>
+							<td><input type="text" id="LogSold17" class="input_b"></td>
+							<td><input type="text" id="LogUsed17" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName18" class="input_u"></td>
+							<td><input type="text" id="LogCost18" class="input_u"></td>
+							<td><input type="text" id="LogBought18" class="input_b"></td>
+							<td><input type="text" id="LogSold18" class="input_b"></td>
+							<td><input type="text" id="LogUsed18" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName19" class="input_u"></td>
+							<td><input type="text" id="LogCost19" class="input_u"></td>
+							<td><input type="text" id="LogBought19" class="input_b"></td>
+							<td><input type="text" id="LogSold19" class="input_b"></td>
+							<td><input type="text" id="LogUsed19" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName20" class="input_u"></td>
+							<td><input type="text" id="LogCost20" class="input_u"></td>
+							<td><input type="text" id="LogBought20" class="input_b"></td>
+							<td><input type="text" id="LogSold20" class="input_b"></td>
+							<td><input type="text" id="LogUsed20" class="input_b"></td>
+						</tr>																	
+					</table>
+					
+				</td>
+				<td class="halfwidth">
+				</td>
 			</tr>
 		</table>
 	<script>AttachListeners()</script>

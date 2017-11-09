@@ -65,7 +65,7 @@ function UpdateDLLink(){
 	var a = document.createElement('a');
 	a.download    = charname+".json";
 	a.href        = url;
-	a.textContent = "Export";
+	a.textContent = "Save";
 		
 	document.getElementById('DownloadLink').innerHTML=""
 	document.getElementById('DownloadLink').appendChild(a);

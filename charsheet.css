@@ -8,8 +8,20 @@ input[type=text] {
   }
 }
 
+.fixedcontrols{
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: white;
+	border: 1px solid;
+}
+
 .breaking{
 	break-before: always;
+}
+
+.top-aligned{
+	vertical-align: top;
 }
 
 .input_u{
