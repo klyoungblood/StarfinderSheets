@@ -114,6 +114,7 @@ td {
 
 .nobreak {
   	white-space: nowrap;
+	display: inline-block;
 }
 
 h3 {
