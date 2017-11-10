@@ -18,6 +18,9 @@ function ModCapacity(boxnumber)
 	var boxname = "AmmoCapacity" + boxnumber;
 	var capacity = document.getElementById(boxname).value;
 	
+	if(isNaN(capacity))
+		capacity = 20;
+	
 	for (var i=1; i <= 100; i++)
 	{
 		box = document.getElementById("AmmoUsed"+boxnumber+"_"+i+"o");
@@ -42,12 +45,41 @@ function PopulateNameAndID()
 	document.getElementById("SFSID4").value = SFSID;
 }
 
+function ClearInputs(){
+	var charvars = document.querySelectorAll("input[type=text]");
+	var longvars = document.getElementsByTagName("textarea");
+	var boolvars = document.querySelectorAll("input[type=checkbox]");
+	
+	for(var i=0; i < charvars.length; i++)
+	{
+		charvars[i].value = "";
+	}
+	
+	for(var i=0; i < longvars.length; i++)
+	{
+		longvars[i].value = "";
+	}
+	
+	for(var i=0; i < boolvars.length; i++)
+	{
+		boolvars[i].checked = false;
+	}
+	
+	document.getElementById("alwaystrue").checked=true;
+	document.getElementById("AmmoCapacity1").value=20;
+	document.getElementById("AmmoCapacity2").value=20;
+	document.getElementById("AmmoCapacity3").value=20;
+	document.getElementById("AmmoCapacity4").value=20;
+	document.getElementById("AmmoCapacity5").value=20;
+}
+
 function LoadFile(){
 	loadbox=document.getElementById('inputfile');
 	var file=loadbox.files[0];
 	if (!file) {
 		return;
 	}
+	ClearInputs();
 	var reader = new FileReader();
 	reader.onloadend = function(e) {
 		var contents = JSON.parse(e.target.result);
@@ -60,6 +92,11 @@ function LoadFile(){
 		}
 		PopulateNameAndID();
 		UpdateDLLink();
+		ModCapacity(1);
+		ModCapacity(2);
+		ModCapacity(3);
+		ModCapacity(4);
+		ModCapacity(5);
 	};
 	reader.readAsText(file);
 }
@@ -70,6 +107,9 @@ function UpdateDLLink(){
 	var charvars = document.querySelectorAll("input[type=text]");
 	var longvars = document.getElementsByTagName("textarea");
 	var boolvars = document.querySelectorAll("input[type=checkbox]");
+	
+	if(charname=="")
+		charname = "Unnamed Character";
 	
 	for(var i=0; i < charvars.length; i++)
 	{
