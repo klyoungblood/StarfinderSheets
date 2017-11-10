@@ -13,6 +13,35 @@ function AttachListeners(){
 	
 }
 
+function ModCapacity(boxnumber)
+{
+	var boxname = "AmmoCapacity" + boxnumber;
+	var capacity = document.getElementById(boxname).value;
+	
+	for (var i=1; i <= 100; i++)
+	{
+		box = document.getElementById("AmmoUsed"+boxnumber+"_"+i+"o");
+		if(i <= capacity)
+			box.classList.remove("invisible");
+		else
+			box.classList.add("invisible");
+	}
+}
+
+function PopulateNameAndID()
+{
+	var charname = document.getElementById("Charname").value;
+	var SFSID = document.getElementById("SFSID").value;
+	
+	document.getElementById("Charname2").value = charname;
+	document.getElementById("Charname3").value = charname;
+	document.getElementById("Charname4").value = charname;
+	
+	document.getElementById("SFSID2").value = SFSID;
+	document.getElementById("SFSID3").value = SFSID;
+	document.getElementById("SFSID4").value = SFSID;
+}
+
 function LoadFile(){
 	loadbox=document.getElementById('inputfile');
 	var file=loadbox.files[0];
@@ -29,6 +58,8 @@ function LoadFile(){
 			else
 				thing.value=value;
 		}
+		PopulateNameAndID();
+		UpdateDLLink();
 	};
 	reader.readAsText(file);
 }

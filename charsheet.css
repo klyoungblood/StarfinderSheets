@@ -2,10 +2,18 @@ input[type=text] {
 	width: 100%;
 }
 
+input[type=checkbox] {
+	margin: 1px;
+}
+
 @media print {
   .nonprinting {
     visibility: hidden;
   }
+}
+
+.invisible{
+	display: none;
 }
 
 .fixedcontrols{
@@ -22,6 +30,10 @@ input[type=text] {
 
 .top-aligned{
 	vertical-align: top;
+}
+
+.bottom-aligned{
+	vertical-align: bottom;
 }
 
 .input_u{
@@ -54,8 +66,17 @@ input[type=text] {
 	border-radius: 0.5em;
 }
 
+.thinbordered{
+	border: 1px solid;
+	border-radius: 0.5em;
+}
+
 .halfwidth {
 	width: 48%;
+}
+
+.twentyfive {
+	width: 25%;
 }
 
 textarea {
@@ -88,6 +109,10 @@ th {
 
 td {
   	font-variant: small-caps;
+  	white-space: nowrap;
+}
+
+.nobreak {
   	white-space: nowrap;
 }
 

@@ -381,7 +381,7 @@
 							<td><input type="text" id="SurvivalMisc" class="input_b"></td>
 						</tr>						
 					</table>
-					<p>&dagger;Trained only <input type="checkbox" id="alwaystrue" checked>Class skill *Armor check penalty applies</p>
+					<p>&dagger;Trained only <input type="checkbox" id="alwaystrue" checked disabled>Class skill *Armor check penalty applies</p>
 					<p><h3>Skill Notes</h3></p>
 					<textarea rows="6" cols="50" id="SkillNotes"></textarea>
 					
@@ -389,7 +389,7 @@
 				<td class="halfwidth">
 					<table>
 						<tr>
-							<th rowspan="2"><h3>Initiative</h3></th>
+							<td rowspan="2" class="bottom-aligned"><h3>Initiative</h3></td>
 							<th>Total</th>
 							<th></th>
 							<th>Dex Modifier</th>
@@ -642,8 +642,8 @@
 		<table class="fullwidth">
 			<tr>
 				<td><h2>Starfinder</h2></td>
-				<td><input type="text" id="Charname2" class="input_ubig"><br />Character Name</td>
-				<td><input type="text" id="SFSID2" class="input_ubig"><br />Starfinder Society #</td>
+				<td><input type="text" id="Charname2" class="input_ubig" disabled><br />Character Name</td>
+				<td><input type="text" id="SFSID2" class="input_ubig" disabled><br />Starfinder Society #</td>
 				<td class="right-aligned"><h2>Page 2</h2></td>
 			</tr>
 		</table>
@@ -672,7 +672,7 @@
 					<input type="text" id="AbilityText19" class="input_u"><br>
 					<input type="text" id="AbilityText20" class="input_u">
 				</td>
-				<td rowspan="3" class="onethirdwidth">
+				<td rowspan="4" class="onethirdwidth">
 					<h3>Spells</h3>
 					<table>
 						<tr>
@@ -799,7 +799,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="onethirdwidth">
+				<td class="onethirdwidth" rowspan="2">
 					<h3>Feats</h3><br>
 					<input type="text" id="FeatText1" class="input_u"><br>
 					<input type="text" id="FeatText2" class="input_u"><br>
@@ -878,17 +878,6 @@
 			</tr>
 			<tr>
 				<td>
-					<h3>Languages</h3><br>
-					<input type="text" id="LanguagesText1" class="input_u"><br>
-					<input type="text" id="LanguagesText2" class="input_u"><br>
-					<input type="text" id="LanguagesText3" class="input_u"><br>
-					<input type="text" id="LanguagesText4" class="input_u"><br>
-					<input type="text" id="LanguagesText5" class="input_u"><br>
-					<input type="text" id="LanguagesText6" class="input_u"><br>
-					<input type="text" id="LanguagesText7" class="input_u"><br>
-					<input type="text" id="LanguagesText8" class="input_u"><br>
-				</td>
-				<td>
 					<h3>Experience</h3>
 					<table>
 						<tr>
@@ -902,14 +891,27 @@
 					</table>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="2">
+					<h3>Languages</h3><br>
+					<input type="text" id="LanguagesText1" class="input_u"><br>
+					<input type="text" id="LanguagesText2" class="input_u"><br>
+					<input type="text" id="LanguagesText3" class="input_u"><br>
+					<input type="text" id="LanguagesText4" class="input_u"><br>
+					<input type="text" id="LanguagesText5" class="input_u"><br>
+					<input type="text" id="LanguagesText6" class="input_u"><br>
+					<input type="text" id="LanguagesText7" class="input_u"><br>
+					<input type="text" id="LanguagesText8" class="input_u"><br>
+				</td>
+			</tr>
 		</table>
 		<br>This character sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.
 		<p style='overflow:hidden;page-break-before:always;'></p>
 		<table class="fullwidth">
 			<tr>
 				<td><h2>Starfinder</h2></td>
-				<td><input type="text" id="Charname2" class="input_ubig"><br />Character Name</td>
-				<td><input type="text" id="SFSID2" class="input_ubig"><br />Starfinder Society #</td>
+				<td><input type="text" id="Charname3" class="input_ubig" disabled><br />Character Name</td>
+				<td><input type="text" id="SFSID3" class="input_ubig" disabled><br />Starfinder Society #</td>
 				<td class="right-aligned"><h2>Page 3</h2></td>
 			</tr>
 		</table>
@@ -1284,8 +1286,8 @@
 		<table class="fullwidth">
 			<tr>
 				<td><h2>Starfinder</h2></td>
-				<td><input type="text" id="Charname4" class="input_ubig"><br />Character Name</td>
-				<td><input type="text" id="SFSID4" class="input_ubig"><br />Starfinder Society #</td>
+				<td><input type="text" id="Charname4" class="input_ubig" disabled><br />Character Name</td>
+				<td><input type="text" id="SFSID4" class="input_ubig" disabled><br />Starfinder Society #</td>
 				<td class="right-aligned"><h2>Page 4</h2></td>
 			</tr>
 		</table>
@@ -1440,14 +1442,577 @@
 							<td><input type="text" id="LogBought20" class="input_b"></td>
 							<td><input type="text" id="LogSold20" class="input_b"></td>
 							<td><input type="text" id="LogUsed20" class="input_b"></td>
-						</tr>																	
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName21" class="input_u"></td>
+							<td><input type="text" id="LogCost21" class="input_u"></td>
+							<td><input type="text" id="LogBought21" class="input_b"></td>
+							<td><input type="text" id="LogSold21" class="input_b"></td>
+							<td><input type="text" id="LogUsed21" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName22" class="input_u"></td>
+							<td><input type="text" id="LogCost22" class="input_u"></td>
+							<td><input type="text" id="LogBought22" class="input_b"></td>
+							<td><input type="text" id="LogSold22" class="input_b"></td>
+							<td><input type="text" id="LogUsed22" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName23" class="input_u"></td>
+							<td><input type="text" id="LogCost23" class="input_u"></td>
+							<td><input type="text" id="LogBought23" class="input_b"></td>
+							<td><input type="text" id="LogSold23" class="input_b"></td>
+							<td><input type="text" id="LogUsed23" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName24" class="input_u"></td>
+							<td><input type="text" id="LogCost24" class="input_u"></td>
+							<td><input type="text" id="LogBought24" class="input_b"></td>
+							<td><input type="text" id="LogSold24" class="input_b"></td>
+							<td><input type="text" id="LogUsed24" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName25" class="input_u"></td>
+							<td><input type="text" id="LogCost25" class="input_u"></td>
+							<td><input type="text" id="LogBought25" class="input_b"></td>
+							<td><input type="text" id="LogSold25" class="input_b"></td>
+							<td><input type="text" id="LogUsed25" class="input_b"></td>
+						</tr>						
 					</table>
 					
 				</td>
 				<td class="halfwidth">
+					<table>
+						<tr>
+							<th class="halfwidth">Item</th>
+							<th>Cost</th>
+							<th>Bought</th>
+							<th>Sold</th>
+							<th>Expended</th>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName26" class="input_u"></td>
+							<td><input type="text" id="LogCost26" class="input_u"></td>
+							<td><input type="text" id="LogBought26" class="input_b"></td>
+							<td><input type="text" id="LogSold26" class="input_b"></td>
+							<td><input type="text" id="LogUsed26" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName27" class="input_u"></td>
+							<td><input type="text" id="LogCost27" class="input_u"></td>
+							<td><input type="text" id="LogBought27" class="input_b"></td>
+							<td><input type="text" id="LogSold27" class="input_b"></td>
+							<td><input type="text" id="LogUsed27" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName28" class="input_u"></td>
+							<td><input type="text" id="LogCost28" class="input_u"></td>
+							<td><input type="text" id="LogBought28" class="input_b"></td>
+							<td><input type="text" id="LogSold28" class="input_b"></td>
+							<td><input type="text" id="LogUsed28" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName29" class="input_u"></td>
+							<td><input type="text" id="LogCost29" class="input_u"></td>
+							<td><input type="text" id="LogBought29" class="input_b"></td>
+							<td><input type="text" id="LogSold29" class="input_b"></td>
+							<td><input type="text" id="LogUsed29" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName30" class="input_u"></td>
+							<td><input type="text" id="LogCost30" class="input_u"></td>
+							<td><input type="text" id="LogBought30" class="input_b"></td>
+							<td><input type="text" id="LogSold30" class="input_b"></td>
+							<td><input type="text" id="LogUsed30" class="input_b"></td>
+						</tr>						
+						<tr>
+							<td><input type="text" id="LogName31" class="input_u"></td>
+							<td><input type="text" id="LogCost31" class="input_u"></td>
+							<td><input type="text" id="LogBought31" class="input_b"></td>
+							<td><input type="text" id="LogSold31" class="input_b"></td>
+							<td><input type="text" id="LogUsed31" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName32" class="input_u"></td>
+							<td><input type="text" id="LogCost32" class="input_u"></td>
+							<td><input type="text" id="LogBought32" class="input_b"></td>
+							<td><input type="text" id="LogSold32" class="input_b"></td>
+							<td><input type="text" id="LogUsed32" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName33" class="input_u"></td>
+							<td><input type="text" id="LogCost33" class="input_u"></td>
+							<td><input type="text" id="LogBought33" class="input_b"></td>
+							<td><input type="text" id="LogSold33" class="input_b"></td>
+							<td><input type="text" id="LogUsed33" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName34" class="input_u"></td>
+							<td><input type="text" id="LogCost34" class="input_u"></td>
+							<td><input type="text" id="LogBought34" class="input_b"></td>
+							<td><input type="text" id="LogSold34" class="input_b"></td>
+							<td><input type="text" id="LogUsed34" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName35" class="input_u"></td>
+							<td><input type="text" id="LogCost35" class="input_u"></td>
+							<td><input type="text" id="LogBought35" class="input_b"></td>
+							<td><input type="text" id="LogSold35" class="input_b"></td>
+							<td><input type="text" id="LogUsed35" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName36" class="input_u"></td>
+							<td><input type="text" id="LogCost36" class="input_u"></td>
+							<td><input type="text" id="LogBought36" class="input_b"></td>
+							<td><input type="text" id="LogSold36" class="input_b"></td>
+							<td><input type="text" id="LogUsed36" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName37" class="input_u"></td>
+							<td><input type="text" id="LogCost37" class="input_u"></td>
+							<td><input type="text" id="LogBought37" class="input_b"></td>
+							<td><input type="text" id="LogSold37" class="input_b"></td>
+							<td><input type="text" id="LogUsed37" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName38" class="input_u"></td>
+							<td><input type="text" id="LogCost38" class="input_u"></td>
+							<td><input type="text" id="LogBought38" class="input_b"></td>
+							<td><input type="text" id="LogSold38" class="input_b"></td>
+							<td><input type="text" id="LogUsed38" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName39" class="input_u"></td>
+							<td><input type="text" id="LogCost39" class="input_u"></td>
+							<td><input type="text" id="LogBought39" class="input_b"></td>
+							<td><input type="text" id="LogSold39" class="input_b"></td>
+							<td><input type="text" id="LogUsed39" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName40" class="input_u"></td>
+							<td><input type="text" id="LogCost40" class="input_u"></td>
+							<td><input type="text" id="LogBought40" class="input_b"></td>
+							<td><input type="text" id="LogSold40" class="input_b"></td>
+							<td><input type="text" id="LogUsed40" class="input_b"></td>
+						</tr>						
+						<tr>
+							<td><input type="text" id="LogName41" class="input_u"></td>
+							<td><input type="text" id="LogCost41" class="input_u"></td>
+							<td><input type="text" id="LogBought41" class="input_b"></td>
+							<td><input type="text" id="LogSold41" class="input_b"></td>
+							<td><input type="text" id="LogUsed41" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName42" class="input_u"></td>
+							<td><input type="text" id="LogCost42" class="input_u"></td>
+							<td><input type="text" id="LogBought42" class="input_b"></td>
+							<td><input type="text" id="LogSold42" class="input_b"></td>
+							<td><input type="text" id="LogUsed42" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName43" class="input_u"></td>
+							<td><input type="text" id="LogCost43" class="input_u"></td>
+							<td><input type="text" id="LogBought43" class="input_b"></td>
+							<td><input type="text" id="LogSold43" class="input_b"></td>
+							<td><input type="text" id="LogUsed43" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName44" class="input_u"></td>
+							<td><input type="text" id="LogCost44" class="input_u"></td>
+							<td><input type="text" id="LogBought44" class="input_b"></td>
+							<td><input type="text" id="LogSold44" class="input_b"></td>
+							<td><input type="text" id="LogUsed44" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName45" class="input_u"></td>
+							<td><input type="text" id="LogCost45" class="input_u"></td>
+							<td><input type="text" id="LogBought45" class="input_b"></td>
+							<td><input type="text" id="LogSold45" class="input_b"></td>
+							<td><input type="text" id="LogUsed45" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName46" class="input_u"></td>
+							<td><input type="text" id="LogCost46" class="input_u"></td>
+							<td><input type="text" id="LogBought46" class="input_b"></td>
+							<td><input type="text" id="LogSold46" class="input_b"></td>
+							<td><input type="text" id="LogUsed46" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName47" class="input_u"></td>
+							<td><input type="text" id="LogCost47" class="input_u"></td>
+							<td><input type="text" id="LogBought47" class="input_b"></td>
+							<td><input type="text" id="LogSold47" class="input_b"></td>
+							<td><input type="text" id="LogUsed47" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName48" class="input_u"></td>
+							<td><input type="text" id="LogCost48" class="input_u"></td>
+							<td><input type="text" id="LogBought48" class="input_b"></td>
+							<td><input type="text" id="LogSold48" class="input_b"></td>
+							<td><input type="text" id="LogUsed48" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName49" class="input_u"></td>
+							<td><input type="text" id="LogCost49" class="input_u"></td>
+							<td><input type="text" id="LogBought49" class="input_b"></td>
+							<td><input type="text" id="LogSold49" class="input_b"></td>
+							<td><input type="text" id="LogUsed49" class="input_b"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="LogName50" class="input_u"></td>
+							<td><input type="text" id="LogCost50" class="input_u"></td>
+							<td><input type="text" id="LogBought50" class="input_b"></td>
+							<td><input type="text" id="LogSold50" class="input_b"></td>
+							<td><input type="text" id="LogUsed50" class="input_b"></td>
+						</tr>
+					</table>
 				</td>
 			</tr>
 		</table>
+		<h3>Ammunition and Charges</h3>
+		<table class="fullwidth bordered">
+			<tr>
+				<th class="twentyfive">Item</th>
+				<th>Cost</th>
+				<th>Bought</th>
+				<th>Sold</th>
+				<th>Capacity</th>
+				<td class="halfwidth"></td>
+			</tr>
+			<tr>
+				<td><input type="text" id="AmmoName1" class="input_u"></td>
+				<td><input type="text" id="AmmoCost1" class="input_u"></td>
+				<td><input type="text" id="AmmoBought1" class="input_b"></td>
+				<td><input type="text" id="AmmoSold1" class="input_b"></td>
+				<td><input type="text" id="AmmoCapacity1" class="input_b" onchange="ModCapacity(1)"></td>
+				<th class="thinbordered">
+					<span class="nobreak">
+						<span id="AmmoUsed1_1o"><input type="checkbox" id="AmmoUsed1_1"></span>
+						<span id="AmmoUsed1_2o"><input type="checkbox" id="AmmoUsed1_2"></span>
+						<span id="AmmoUsed1_3o"><input type="checkbox" id="AmmoUsed1_3"></span>
+						<span id="AmmoUsed1_4o"><input type="checkbox" id="AmmoUsed1_4"></span>
+						<span id="AmmoUsed1_5o"><input type="checkbox" id="AmmoUsed1_5">&nbsp;</span>
+					</span>
+					<span class="nobreak">
+						<span id="AmmoUsed1_6o"><input type="checkbox" id="AmmoUsed1_6"></span>
+						<span id="AmmoUsed1_7o"><input type="checkbox" id="AmmoUsed1_7"></span>
+						<span id="AmmoUsed1_8o"><input type="checkbox" id="AmmoUsed1_8"></span>
+						<span id="AmmoUsed1_9o"><input type="checkbox" id="AmmoUsed1_9"></span>
+						<span id="AmmoUsed1_10o"><input type="checkbox" id="AmmoUsed1_10">&nbsp;</span>
+					</span>
+					<span class="nobreak">
+						<span id="AmmoUsed1_11o"><input type="checkbox" id="AmmoUsed1_11"></span>
+						<span id="AmmoUsed1_12o"><input type="checkbox" id="AmmoUsed1_12"></span>
+						<span id="AmmoUsed1_13o"><input type="checkbox" id="AmmoUsed1_13"></span>
+						<span id="AmmoUsed1_14o"><input type="checkbox" id="AmmoUsed1_14"></span>
+						<span id="AmmoUsed1_15o"><input type="checkbox" id="AmmoUsed1_15">&nbsp;</span>
+					</span>
+					<span class="nobreak">
+						<span id="AmmoUsed1_16o"><input type="checkbox" id="AmmoUsed1_16"></span>
+						<span id="AmmoUsed1_17o"><input type="checkbox" id="AmmoUsed1_17"></span>
+						<span id="AmmoUsed1_18o"><input type="checkbox" id="AmmoUsed1_18"></span>
+						<span id="AmmoUsed1_19o"><input type="checkbox" id="AmmoUsed1_19"></span>
+						<span id="AmmoUsed1_20o"><input type="checkbox" id="AmmoUsed1_20">&nbsp;</span>
+					</span>
+					<span class="nobreak">
+						<span id="AmmoUsed1_21o"><input type="checkbox" id="AmmoUsed1_21"></span>
+						<span id="AmmoUsed1_22o"><input type="checkbox" id="AmmoUsed1_22"></span>
+						<span id="AmmoUsed1_23o"><input type="checkbox" id="AmmoUsed1_23"></span>
+						<span id="AmmoUsed1_24o"><input type="checkbox" id="AmmoUsed1_24"></span>
+						<span id="AmmoUsed1_25o"><input type="checkbox" id="AmmoUsed1_25">&nbsp;</span>
+					</span>
+					<span class="nobreak">
+						<span id="AmmoUsed1_26o"><input type="checkbox" id="AmmoUsed1_26"></span>
+						<span id="AmmoUsed1_27o"><input type="checkbox" id="AmmoUsed1_27"></span>
+						<span id="AmmoUsed1_28o"><input type="checkbox" id="AmmoUsed1_28"></span>
+						<span id="AmmoUsed1_29o"><input type="checkbox" id="AmmoUsed1_29"></span>
+						<span id="AmmoUsed1_30o"><input type="checkbox" id="AmmoUsed1_30">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_31o"><input type="checkbox" id="AmmoUsed1_31"></span>
+						<span id="AmmoUsed1_32o"><input type="checkbox" id="AmmoUsed1_32"></span>
+						<span id="AmmoUsed1_33o"><input type="checkbox" id="AmmoUsed1_33"></span>
+						<span id="AmmoUsed1_34o"><input type="checkbox" id="AmmoUsed1_34"></span>
+						<span id="AmmoUsed1_35o"><input type="checkbox" id="AmmoUsed1_35">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_36o"><input type="checkbox" id="AmmoUsed1_36"></span>
+						<span id="AmmoUsed1_37o"><input type="checkbox" id="AmmoUsed1_37"></span>
+						<span id="AmmoUsed1_38o"><input type="checkbox" id="AmmoUsed1_38"></span>
+						<span id="AmmoUsed1_39o"><input type="checkbox" id="AmmoUsed1_39"></span>
+						<span id="AmmoUsed1_40o"><input type="checkbox" id="AmmoUsed1_40">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_41o"><input type="checkbox" id="AmmoUsed1_41"></span>
+						<span id="AmmoUsed1_42o"><input type="checkbox" id="AmmoUsed1_42"></span>
+						<span id="AmmoUsed1_43o"><input type="checkbox" id="AmmoUsed1_43"></span>
+						<span id="AmmoUsed1_44o"><input type="checkbox" id="AmmoUsed1_44"></span>
+						<span id="AmmoUsed1_45o"><input type="checkbox" id="AmmoUsed1_45">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_46o"><input type="checkbox" id="AmmoUsed1_46"></span>
+						<span id="AmmoUsed1_47o"><input type="checkbox" id="AmmoUsed1_47"></span>
+						<span id="AmmoUsed1_48o"><input type="checkbox" id="AmmoUsed1_48"></span>
+						<span id="AmmoUsed1_49o"><input type="checkbox" id="AmmoUsed1_49"></span>
+						<span id="AmmoUsed1_50o"><input type="checkbox" id="AmmoUsed1_50">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_51o"><input type="checkbox" id="AmmoUsed1_51"></span>
+						<span id="AmmoUsed1_52o"><input type="checkbox" id="AmmoUsed1_52"></span>
+						<span id="AmmoUsed1_53o"><input type="checkbox" id="AmmoUsed1_53"></span>
+						<span id="AmmoUsed1_54o"><input type="checkbox" id="AmmoUsed1_54"></span>
+						<span id="AmmoUsed1_55o"><input type="checkbox" id="AmmoUsed1_55">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_56o"><input type="checkbox" id="AmmoUsed1_56"></span>
+						<span id="AmmoUsed1_57o"><input type="checkbox" id="AmmoUsed1_57"></span>
+						<span id="AmmoUsed1_58o"><input type="checkbox" id="AmmoUsed1_58"></span>
+						<span id="AmmoUsed1_59o"><input type="checkbox" id="AmmoUsed1_59"></span>
+						<span id="AmmoUsed1_60o"><input type="checkbox" id="AmmoUsed1_60">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_61o"><input type="checkbox" id="AmmoUsed1_61"></span>
+						<span id="AmmoUsed1_62o"><input type="checkbox" id="AmmoUsed1_62"></span>
+						<span id="AmmoUsed1_63o"><input type="checkbox" id="AmmoUsed1_63"></span>
+						<span id="AmmoUsed1_64o"><input type="checkbox" id="AmmoUsed1_64"></span>
+						<span id="AmmoUsed1_65o"><input type="checkbox" id="AmmoUsed1_65">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_66o"><input type="checkbox" id="AmmoUsed1_66"></span>
+						<span id="AmmoUsed1_67o"><input type="checkbox" id="AmmoUsed1_67"></span>
+						<span id="AmmoUsed1_68o"><input type="checkbox" id="AmmoUsed1_68"></span>
+						<span id="AmmoUsed1_69o"><input type="checkbox" id="AmmoUsed1_69"></span>
+						<span id="AmmoUsed1_70o"><input type="checkbox" id="AmmoUsed1_70">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_71o"><input type="checkbox" id="AmmoUsed1_71"></span>
+						<span id="AmmoUsed1_72o"><input type="checkbox" id="AmmoUsed1_72"></span>
+						<span id="AmmoUsed1_73o"><input type="checkbox" id="AmmoUsed1_73"></span>
+						<span id="AmmoUsed1_74o"><input type="checkbox" id="AmmoUsed1_74"></span>
+						<span id="AmmoUsed1_75o"><input type="checkbox" id="AmmoUsed1_75">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_76o"><input type="checkbox" id="AmmoUsed1_76"></span>
+						<span id="AmmoUsed1_77o"><input type="checkbox" id="AmmoUsed1_77"></span>
+						<span id="AmmoUsed1_78o"><input type="checkbox" id="AmmoUsed1_78"></span>
+						<span id="AmmoUsed1_79o"><input type="checkbox" id="AmmoUsed1_79"></span>
+						<span id="AmmoUsed1_80o"><input type="checkbox" id="AmmoUsed1_80">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_81o"><input type="checkbox" id="AmmoUsed1_81"></span>
+						<span id="AmmoUsed1_82o"><input type="checkbox" id="AmmoUsed1_82"></span>
+						<span id="AmmoUsed1_83o"><input type="checkbox" id="AmmoUsed1_83"></span>
+						<span id="AmmoUsed1_84o"><input type="checkbox" id="AmmoUsed1_84"></span>
+						<span id="AmmoUsed1_85o"><input type="checkbox" id="AmmoUsed1_85">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_86o"><input type="checkbox" id="AmmoUsed1_86"></span>
+						<span id="AmmoUsed1_87o"><input type="checkbox" id="AmmoUsed1_87"></span>
+						<span id="AmmoUsed1_88o"><input type="checkbox" id="AmmoUsed1_88"></span>
+						<span id="AmmoUsed1_89o"><input type="checkbox" id="AmmoUsed1_89"></span>
+						<span id="AmmoUsed1_90o"><input type="checkbox" id="AmmoUsed1_90">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_91o"><input type="checkbox" id="AmmoUsed1_91"></span>
+						<span id="AmmoUsed1_92o"><input type="checkbox" id="AmmoUsed1_92"></span>
+						<span id="AmmoUsed1_93o"><input type="checkbox" id="AmmoUsed1_93"></span>
+						<span id="AmmoUsed1_94o"><input type="checkbox" id="AmmoUsed1_94"></span>
+						<span id="AmmoUsed1_95o"><input type="checkbox" id="AmmoUsed1_95">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed1_96o"><input type="checkbox" id="AmmoUsed1_96"></span>
+						<span id="AmmoUsed1_97o"><input type="checkbox" id="AmmoUsed1_97"></span>
+						<span id="AmmoUsed1_98o"><input type="checkbox" id="AmmoUsed1_98"></span>
+						<span id="AmmoUsed1_99o"><input type="checkbox" id="AmmoUsed1_99"></span>
+						<span id="AmmoUsed1_100o"><input type="checkbox" id="AmmoUsed1_100">&nbsp;</span>
+					</span>
+				</th>				
+			</tr>
+			<tr>
+				<td><input type="text" id="AmmoName2" class="input_u"></td>
+				<td><input type="text" id="AmmoCost2" class="input_u"></td>
+				<td><input type="text" id="AmmoBought2" class="input_b"></td>
+				<td><input type="text" id="AmmoSold2" class="input_b"></td>
+				<td><input type="text" id="AmmoCapacity2" class="input_b" onchange="ModCapacity(2)"></td>
+				<th class="thinbordered">
+					<span class="nobreak">
+						<span id="AmmoUsed2_1o"><input type="checkbox" id="AmmoUsed2_1"></span>
+						<span id="AmmoUsed2_2o"><input type="checkbox" id="AmmoUsed2_2"></span>
+						<span id="AmmoUsed2_3o"><input type="checkbox" id="AmmoUsed2_3"></span>
+						<span id="AmmoUsed2_4o"><input type="checkbox" id="AmmoUsed2_4"></span>
+						<span id="AmmoUsed2_5o"><input type="checkbox" id="AmmoUsed2_5">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_6o"><input type="checkbox" id="AmmoUsed2_6"></span>
+						<span id="AmmoUsed2_7o"><input type="checkbox" id="AmmoUsed2_7"></span>
+						<span id="AmmoUsed2_8o"><input type="checkbox" id="AmmoUsed2_8"></span>
+						<span id="AmmoUsed2_9o"><input type="checkbox" id="AmmoUsed2_9"></span>
+						<span id="AmmoUsed2_10o"><input type="checkbox" id="AmmoUsed2_10">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_11o"><input type="checkbox" id="AmmoUsed2_11"></span>
+						<span id="AmmoUsed2_12o"><input type="checkbox" id="AmmoUsed2_12"></span>
+						<span id="AmmoUsed2_13o"><input type="checkbox" id="AmmoUsed2_13"></span>
+						<span id="AmmoUsed2_14o"><input type="checkbox" id="AmmoUsed2_14"></span>
+						<span id="AmmoUsed2_15o"><input type="checkbox" id="AmmoUsed2_15">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_16o"><input type="checkbox" id="AmmoUsed2_16"></span>
+						<span id="AmmoUsed2_17o"><input type="checkbox" id="AmmoUsed2_17"></span>
+						<span id="AmmoUsed2_18o"><input type="checkbox" id="AmmoUsed2_18"></span>
+						<span id="AmmoUsed2_19o"><input type="checkbox" id="AmmoUsed2_19"></span>
+						<span id="AmmoUsed2_20o"><input type="checkbox" id="AmmoUsed2_20">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_21o"><input type="checkbox" id="AmmoUsed2_21"></span>
+						<span id="AmmoUsed2_22o"><input type="checkbox" id="AmmoUsed2_22"></span>
+						<span id="AmmoUsed2_23o"><input type="checkbox" id="AmmoUsed2_23"></span>
+						<span id="AmmoUsed2_24o"><input type="checkbox" id="AmmoUsed2_24"></span>
+						<span id="AmmoUsed2_25o"><input type="checkbox" id="AmmoUsed2_25">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_26o"><input type="checkbox" id="AmmoUsed2_26"></span>
+						<span id="AmmoUsed2_27o"><input type="checkbox" id="AmmoUsed2_27"></span>
+						<span id="AmmoUsed2_28o"><input type="checkbox" id="AmmoUsed2_28"></span>
+						<span id="AmmoUsed2_29o"><input type="checkbox" id="AmmoUsed2_29"></span>
+						<span id="AmmoUsed2_30o"><input type="checkbox" id="AmmoUsed2_30">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_31o"><input type="checkbox" id="AmmoUsed2_31"></span>
+						<span id="AmmoUsed2_32o"><input type="checkbox" id="AmmoUsed2_32"></span>
+						<span id="AmmoUsed2_33o"><input type="checkbox" id="AmmoUsed2_33"></span>
+						<span id="AmmoUsed2_34o"><input type="checkbox" id="AmmoUsed2_34"></span>
+						<span id="AmmoUsed2_35o"><input type="checkbox" id="AmmoUsed2_35">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_36o"><input type="checkbox" id="AmmoUsed2_36"></span>
+						<span id="AmmoUsed2_37o"><input type="checkbox" id="AmmoUsed2_37"></span>
+						<span id="AmmoUsed2_38o"><input type="checkbox" id="AmmoUsed2_38"></span>
+						<span id="AmmoUsed2_39o"><input type="checkbox" id="AmmoUsed2_39"></span>
+						<span id="AmmoUsed2_40o"><input type="checkbox" id="AmmoUsed2_40">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_41o"><input type="checkbox" id="AmmoUsed2_41"></span>
+						<span id="AmmoUsed2_42o"><input type="checkbox" id="AmmoUsed2_42"></span>
+						<span id="AmmoUsed2_43o"><input type="checkbox" id="AmmoUsed2_43"></span>
+						<span id="AmmoUsed2_44o"><input type="checkbox" id="AmmoUsed2_44"></span>
+						<span id="AmmoUsed2_45o"><input type="checkbox" id="AmmoUsed2_45">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_46o"><input type="checkbox" id="AmmoUsed2_46"></span>
+						<span id="AmmoUsed2_47o"><input type="checkbox" id="AmmoUsed2_47"></span>
+						<span id="AmmoUsed2_48o"><input type="checkbox" id="AmmoUsed2_48"></span>
+						<span id="AmmoUsed2_49o"><input type="checkbox" id="AmmoUsed2_49"></span>
+						<span id="AmmoUsed2_50o"><input type="checkbox" id="AmmoUsed2_50">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_51o"><input type="checkbox" id="AmmoUsed2_51"></span>
+						<span id="AmmoUsed2_52o"><input type="checkbox" id="AmmoUsed2_52"></span>
+						<span id="AmmoUsed2_53o"><input type="checkbox" id="AmmoUsed2_53"></span>
+						<span id="AmmoUsed2_54o"><input type="checkbox" id="AmmoUsed2_54"></span>
+						<span id="AmmoUsed2_55o"><input type="checkbox" id="AmmoUsed2_55">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_56o"><input type="checkbox" id="AmmoUsed2_56"></span>
+						<span id="AmmoUsed2_57o"><input type="checkbox" id="AmmoUsed2_57"></span>
+						<span id="AmmoUsed2_58o"><input type="checkbox" id="AmmoUsed2_58"></span>
+						<span id="AmmoUsed2_59o"><input type="checkbox" id="AmmoUsed2_59"></span>
+						<span id="AmmoUsed2_60o"><input type="checkbox" id="AmmoUsed2_60">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_61o"><input type="checkbox" id="AmmoUsed2_61"></span>
+						<span id="AmmoUsed2_62o"><input type="checkbox" id="AmmoUsed2_62"></span>
+						<span id="AmmoUsed2_63o"><input type="checkbox" id="AmmoUsed2_63"></span>
+						<span id="AmmoUsed2_64o"><input type="checkbox" id="AmmoUsed2_64"></span>
+						<span id="AmmoUsed2_65o"><input type="checkbox" id="AmmoUsed2_65">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_66o"><input type="checkbox" id="AmmoUsed2_66"></span>
+						<span id="AmmoUsed2_67o"><input type="checkbox" id="AmmoUsed2_67"></span>
+						<span id="AmmoUsed2_68o"><input type="checkbox" id="AmmoUsed2_68"></span>
+						<span id="AmmoUsed2_69o"><input type="checkbox" id="AmmoUsed2_69"></span>
+						<span id="AmmoUsed2_70o"><input type="checkbox" id="AmmoUsed2_70">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_71o"><input type="checkbox" id="AmmoUsed2_71"></span>
+						<span id="AmmoUsed2_72o"><input type="checkbox" id="AmmoUsed2_72"></span>
+						<span id="AmmoUsed2_73o"><input type="checkbox" id="AmmoUsed2_73"></span>
+						<span id="AmmoUsed2_74o"><input type="checkbox" id="AmmoUsed2_74"></span>
+						<span id="AmmoUsed2_75o"><input type="checkbox" id="AmmoUsed2_75">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_76o"><input type="checkbox" id="AmmoUsed2_76"></span>
+						<span id="AmmoUsed2_77o"><input type="checkbox" id="AmmoUsed2_77"></span>
+						<span id="AmmoUsed2_78o"><input type="checkbox" id="AmmoUsed2_78"></span>
+						<span id="AmmoUsed2_79o"><input type="checkbox" id="AmmoUsed2_79"></span>
+						<span id="AmmoUsed2_80o"><input type="checkbox" id="AmmoUsed2_80">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_81o"><input type="checkbox" id="AmmoUsed2_81"></span>
+						<span id="AmmoUsed2_82o"><input type="checkbox" id="AmmoUsed2_82"></span>
+						<span id="AmmoUsed2_83o"><input type="checkbox" id="AmmoUsed2_83"></span>
+						<span id="AmmoUsed2_84o"><input type="checkbox" id="AmmoUsed2_84"></span>
+						<span id="AmmoUsed2_85o"><input type="checkbox" id="AmmoUsed2_85">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_86o"><input type="checkbox" id="AmmoUsed2_86"></span>
+						<span id="AmmoUsed2_87o"><input type="checkbox" id="AmmoUsed2_87"></span>
+						<span id="AmmoUsed2_88o"><input type="checkbox" id="AmmoUsed2_88"></span>
+						<span id="AmmoUsed2_89o"><input type="checkbox" id="AmmoUsed2_89"></span>
+						<span id="AmmoUsed2_90o"><input type="checkbox" id="AmmoUsed2_90">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_91o"><input type="checkbox" id="AmmoUsed2_91"></span>
+						<span id="AmmoUsed2_92o"><input type="checkbox" id="AmmoUsed2_92"></span>
+						<span id="AmmoUsed2_93o"><input type="checkbox" id="AmmoUsed2_93"></span>
+						<span id="AmmoUsed2_94o"><input type="checkbox" id="AmmoUsed2_94"></span>
+						<span id="AmmoUsed2_95o"><input type="checkbox" id="AmmoUsed2_95">&nbsp;</span>
+					</span>
+
+					<span class="nobreak">
+						<span id="AmmoUsed2_96o"><input type="checkbox" id="AmmoUsed2_96"></span>
+						<span id="AmmoUsed2_97o"><input type="checkbox" id="AmmoUsed2_97"></span>
+						<span id="AmmoUsed2_98o"><input type="checkbox" id="AmmoUsed2_98"></span>
+						<span id="AmmoUsed2_99o"><input type="checkbox" id="AmmoUsed2_99"></span>
+						<span id="AmmoUsed2_100o"><input type="checkbox" id="AmmoUsed2_100">&nbsp;</span>
+					</span>
+				</th>
+			</tr>
+		</table>
 	<script>AttachListeners()</script>
+	<script>ModCapacity(1)</script>
+	<script>ModCapacity(2)</script>
 	</body>
 </html>
