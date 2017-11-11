@@ -13,8 +13,8 @@
 		<table class="fullwidth">
 			<tr>
 				<td><h2>Starfinder</h2></td>
-				<td><input type="text" id="Charname" class="input_ubig" onchange="PopulateNameAndID"><br />Character Name</td>
-				<td><input type="text" id="SFSID" class="input_ubig" onchange="PopulateNameAndID"><br />Starfinder Society #</td>
+				<td><input type="text" id="Charname" class="input_ubig" onchange="PopulateNameAndID()"><br />Character Name</td>
+				<td><input type="text" id="SFSID" class="input_ubig" onchange="PopulateNameAndID()"><br />Starfinder Society #</td>
 				<td class="right-aligned"><h2>Page 1</h2>
 			</tr>
 		</table>
@@ -518,7 +518,7 @@
 					<h3>Attack Bonuses</h3>
 					<table class="bordered">
 						<tr>
-							<td></td>
+							<td rowspan="2">Melee<br>Attack</td>
 							<th>Total</th>
 							<td></td>
 							<th>BAB</th>
@@ -528,7 +528,6 @@
 							<th>Misc Mod</th>
 						</tr>
 						<tr>
-							<td>Melee Attack</td>
 							<td><input type="text" id="MeleeTotal" class="input_b"></td>
 							<td>=</td>
 							<td><input type="text" id="MeleeBAB" class="input_b"></td>
@@ -538,7 +537,7 @@
 							<td><input type="text" id="MeleeMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td></td>
+							<td rowspan="2">Ranged<br>Attack</td>
 							<th>Total</th>
 							<td></td>
 							<th>BAB</th>
@@ -548,7 +547,6 @@
 							<th>Misc Mod</th>
 						</tr>
 						<tr>
-							<td>Ranged Attack</td>
 							<td><input type="text" id="RangedTotal" class="input_b"></td>
 							<td>=</td>
 							<td><input type="text" id="RangedBAB" class="input_b"></td>
@@ -558,7 +556,7 @@
 							<td><input type="text" id="RangedMisc" class="input_b"></td>
 						</tr>
 						<tr>
-							<td></td>
+							<td rowspan="2">Thrown<br>Attack</td>
 							<th>Total</th>
 							<td></td>
 							<th>BAB</th>
@@ -568,7 +566,6 @@
 							<th>Misc Mod</th>
 						</tr>
 						<tr>
-							<td>Thrown Attack</td>
 							<td><input type="text" id="ThrownTotal" class="input_b"></td>
 							<td>=</td>
 							<td><input type="text" id="ThrownBAB" class="input_b"></td>
@@ -590,8 +587,8 @@
 							<td><input type="text" id="Weap1Critical" class="input_u"><br /><sup>Critical</sup></td>
 							<td><input type="text" id="Weap1Range" class="input_u"><br /><sup>Range</sup></td>
 							<td><input type="text" id="Weap1Type" class="input_u"><br /><sup>Type</sup></td>
-							<td colspan="2"><input type="text" id="Weap1Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
-							<td><input type="text" id="Weap1Special" class="input_u"><br /><sup>Special</sup></td>
+							<td><input type="text" id="Weap1Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
+							<td colspan="2"><input type="text" id="Weap1Special" class="input_u"><br /><sup>Special</sup></td>
 					</table>
 					<table class="bordered">
 						<tr>
@@ -604,8 +601,8 @@
 							<td><input type="text" id="Weap2Critical" class="input_u"><br /><sup>Critical</sup></td>
 							<td><input type="text" id="Weap2Range" class="input_u"><br /><sup>Range</sup></td>
 							<td><input type="text" id="Weap2Type" class="input_u"><br /><sup>Type</sup></td>
-							<td colspan="2"><input type="text" id="Weap2Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
-							<td><input type="text" id="Weap2Special" class="input_u"><br /><sup>Special</sup></td>
+							<td><input type="text" id="Weap2Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
+							<td colspan="2"><input type="text" id="Weap2Special" class="input_u"><br /><sup>Special</sup></td>
 					</table>
 					<table class="bordered">
 						<tr>
@@ -618,8 +615,8 @@
 							<td><input type="text" id="Weap3Critical" class="input_u"><br /><sup>Critical</sup></td>
 							<td><input type="text" id="Weap3Range" class="input_u"><br /><sup>Range</sup></td>
 							<td><input type="text" id="Weap3Type" class="input_u"><br /><sup>Type</sup></td>
-							<td colspan="2"><input type="text" id="Weap3Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
-							<td><input type="text" id="Weap3Special" class="input_u"><br /><sup>Special</sup></td>
+							<td><input type="text" id="Weap3Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
+							<td colspan="2"><input type="text" id="Weap3Special" class="input_u"><br /><sup>Special</sup></td>
 					</table>
 					<table class="bordered">
 						<tr>
@@ -632,8 +629,8 @@
 							<td><input type="text" id="Weap4Critical" class="input_u"><br /><sup>Critical</sup></td>
 							<td><input type="text" id="Weap4Range" class="input_u"><br /><sup>Range</sup></td>
 							<td><input type="text" id="Weap4Type" class="input_u"><br /><sup>Type</sup></td>
-							<td colspan="2"><input type="text" id="Weap4Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
-							<td><input type="text" id="Weap4Special" class="input_u"><br /><sup>Special</sup></td>
+							<td><input type="text" id="Weap4Ammo" class="input_u"><br /><sup>Ammo/Usage</sup></td>
+							<td colspan="2"><input type="text" id="Weap4Special" class="input_u"><br /><sup>Special</sup></td>
 					</table>
 				</td>
 			</tr>

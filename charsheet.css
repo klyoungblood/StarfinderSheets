@@ -40,6 +40,7 @@ input[type=checkbox] {
 	border: none;
 	border-bottom: 1px solid;
 	text-align: left;
+	font-weight: bold;
 }
 
 .input_w{
@@ -59,6 +60,7 @@ input[type=checkbox] {
 	border: 1px solid;
 	border-radius: 0.5em;
 	text-align: center;
+	font-weight: bold;
 }
 
 .bordered {
@@ -83,6 +85,9 @@ textarea {
     resize: none;
 	width: 100%;
 	overflow: auto;
+	font-family: sans-serif;
+	border: 1px solid;
+	border-radius: 0.5em;
 }
 
 .fullwidth {
