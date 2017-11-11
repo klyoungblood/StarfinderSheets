@@ -3,7 +3,7 @@ Basic HTML character sheet for Starfinder RPG.
 
 Includes an expanded, full-page inventory sheet and Starfinder Society inventory tracking sheet.
 
-To get started using it, select Download Zip from the Clone or Download menu. Be sure to keep all files in the same directory.
+To get started using it, select Download Zip from the Clone or Download menu.
 
 # License
 
