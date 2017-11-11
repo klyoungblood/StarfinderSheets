@@ -85,10 +85,13 @@ function LoadFile(){
 		var contents = JSON.parse(e.target.result);
 		for (const [ key, value ] of Object.entries(contents)) {
 			thing = document.getElementById(key);
-			if(thing.type && thing.type == 'checkbox' && value == true)
-				thing.checked = true;
-			else
-				thing.value=value;
+			if(thing)
+			{
+				if(thing.type && thing.type == 'checkbox' && value == true)
+					thing.checked = true;
+				else
+					thing.value=value;
+			}
 		}
 		PopulateNameAndID();
 		UpdateDLLink();

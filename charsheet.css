@@ -39,7 +39,7 @@ input[type=checkbox] {
 .input_u{
 	border: none;
 	border-bottom: 1px solid;
-	text-align: center;
+	text-align: left;
 }
 
 .input_w{
