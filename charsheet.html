@@ -13,6 +13,7 @@
 	@media print {
 	  .nonprinting {
 		visibility: hidden;
+		display: none;
 	  }
 	}
 
@@ -87,7 +88,7 @@
 
 	textarea {
 		resize: none;
-		width: 100%;
+		width: 98%;
 		overflow: auto;
 		font-family: sans-serif;
 		border: 1px solid;
@@ -308,8 +309,47 @@
 			
 		document.getElementById('DownloadLink').innerHTML=""
 		document.getElementById('DownloadLink').appendChild(a);
-}
-
+	}
+	
+	function PopulateAbMod(fallbackmod, prefmod, fieldclass){
+		var modifier=document.getElementById(prefmod).value;
+		if(modifier=="")
+		{
+			modifier=document.getElementById(fallbackmod).value;
+		}
+		var fields = document.getElementsByClassName(fieldclass);
+		for(var i=0; i < fields.length; i++)
+		{
+			fields[i].value = modifier;
+		}
+		UpdateDLLink();
+	}
+	
+	function PopulateAll()
+	{
+		PopulateAbMod('StrMod','StrUpMod','UseStrMod');
+		PopulateAbMod('DexMod','DexUpMod','UseDexMod');
+		PopulateAbMod('ConMod','ConUpMod','UseConMod');
+		PopulateAbMod('IntMod','IntUpMod','UseIntMod');
+		PopulateAbMod('WisMod','WisUpMod','UseWisMod');
+		PopulateAbMod('ChaMod','ChaUpMod','UseChaMod');
+	}
+	
+	function CalculateBulk()
+	{
+		var totalbulk = 0;
+		for (var i=1; i <= 40; i++)
+		{
+			box = document.getElementById("ItemBulk"+i);
+			if(box.value=="L")
+				totalbulk += 1;
+			else if(!isNaN(box.value))
+				totalbulk += box.value*10;
+		}
+		
+		document.getElementById("CapacityC").value=Math.trunc(totalbulk/10);
+		UpdateDLLink();
+	}
 	</script>
 	<title>Starfinder Character Sheet</title>
 	</head>
@@ -351,49 +391,61 @@
 					<h3>Ability Scores</h3>
 					<table class="bordered">
 						<tr>
-							<th></th>
+							<td><button class="nonprinting" onclick="PopulateAll()" title="Click to populate all skill, save, AC, and attack modifiers.">+</button></td>
 							<th>Score</th>
 							<th>Modifier</th>
 							<th>Upgraded<br />Score</th>
 							<th>Upgraded<br />Modifier</th>
 						</tr>
 						<tr>
-							<td><b>Str</b>ength</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('StrMod','StrUpMod','UseStrMod')" title="Click to populate skill and attack modifiers.">+</button>
+								<b>Str</b>ength</td>
 							<td><input type="text" id="StrScore" class="input_b"></td>
 							<td><input type="text" id="StrMod" class="input_b"></td>
 							<td><input type="text" id="StrUpScore" class="input_b"></td>
 							<td><input type="text" id="StrUpMod" class="input_b"></td>
 						</tr>
 						<tr>
-							<td><b>Dex</b>terity</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('DexMod','DexUpMod','UseDexMod')" title="Click to populate skill, save, AC, and attack modifiers.">+</button>
+								<b>Dex</b>terity</td>
 							<td><input type="text" id="DexScore" class="input_b"></td>
 							<td><input type="text" id="DexMod" class="input_b"></td>
 							<td><input type="text" id="DexUpScore" class="input_b"></td>
 							<td><input type="text" id="DexUpMod" class="input_b"></td>
 						</tr>
 						<tr>
-							<td><b>Con</b>stitution</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('ConMod','ConUpMod','UseConMod')" title="Click to populate save modifier.">+</button>
+								<b>Con</b>stitution</td>
 							<td><input type="text" id="ConScore" class="input_b"></td>
 							<td><input type="text" id="ConMod" class="input_b"></td>
 							<td><input type="text" id="ConUpScore" class="input_b"></td>
 							<td><input type="text" id="ConUpMod" class="input_b"></td>
 						</tr>
 						<tr>
-							<td><b>Int</b>elligence</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('IntMod','IntUpMod','UseIntMod')" title="Click to populate skill modifiers.">+</button>
+								<b>Int</b>elligence</td>
 							<td><input type="text" id="IntScore" class="input_b"></td>
 							<td><input type="text" id="IntMod" class="input_b"></td>
 							<td><input type="text" id="IntUpScore" class="input_b"></td>
 							<td><input type="text" id="IntUpMod" class="input_b"></td>
 						</tr>
 						<tr>
-							<td><b>Wis</b>dom</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('WisMod','WisUpMod','UseWisMod')" title="Click to populate skill and save modifiers.">+</button>
+								<b>Wis</b>dom</td>
 							<td><input type="text" id="WisScore" class="input_b"></td>
 							<td><input type="text" id="WisMod" class="input_b"></td>
 							<td><input type="text" id="WisUpScore" class="input_b"></td>
 							<td><input type="text" id="WisUpMod" class="input_b"></td>
 						</tr>
 						<tr>
-							<td><b>Cha</b>risma</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('ChaMod','ChaUpMod','UseChaMod')" title="Click to populate skill modifiers.">+</button>
+								<b>Cha</b>risma</td>
 							<td><input type="text" id="ChaScore" class="input_b"></td>
 							<td><input type="text" id="ChaMod" class="input_b"></td>
 							<td><input type="text" id="ChaUpScore" class="input_b"></td>
@@ -424,7 +476,7 @@
 							<td>+</td>
 							<td><input type="text" id="AcrobaticsClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="AcrobaticsAbility" class="input_b"></td>
+							<td><input type="text" id="AcrobaticsAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="AcrobaticsMisc" class="input_b"></td>
 						</tr>
@@ -437,7 +489,7 @@
 							<td>+</td>
 							<td><input type="text" id="AthleticsClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="AthleticsAbility" class="input_b"></td>
+							<td><input type="text" id="AthleticsAbility" class="input_b UseStrMod"></td>
 							<td>+</td>
 							<td><input type="text" id="AthleticsMisc" class="input_b"></td>
 						</tr>
@@ -450,7 +502,7 @@
 							<td>+</td>
 							<td><input type="text" id="BluffClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="BluffAbility" class="input_b"></td>
+							<td><input type="text" id="BluffAbility" class="input_b UseChaMod"></td>
 							<td>+</td>
 							<td><input type="text" id="BluffMisc" class="input_b"></td>
 						</tr>
@@ -463,7 +515,7 @@
 							<td>+</td>
 							<td><input type="text" id="ComputersClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="ComputersAbility" class="input_b"></td>
+							<td><input type="text" id="ComputersAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="ComputersMisc" class="input_b"></td>
 						</tr>
@@ -476,7 +528,7 @@
 							<td>+</td>
 							<td><input type="text" id="CultureClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="CultureAbility" class="input_b"></td>
+							<td><input type="text" id="CultureAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="CultureMisc" class="input_b"></td>
 						</tr>
@@ -489,7 +541,7 @@
 							<td>+</td>
 							<td><input type="text" id="DiplomacyClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DiplomacyAbility" class="input_b"></td>
+							<td><input type="text" id="DiplomacyAbility" class="input_b UseChaMod"></td>
 							<td>+</td>
 							<td><input type="text" id="DiplomacyMisc" class="input_b"></td>
 						</tr>
@@ -502,7 +554,7 @@
 							<td>+</td>
 							<td><input type="text" id="DisquiseClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DisquiseAbility" class="input_b"></td>
+							<td><input type="text" id="DisquiseAbility" class="input_b UseChaMod"></td>
 							<td>+</td>
 							<td><input type="text" id="DisquiseMisc" class="input_b"></td>
 						</tr>
@@ -515,7 +567,7 @@
 							<td>+</td>
 							<td><input type="text" id="EngineeringClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="EngineeringAbility" class="input_b"></td>
+							<td><input type="text" id="EngineeringAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="EngineeringMisc" class="input_b"></td>
 						</tr>
@@ -528,7 +580,7 @@
 							<td>+</td>
 							<td><input type="text" id="IntimidateClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="IntimidateAbility" class="input_b"></td>
+							<td><input type="text" id="IntimidateAbility" class="input_b UseChaMod"></td>
 							<td>+</td>
 							<td><input type="text" id="IntimidateMisc" class="input_b"></td>
 						</tr>		
@@ -541,7 +593,7 @@
 							<td>+</td>
 							<td><input type="text" id="LifeSciClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="LifeSciAbility" class="input_b"></td>
+							<td><input type="text" id="LifeSciAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="LifeSciMisc" class="input_b"></td>
 						</tr>
@@ -554,7 +606,7 @@
 							<td>+</td>
 							<td><input type="text" id="MedicineClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MedicineAbility" class="input_b"></td>
+							<td><input type="text" id="MedicineAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="MedicineMisc" class="input_b"></td>
 						</tr>								
@@ -567,7 +619,7 @@
 							<td>+</td>
 							<td><input type="text" id="MysticismClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MysticismAbility" class="input_b"></td>
+							<td><input type="text" id="MysticismAbility" class="input_b UseWisMod"></td>
 							<td>+</td>
 							<td><input type="text" id="MysticismMisc" class="input_b"></td>
 						</tr>		
@@ -580,7 +632,7 @@
 							<td>+</td>
 							<td><input type="text" id="PerceptionClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PerceptionAbility" class="input_b"></td>
+							<td><input type="text" id="PerceptionAbility" class="input_b UseWisMod"></td>
 							<td>+</td>
 							<td><input type="text" id="PerceptionMisc" class="input_b"></td>
 						</tr>	
@@ -593,7 +645,7 @@
 							<td>+</td>
 							<td><input type="text" id="PhysSciClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PyhsSciAbility" class="input_b"></td>
+							<td><input type="text" id="PyhsSciAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="PhysSciMisc" class="input_b"></td>
 						</tr>
@@ -606,7 +658,7 @@
 							<td>+</td>
 							<td><input type="text" id="PilotClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PilotAbility" class="input_b"></td>
+							<td><input type="text" id="PilotAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="PilotMisc" class="input_b"></td>
 						</tr>	
@@ -645,7 +697,7 @@
 							<td>+</td>
 							<td><input type="text" id="SenseClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SenseAbility" class="input_b"></td>
+							<td><input type="text" id="SenseAbility" class="input_b UseWisMod"></td>
 							<td>+</td>
 							<td><input type="text" id="SenseMisc" class="input_b"></td>
 						</tr>		
@@ -658,7 +710,7 @@
 							<td>+</td>
 							<td><input type="text" id="SleightClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SleightAbility" class="input_b"></td>
+							<td><input type="text" id="SleightAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="SleightMisc" class="input_b"></td>
 						</tr>		
@@ -671,7 +723,7 @@
 							<td>+</td>
 							<td><input type="text" id="StealthClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="StealthAbility" class="input_b"></td>
+							<td><input type="text" id="StealthAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="StealthMisc" class="input_b"></td>
 						</tr>						
@@ -684,14 +736,14 @@
 							<td>+</td>
 							<td><input type="text" id="SurvivalClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SurvivalAbility" class="input_b"></td>
+							<td><input type="text" id="SurvivalAbility" class="input_b UseWisMod"></td>
 							<td>+</td>
 							<td><input type="text" id="SurvivalMisc" class="input_b"></td>
 						</tr>						
 					</table>
 					<p>&dagger;Trained only <input type="checkbox" id="alwaystrue" checked disabled>Class skill *Armor check penalty applies</p>
 					<p><h3>Skill Notes</h3></p>
-					<textarea rows="6" cols="50" id="SkillNotes"></textarea>
+					<textarea rows="6" cols="48" id="SkillNotes"></textarea>
 					
 				</td>
 				<td class="halfwidth">
@@ -707,7 +759,7 @@
 						<tr>
 							<td><input type="text" id="InitTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="InitDexMod" class="input_b"></td>
+							<td><input type="text" id="InitDexMod" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="InitMiscMod" class="input_b"></td>
 						</tr>
@@ -751,7 +803,7 @@
 							<td>= 10 +</td>
 							<td><input type="text" id="EACArmor" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="EACDexMod" class="input_b"></td>
+							<td><input type="text" id="EACDexMod" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="EACMiscMod" class="input_b"></td>
 						</tr>
@@ -761,7 +813,7 @@
 							<td>= 10 +</td>
 							<td><input type="text" id="KACArmor" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="KACDexMod" class="input_b"></td>
+							<td><input type="text" id="KACDexMod" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="KACMiscMod" class="input_b"></td>
 						</tr>
@@ -798,7 +850,7 @@
 							<td>=</td>
 							<td><input type="text" id="FortBase" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="FortAbility" class="input_b"></td>
+							<td><input type="text" id="FortAbility" class="input_b UseConMod"></td>
 							<td>+</td>
 							<td><input type="text" id="FortMisc" class="input_b"></td>
 						</tr>
@@ -808,7 +860,7 @@
 							<td>=</td>
 							<td><input type="text" id="RefBase" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="RefAbility" class="input_b"></td>
+							<td><input type="text" id="RefAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="RefMisc" class="input_b"></td>
 						</tr>
@@ -818,7 +870,7 @@
 							<td>=</td>
 							<td><input type="text" id="WillBase" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="WillAbility" class="input_b"></td>
+							<td><input type="text" id="WillAbility" class="input_b UseWisMod"></td>
 							<td>+</td>
 							<td><input type="text" id="WillMisc" class="input_b"></td>
 						</tr>						
@@ -840,7 +892,7 @@
 							<td>=</td>
 							<td><input type="text" id="MeleeBAB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MeleeAbility" class="input_b"></td>
+							<td><input type="text" id="MeleeAbility" class="input_b UseStrMod"></td>
 							<td>+</td>
 							<td><input type="text" id="MeleeMisc" class="input_b"></td>
 						</tr>
@@ -859,7 +911,7 @@
 							<td>=</td>
 							<td><input type="text" id="RangedBAB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="RangedAbility" class="input_b"></td>
+							<td><input type="text" id="RangedAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="RangedMisc" class="input_b"></td>
 						</tr>
@@ -878,7 +930,7 @@
 							<td>=</td>
 							<td><input type="text" id="ThrownBAB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="ThrownAbility" class="input_b"></td>
+							<td><input type="text" id="ThrownAbility" class="input_b UseStrMod"></td>
 							<td>+</td>
 							<td><input type="text" id="ThrownMisc" class="input_b"></td>
 						</tr>						
@@ -1582,6 +1634,12 @@
 							<td><input type="text" id="CapacityE" class="input_b"></td>
 							<td><input type="text" id="CapacityO" class="input_b"></td>
 							<td><input type="text" id="CapacityC" class="input_b"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<th><button class="nonprinting" onclick="CalculateBulk()">Calculate</button></th>
 						</tr>
 					</table>
 				</td>
