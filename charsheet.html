@@ -9,6 +9,10 @@
 	input[type=checkbox] {
 		margin: 1px;
 	}
+	
+	button {
+		border-radius: 1em;
+	}
 
 	@media print {
 	  .nonprinting {
@@ -16,6 +20,13 @@
 		display: none;
 	  }
 	}
+	
+	@media screen {
+		.printonly {
+		visibility: hidden;
+		display: none;
+	  }
+	}	
 
 	.invisible{
 		display: none;
@@ -350,6 +361,40 @@
 		document.getElementById("CapacityC").value=Math.trunc(totalbulk/10);
 		UpdateDLLink();
 	}
+	
+	function SumUp(dstfield,srcfields)
+	{
+		var total = 0;
+		for(var i=0; i < srcfields.length; i++)
+		{
+			field = document.getElementById(srcfields[i])
+			if(field)
+			{
+				var ival = parseInt(field.value);
+				if(!isNaN(ival))
+				{
+					total += ival;
+				}
+			}
+		}
+		
+		document.getElementById(dstfield).value = total;
+	}
+	
+	function SumUpSkill(skill, trainedonly)
+	{
+		var SkillTotal = skill+"Total";
+		var SkillRanks = skill+"Ranks";
+		var SkillClassB = skill+"ClassB";
+		var SkillAbility = skill+"Ability";
+		var SkillMisc = skill+"Misc";
+		SumUp(SkillTotal,[SkillRanks,SkillClassB,SkillAbility,SkillMisc])
+		
+		if(trainedonly && (isNaN(SkillRanks) || parseInt(SkillRanks) == 0))
+		{
+			document.getElementById(SkillTotal).value = "-";
+		}
+	}
 	</script>
 	<title>Starfinder Character Sheet</title>
 	</head>
@@ -471,7 +516,7 @@
 							<td class="right-aligned"><input type="checkbox" id="AcrobaticsClass"></td>
 							<td>Acrobatics<sup>*</sup> (Dex)</td>
 							<td><input type="text" id="AcrobaticsTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Acrobatics',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="AcrobaticsRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="AcrobaticsClassB" class="input_b"></td>
@@ -484,7 +529,7 @@
 							<td class="right-aligned"><input type="checkbox" id="AthleticsClass"></td>
 							<td>Athletics<sup>*</sup> (Str)</td>
 							<td><input type="text" id="AthleticsTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Athletics',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="AthleticsRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="AthleticsClassB" class="input_b"></td>
@@ -497,7 +542,7 @@
 							<td class="right-aligned"><input type="checkbox" id="BluffClass"></td>
 							<td>Bluff (Cha)</td>
 							<td><input type="text" id="BluffTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Bluff',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="BluffRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="BluffClassB" class="input_b"></td>
@@ -510,7 +555,7 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="ComputersClass"></td>
 							<td>Computers (Int)</td>
 							<td><input type="text" id="ComputersTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Computers',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="ComputersRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="ComputersClassB" class="input_b"></td>
@@ -523,7 +568,7 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="CultureClass"></td>
 							<td>Culture (Int)</td>
 							<td><input type="text" id="CultureTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Culture',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="CultureRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="CultureClassB" class="input_b"></td>
