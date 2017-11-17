@@ -9,12 +9,28 @@
 	input[type=checkbox] {
 		margin: 1px;
 	}
+	
+	button {
+		border-radius: 1em;
+	}
+	
+	.bigbutton {
+		font-size: 120%;
+	}
 
 	@media print {
 	  .nonprinting {
 		visibility: hidden;
+		display: none;
 	  }
 	}
+	
+	@media screen {
+		.printonly {
+		visibility: hidden;
+		display: none;
+	  }
+	}	
 
 	.invisible{
 		display: none;
@@ -87,7 +103,7 @@
 
 	textarea {
 		resize: none;
-		width: 100%;
+		width: 98%;
 		overflow: auto;
 		font-family: sans-serif;
 		border: 1px solid;
@@ -308,8 +324,110 @@
 			
 		document.getElementById('DownloadLink').innerHTML=""
 		document.getElementById('DownloadLink').appendChild(a);
-}
-
+	}
+	
+	function PopulateAbMod(fallbackmod, prefmod, fieldclass){
+		var modifier=document.getElementById(prefmod).value;
+		if(modifier=="")
+		{
+			modifier=document.getElementById(fallbackmod).value;
+		}
+		var fields = document.getElementsByClassName(fieldclass);
+		for(var i=0; i < fields.length; i++)
+		{
+			fields[i].value = modifier;
+		}
+		UpdateDLLink();
+	}
+	
+	function PopulateAll()
+	{
+		PopulateAbMod('StrMod','StrUpMod','UseStrMod');
+		PopulateAbMod('DexMod','DexUpMod','UseDexMod');
+		PopulateAbMod('ConMod','ConUpMod','UseConMod');
+		PopulateAbMod('IntMod','IntUpMod','UseIntMod');
+		PopulateAbMod('WisMod','WisUpMod','UseWisMod');
+		PopulateAbMod('ChaMod','ChaUpMod','UseChaMod');
+	}
+	
+	function CalculateBulk()
+	{
+		var totalbulk = 0;
+		for (var i=1; i <= 40; i++)
+		{
+			box = document.getElementById("ItemBulk"+i);
+			if(box.value=="L")
+				totalbulk += 1;
+			else if(!isNaN(box.value))
+				totalbulk += box.value*10;
+		}
+		
+		document.getElementById("CapacityC").value=Math.trunc(totalbulk/10);
+		UpdateDLLink();
+	}
+	
+	function SumUp(dstfield,srcfields)
+	{
+		var total = 0;
+		for(var i=0; i < srcfields.length; i++)
+		{
+			field = document.getElementById(srcfields[i])
+			if(field)
+			{
+				var ival = parseInt(field.value);
+				if(!isNaN(ival))
+				{
+					total += ival;
+				}
+			}
+		}
+		
+		document.getElementById(dstfield).value = total;
+	}
+	
+	function SumUpSkill(skill, trainedonly)
+	{
+		var SkillTotal = skill+"Total";
+		var SkillRanks = skill+"Ranks";
+		var SkillClassB = skill+"ClassB";
+		var SkillAbility = skill+"Ability";
+		var SkillMisc = skill+"Misc";
+		SumUp(SkillTotal,[SkillRanks,SkillClassB,SkillAbility,SkillMisc])
+		
+		if(trainedonly)
+		{
+			var ranksvalue = document.getElementById(SkillRanks).value;
+			if(ranksvalue=="" || isNaN(ranksvalue) || parseInt(ranksvalue) == 0)
+			{
+				document.getElementById(SkillTotal).value = "-";
+			}
+		}
+	}
+	
+	function CalcAllSkills()
+	{
+		SumUpSkill('Acrobatics',false);
+		SumUpSkill('Athletics',false);
+		SumUpSkill('Bluff',false);
+		SumUpSkill('Computers',true);
+		SumUpSkill('Culture',true);
+		SumUpSkill('Diplomacy',false);
+		SumUpSkill('Disguise',false);
+		SumUpSkill('Engineering',true);
+		SumUpSkill('Intimidate',false);
+		SumUpSkill('LifeSci',true);
+		SumUpSkill('Medicine',true);
+		SumUpSkill('Mysticism',true);
+		SumUpSkill('Perception',false);
+		SumUpSkill('PhysSci',true);
+		SumUpSkill('Pilot',false);
+		SumUpSkill('Profession1',true);
+		SumUpSkill('Profession2',true);
+		SumUpSkill('Sense',false);
+		SumUpSkill('Sleight',true);
+		SumUpSkill('Stealth',false);
+		SumUpSkill('Survival',false);
+	}
 	</script>
 	<title>Starfinder Character Sheet</title>
 	</head>
@@ -351,49 +469,61 @@
 					<h3>Ability Scores</h3>
 					<table class="bordered">
 						<tr>
-							<th></th>
+							<td><button class="nonprinting bigbutton" onclick="PopulateAll()" title="Click to populate all skill, save, AC, and attack modifiers.">+</button></td>
 							<th>Score</th>
 							<th>Modifier</th>
 							<th>Upgraded<br />Score</th>
 							<th>Upgraded<br />Modifier</th>
 						</tr>
 						<tr>
-							<td><b>Str</b>ength</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('StrMod','StrUpMod','UseStrMod')" title="Click to populate skill and attack modifiers.">+</button>
+								<b>Str</b>ength</td>
 							<td><input type="text" id="StrScore" class="input_b"></td>
 							<td><input type="text" id="StrMod" class="input_b"></td>
 							<td><input type="text" id="StrUpScore" class="input_b"></td>
 							<td><input type="text" id="StrUpMod" class="input_b"></td>
 						</tr>
 						<tr>
-							<td><b>Dex</b>terity</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('DexMod','DexUpMod','UseDexMod')" title="Click to populate skill, save, AC, and attack modifiers.">+</button>
+								<b>Dex</b>terity</td>
 							<td><input type="text" id="DexScore" class="input_b"></td>
 							<td><input type="text" id="DexMod" class="input_b"></td>
 							<td><input type="text" id="DexUpScore" class="input_b"></td>
 							<td><input type="text" id="DexUpMod" class="input_b"></td>
 						</tr>
 						<tr>
-							<td><b>Con</b>stitution</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('ConMod','ConUpMod','UseConMod')" title="Click to populate save modifier.">+</button>
+								<b>Con</b>stitution</td>
 							<td><input type="text" id="ConScore" class="input_b"></td>
 							<td><input type="text" id="ConMod" class="input_b"></td>
 							<td><input type="text" id="ConUpScore" class="input_b"></td>
 							<td><input type="text" id="ConUpMod" class="input_b"></td>
 						</tr>
 						<tr>
-							<td><b>Int</b>elligence</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('IntMod','IntUpMod','UseIntMod')" title="Click to populate skill modifiers.">+</button>
+								<b>Int</b>elligence</td>
 							<td><input type="text" id="IntScore" class="input_b"></td>
 							<td><input type="text" id="IntMod" class="input_b"></td>
 							<td><input type="text" id="IntUpScore" class="input_b"></td>
 							<td><input type="text" id="IntUpMod" class="input_b"></td>
 						</tr>
 						<tr>
-							<td><b>Wis</b>dom</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('WisMod','WisUpMod','UseWisMod')" title="Click to populate skill and save modifiers.">+</button>
+								<b>Wis</b>dom</td>
 							<td><input type="text" id="WisScore" class="input_b"></td>
 							<td><input type="text" id="WisMod" class="input_b"></td>
 							<td><input type="text" id="WisUpScore" class="input_b"></td>
 							<td><input type="text" id="WisUpMod" class="input_b"></td>
 						</tr>
 						<tr>
-							<td><b>Cha</b>risma</td>
+							<td>
+								<button class="nonprinting" onclick="PopulateAbMod('ChaMod','ChaUpMod','UseChaMod')" title="Click to populate skill modifiers.">+</button>
+								<b>Cha</b>risma</td>
 							<td><input type="text" id="ChaScore" class="input_b"></td>
 							<td><input type="text" id="ChaMod" class="input_b"></td>
 							<td><input type="text" id="ChaUpScore" class="input_b"></td>
@@ -403,7 +533,7 @@
 					<h3>Skills</h3>
 					<table>
 						<tr>
-							<th></th>
+							<td><button class="nonprinting bigbutton" onclick="CalcAllSkills()" title="Click to calculate all skill totals.">=</button></td>
 							<th></th>
 							<th>Total</th>
 							<th></th>
@@ -419,12 +549,12 @@
 							<td class="right-aligned"><input type="checkbox" id="AcrobaticsClass"></td>
 							<td>Acrobatics<sup>*</sup> (Dex)</td>
 							<td><input type="text" id="AcrobaticsTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Acrobatics',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="AcrobaticsRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="AcrobaticsClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="AcrobaticsAbility" class="input_b"></td>
+							<td><input type="text" id="AcrobaticsAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="AcrobaticsMisc" class="input_b"></td>
 						</tr>
@@ -432,12 +562,12 @@
 							<td class="right-aligned"><input type="checkbox" id="AthleticsClass"></td>
 							<td>Athletics<sup>*</sup> (Str)</td>
 							<td><input type="text" id="AthleticsTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Athletics',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="AthleticsRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="AthleticsClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="AthleticsAbility" class="input_b"></td>
+							<td><input type="text" id="AthleticsAbility" class="input_b UseStrMod"></td>
 							<td>+</td>
 							<td><input type="text" id="AthleticsMisc" class="input_b"></td>
 						</tr>
@@ -445,12 +575,12 @@
 							<td class="right-aligned"><input type="checkbox" id="BluffClass"></td>
 							<td>Bluff (Cha)</td>
 							<td><input type="text" id="BluffTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Bluff',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="BluffRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="BluffClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="BluffAbility" class="input_b"></td>
+							<td><input type="text" id="BluffAbility" class="input_b UseChaMod"></td>
 							<td>+</td>
 							<td><input type="text" id="BluffMisc" class="input_b"></td>
 						</tr>
@@ -458,12 +588,12 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="ComputersClass"></td>
 							<td>Computers (Int)</td>
 							<td><input type="text" id="ComputersTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Computers',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="ComputersRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="ComputersClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="ComputersAbility" class="input_b"></td>
+							<td><input type="text" id="ComputersAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="ComputersMisc" class="input_b"></td>
 						</tr>
@@ -471,12 +601,12 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="CultureClass"></td>
 							<td>Culture (Int)</td>
 							<td><input type="text" id="CultureTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Culture',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="CultureRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="CultureClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="CultureAbility" class="input_b"></td>
+							<td><input type="text" id="CultureAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="CultureMisc" class="input_b"></td>
 						</tr>
@@ -484,12 +614,12 @@
 							<td class="right-aligned"><input type="checkbox" id="DiplomacyClass"></td>
 							<td>Diplomacy (Cha)</td>
 							<td><input type="text" id="DiplomacyTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Diplomacy',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="DiplomacyRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="DiplomacyClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DiplomacyAbility" class="input_b"></td>
+							<td><input type="text" id="DiplomacyAbility" class="input_b UseChaMod"></td>
 							<td>+</td>
 							<td><input type="text" id="DiplomacyMisc" class="input_b"></td>
 						</tr>
@@ -497,25 +627,25 @@
 							<td class="right-aligned"><input type="checkbox" id="DisguiseClass"></td>
 							<td>Disguise (Cha)</td>
 							<td><input type="text" id="DisguiseTotal" class="input_b"></td>
-							<td>=</td>
-							<td><input type="text" id="DisquiseRanks" class="input_b"></td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Disguise',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
+							<td><input type="text" id="DisguiseRanks" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DisquiseClassB" class="input_b"></td>
+							<td><input type="text" id="DisguiseClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="DisquiseAbility" class="input_b"></td>
+							<td><input type="text" id="DisguiseAbility" class="input_b UseChaMod"></td>
 							<td>+</td>
-							<td><input type="text" id="DisquiseMisc" class="input_b"></td>
+							<td><input type="text" id="DisguiseMisc" class="input_b"></td>
 						</tr>
 						<tr>
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="EngineeringClass"></td>
 							<td>Engineering (Int)</td>
 							<td><input type="text" id="EngineeringTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Engineering',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="EngineeringRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="EngineeringClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="EngineeringAbility" class="input_b"></td>
+							<td><input type="text" id="EngineeringAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="EngineeringMisc" class="input_b"></td>
 						</tr>
@@ -523,12 +653,12 @@
 							<td class="right-aligned"><input type="checkbox" id="IntimidateClass"></td>
 							<td>Intimidate (Cha)</td>
 							<td><input type="text" id="IntimidateTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Intimidate',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="IntimidateRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="IntimidateClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="IntimidateAbility" class="input_b"></td>
+							<td><input type="text" id="IntimidateAbility" class="input_b UseChaMod"></td>
 							<td>+</td>
 							<td><input type="text" id="IntimidateMisc" class="input_b"></td>
 						</tr>		
@@ -536,12 +666,12 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="LifeSciClass"></td>
 							<td>Life Science (Int)</td>
 							<td><input type="text" id="LifeSciTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('LifeSci',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="LifeSciRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="LifeSciClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="LifeSciAbility" class="input_b"></td>
+							<td><input type="text" id="LifeSciAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="LifeSciMisc" class="input_b"></td>
 						</tr>
@@ -549,12 +679,12 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="MedicineClass"></td>
 							<td>Medicine (Int)</td>
 							<td><input type="text" id="MedicineTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Medicine',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="MedicineRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="MedicineClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MedicineAbility" class="input_b"></td>
+							<td><input type="text" id="MedicineAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="MedicineMisc" class="input_b"></td>
 						</tr>								
@@ -562,12 +692,12 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="MysticismClass"></td>
 							<td>Mysticism (Wis)</td>
 							<td><input type="text" id="MysticismTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Mysticism',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="MysticismRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="MysticismClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MysticismAbility" class="input_b"></td>
+							<td><input type="text" id="MysticismAbility" class="input_b UseWisMod"></td>
 							<td>+</td>
 							<td><input type="text" id="MysticismMisc" class="input_b"></td>
 						</tr>		
@@ -575,12 +705,12 @@
 							<td class="right-aligned"><input type="checkbox" id="PerceptionClass"></td>
 							<td>Perception (Wis)</td>
 							<td><input type="text" id="PerceptionTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Perception',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="PerceptionRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="PerceptionClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PerceptionAbility" class="input_b"></td>
+							<td><input type="text" id="PerceptionAbility" class="input_b UseWisMod"></td>
 							<td>+</td>
 							<td><input type="text" id="PerceptionMisc" class="input_b"></td>
 						</tr>	
@@ -588,12 +718,12 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="PhysSciClass"></td>
 							<td>Physical Science (Int)</td>
 							<td><input type="text" id="PhysSciTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('PhysSci',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="PhysSciRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="PhysSciClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PyhsSciAbility" class="input_b"></td>
+							<td><input type="text" id="PhysSciAbility" class="input_b UseIntMod"></td>
 							<td>+</td>
 							<td><input type="text" id="PhysSciMisc" class="input_b"></td>
 						</tr>
@@ -601,12 +731,12 @@
 							<td class="right-aligned"><input type="checkbox" id="PilotClass"></td>
 							<td>Piloting (Dex)</td>
 							<td><input type="text" id="PilotTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Pilot',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="PilotRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="PilotClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="PilotAbility" class="input_b"></td>
+							<td><input type="text" id="PilotAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="PilotMisc" class="input_b"></td>
 						</tr>	
@@ -614,7 +744,7 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="Profession1Class"></td>
 							<td>Profession (Cha, Int, or Wis)<br /><input type="text" id="Profession1Type" class="input_u"></td>
 							<td><input type="text" id="Profession1Total" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Profession1',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="Profession1Ranks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="Profession1ClassB" class="input_b"></td>
@@ -627,7 +757,7 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="Profession2Class"></td>
 							<td>Profession (Cha, Int, or Wis)<br /><input type="text" id="Profession2Type" class="input_u"></td>
 							<td><input type="text" id="Profession2Total" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Profession2',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="Profession2Ranks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="Profession2ClassB" class="input_b"></td>
@@ -640,12 +770,12 @@
 							<td class="right-aligned"><input type="checkbox" id="SenseClass"></td>
 							<td>Sense Motive (Wis)</td>
 							<td><input type="text" id="SenseTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Sense',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="SenseRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="SenseClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SenseAbility" class="input_b"></td>
+							<td><input type="text" id="SenseAbility" class="input_b UseWisMod"></td>
 							<td>+</td>
 							<td><input type="text" id="SenseMisc" class="input_b"></td>
 						</tr>		
@@ -653,12 +783,12 @@
 							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="SleightClass"></td>
 							<td>Sleight of Hand (Dex)<sup>*</sup></td>
 							<td><input type="text" id="SleightTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Sleight',true)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="SleightRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="SleightClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SleightAbility" class="input_b"></td>
+							<td><input type="text" id="SleightAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="SleightMisc" class="input_b"></td>
 						</tr>		
@@ -666,12 +796,12 @@
 							<td class="right-aligned"><input type="checkbox" id="StealthClass"></td>
 							<td>Stealth (Dex)<sup>*</sup></td>
 							<td><input type="text" id="StealthTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Stealth',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="StealthRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="StealthClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="StealthAbility" class="input_b"></td>
+							<td><input type="text" id="StealthAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="StealthMisc" class="input_b"></td>
 						</tr>						
@@ -679,19 +809,19 @@
 							<td class="right-aligned"><input type="checkbox" id="SurvivalClass"></td>
 							<td>Survival (Wis)</td>
 							<td><input type="text" id="SurvivalTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUpSkill('Survival',false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="SurvivalRanks" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="SurvivalClassB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="SurvivalAbility" class="input_b"></td>
+							<td><input type="text" id="SurvivalAbility" class="input_b UseWisMod"></td>
 							<td>+</td>
 							<td><input type="text" id="SurvivalMisc" class="input_b"></td>
 						</tr>						
 					</table>
 					<p>&dagger;Trained only <input type="checkbox" id="alwaystrue" checked disabled>Class skill *Armor check penalty applies</p>
 					<p><h3>Skill Notes</h3></p>
-					<textarea rows="6" cols="50" id="SkillNotes"></textarea>
+					<textarea rows="6" cols="48" id="SkillNotes"></textarea>
 					
 				</td>
 				<td class="halfwidth">
@@ -707,7 +837,7 @@
 						<tr>
 							<td><input type="text" id="InitTotal" class="input_b"></td>
 							<td>=</td>
-							<td><input type="text" id="InitDexMod" class="input_b"></td>
+							<td><input type="text" id="InitDexMod" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="InitMiscMod" class="input_b"></td>
 						</tr>
@@ -751,7 +881,7 @@
 							<td>= 10 +</td>
 							<td><input type="text" id="EACArmor" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="EACDexMod" class="input_b"></td>
+							<td><input type="text" id="EACDexMod" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="EACMiscMod" class="input_b"></td>
 						</tr>
@@ -761,7 +891,7 @@
 							<td>= 10 +</td>
 							<td><input type="text" id="KACArmor" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="KACDexMod" class="input_b"></td>
+							<td><input type="text" id="KACDexMod" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="KACMiscMod" class="input_b"></td>
 						</tr>
@@ -798,7 +928,7 @@
 							<td>=</td>
 							<td><input type="text" id="FortBase" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="FortAbility" class="input_b"></td>
+							<td><input type="text" id="FortAbility" class="input_b UseConMod"></td>
 							<td>+</td>
 							<td><input type="text" id="FortMisc" class="input_b"></td>
 						</tr>
@@ -808,7 +938,7 @@
 							<td>=</td>
 							<td><input type="text" id="RefBase" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="RefAbility" class="input_b"></td>
+							<td><input type="text" id="RefAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="RefMisc" class="input_b"></td>
 						</tr>
@@ -818,15 +948,18 @@
 							<td>=</td>
 							<td><input type="text" id="WillBase" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="WillAbility" class="input_b"></td>
+							<td><input type="text" id="WillAbility" class="input_b UseWisMod"></td>
 							<td>+</td>
 							<td><input type="text" id="WillMisc" class="input_b"></td>
-						</tr>						
+						</tr>
+						<tr>
+							<td colspan="8"><input type="text" id="SaveNotes" class="input_u"><br />Save Modifiers</td>
+						</tr>
 					</table>
 					<h3>Attack Bonuses</h3>
 					<table class="bordered">
 						<tr>
-							<td rowspan="2">Melee<br>Attack</td>
+							<td rowspan="2">Melee or<br>Thrown<br>Attack</td>
 							<th>Total</th>
 							<td></td>
 							<th>BAB</th>
@@ -840,7 +973,7 @@
 							<td>=</td>
 							<td><input type="text" id="MeleeBAB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="MeleeAbility" class="input_b"></td>
+							<td><input type="text" id="MeleeAbility" class="input_b UseStrMod"></td>
 							<td>+</td>
 							<td><input type="text" id="MeleeMisc" class="input_b"></td>
 						</tr>
@@ -859,29 +992,10 @@
 							<td>=</td>
 							<td><input type="text" id="RangedBAB" class="input_b"></td>
 							<td>+</td>
-							<td><input type="text" id="RangedAbility" class="input_b"></td>
+							<td><input type="text" id="RangedAbility" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="RangedMisc" class="input_b"></td>
 						</tr>
-						<tr>
-							<td rowspan="2">Thrown<br>Attack</td>
-							<th>Total</th>
-							<td></td>
-							<th>BAB</th>
-							<td></td>
-							<th>Str Mod</th>
-							<td></td>
-							<th>Misc Mod</th>
-						</tr>
-						<tr>
-							<td><input type="text" id="ThrownTotal" class="input_b"></td>
-							<td>=</td>
-							<td><input type="text" id="ThrownBAB" class="input_b"></td>
-							<td>+</td>
-							<td><input type="text" id="ThrownAbility" class="input_b"></td>
-							<td>+</td>
-							<td><input type="text" id="ThrownMisc" class="input_b"></td>
-						</tr>						
 					</table>
 					<h3>Weapons</h3>
 					<table class="bordered">
@@ -1582,6 +1696,12 @@
 							<td><input type="text" id="CapacityE" class="input_b"></td>
 							<td><input type="text" id="CapacityO" class="input_b"></td>
 							<td><input type="text" id="CapacityC" class="input_b"></td>
+						</tr>
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<th><button class="nonprinting" onclick="CalculateBulk()">Calculate</button></th>
 						</tr>
 					</table>
 				</td>
