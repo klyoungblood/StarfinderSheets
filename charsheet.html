@@ -193,7 +193,7 @@
 		}
 		
 	}
-
+	
 	function ModCapacity(boxnumber)
 	{
 		var boxname = "AmmoCapacity" + boxnumber;
@@ -272,6 +272,14 @@
 						thing.checked = true;
 					else
 						thing.value=value;
+				} else {
+					if (key.startsWith("AbilityText"))
+						document.getElementById("AbilityTextArea").value += (value + "\n");
+					if (key.startsWith("FeatText"))
+						document.getElementById("FeatTextArea").value += (value + "\n");
+					if (key.startsWith("LanguageText"))
+						document.getElementById("FeatTextArea").value += (value + "\n");
+
 				}
 			}
 			PopulateNameAndID();
@@ -1070,30 +1078,7 @@
 			<tr>
 				<td colspan="2">
 					<h3>Abilities</h3><br>
-					<input type="text" id="AbilityText1" class="input_u"><br>
-					<input type="text" id="AbilityText2" class="input_u"><br>
-					<input type="text" id="AbilityText3" class="input_u"><br>
-					<input type="text" id="AbilityText4" class="input_u"><br>
-					<input type="text" id="AbilityText5" class="input_u"><br>
-					<input type="text" id="AbilityText6" class="input_u"><br>
-					<input type="text" id="AbilityText7" class="input_u"><br>
-					<input type="text" id="AbilityText8" class="input_u"><br>
-					<input type="text" id="AbilityText9" class="input_u"><br>
-					<input type="text" id="AbilityText10" class="input_u"><br>
-					<input type="text" id="AbilityText11" class="input_u"><br>
-					<input type="text" id="AbilityText12" class="input_u"><br>
-					<input type="text" id="AbilityText13" class="input_u"><br>
-					<input type="text" id="AbilityText14" class="input_u"><br>
-					<input type="text" id="AbilityText15" class="input_u"><br>
-					<input type="text" id="AbilityText16" class="input_u"><br>
-					<input type="text" id="AbilityText17" class="input_u"><br>
-					<input type="text" id="AbilityText18" class="input_u"><br>
-					<input type="text" id="AbilityText19" class="input_u"><br>
-					<input type="text" id="AbilityText20" class="input_u"><br>
-					<input type="text" id="AbilityText21" class="input_u"><br>
-					<input type="text" id="AbilityText22" class="input_u"><br>
-					<input type="text" id="AbilityText23" class="input_u"><br>
-					<input type="text" id="AbilityText24" class="input_u">
+					<textarea rows="30" cols="80" id="AbilityTextArea"></textarea>
 				</td>
 				<td rowspan="4" class="onethirdwidth">
 					<h3>Spells</h3>
@@ -1224,26 +1209,7 @@
 			<tr>
 				<td class="onethirdwidth" rowspan="2">
 					<h3>Feats</h3><br>
-					<input type="text" id="FeatText1" class="input_u"><br>
-					<input type="text" id="FeatText2" class="input_u"><br>
-					<input type="text" id="FeatText3" class="input_u"><br>
-					<input type="text" id="FeatText4" class="input_u"><br>
-					<input type="text" id="FeatText5" class="input_u"><br>
-					<input type="text" id="FeatText6" class="input_u"><br>
-					<input type="text" id="FeatText7" class="input_u"><br>
-					<input type="text" id="FeatText8" class="input_u"><br>
-					<input type="text" id="FeatText9" class="input_u"><br>
-					<input type="text" id="FeatText10" class="input_u"><br>
-					<input type="text" id="FeatText11" class="input_u"><br>
-					<input type="text" id="FeatText12" class="input_u"><br>
-					<input type="text" id="FeatText13" class="input_u"><br>
-					<input type="text" id="FeatText14" class="input_u"><br>
-					<input type="text" id="FeatText15" class="input_u"><br>
-					<input type="text" id="FeatText16" class="input_u"><br>
-					<input type="text" id="FeatText17" class="input_u"><br>
-					<input type="text" id="FeatText18" class="input_u"><br>
-					<input type="text" id="FeatText19" class="input_u"><br>
-					<input type="text" id="FeatText20" class="input_u"><br>
+					<textarea rows="25" cols="40" id="FeatTextArea"></textarea>
 				</td>
 				<td>
 					<h3>Proficiencies</h3>
@@ -1317,10 +1283,7 @@
 			<tr>
 				<td colspan="2">
 					<h3>Languages</h3><br>
-					<input type="text" id="LanguagesText1" class="input_u"><br>
-					<input type="text" id="LanguagesText2" class="input_u"><br>
-					<input type="text" id="LanguagesText3" class="input_u"><br>
-					<input type="text" id="LanguagesText4" class="input_u"><br>
+					<textarea rows="5" cols="80" id="LanguagesTextArea"></textarea>
 				</td>
 			</tr>
 		</table>
