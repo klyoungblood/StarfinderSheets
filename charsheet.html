@@ -136,6 +136,10 @@
 		font-variant: small-caps;
 		white-space: nowrap;
 	}
+	
+	.wrap {
+		white-space: normal;
+	}
 
 	.nobreak {
 		white-space: nowrap;
@@ -144,8 +148,6 @@
 
 	h3 {
 		font-size: 1.2em;
-		background-color: black;
-		color: white;
 		display: inline-block;
 		padding: 0.1em;
 		font-variant: small-caps;
@@ -155,8 +157,6 @@
 
 	h4 {
 		font-family: monospace;
-		background-color: black;
-		color: white;
 		font-size: 1.2em;
 		margin-top: 0em;
 		margin-bottom: 0em;
@@ -372,6 +372,21 @@
 		
 		document.getElementById("CapacityC").value=Math.trunc(totalbulk/10);
 		UpdateDLLink();
+	}
+	
+	function AddEight(dstfield,srcfield)
+	{
+		var total = 8;
+		field = document.getElementById(srcfield)
+		if(field)
+		{
+			var ival = parseInt(field.value);
+			if(!isNaN(ival))
+			{
+				total += ival;
+			}
+		}
+		document.getElementById(dstfield).value = total;
 	}
 	
 	function SumUp(dstfield,srcfields)
@@ -844,7 +859,7 @@
 						</tr>
 						<tr>
 							<td><input type="text" id="InitTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUp('InitTotal',['InitDexMod','InitMiscMod'])" title="Click to calculate total initiative.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="InitDexMod" class="input_b UseDexMod"></td>
 							<td>+</td>
 							<td><input type="text" id="InitMiscMod" class="input_b"></td>
@@ -886,7 +901,7 @@
 						<tr>
 							<td><b>E</b>nergy <b>A</b>rmor <b>C</b>lass</td>
 							<td><input type="text" id="EACTotal" class="input_b"></td>
-							<td>= 10 +</td>
+							<td><button class="nonprinting" onclick="SumUp('EACTotal',['EACArmor','EACDexMod','EACMiscMod'])" title="Click to calculate total EAC.">=</button><span class="printonly">=</span> 10 +</td>
 							<td><input type="text" id="EACArmor" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="EACDexMod" class="input_b UseDexMod"></td>
@@ -896,7 +911,7 @@
 						<tr>
 							<td><b>K</b>inetic <b>A</b>rmor <b>C</b>lass</td>
 							<td><input type="text" id="KACTotal" class="input_b"></td>
-							<td>= 10 +</td>
+							<td><button class="nonprinting" onclick="SumUp('KACTotal',['KACArmor','KACDexMod','KACMiscMod'])" title="Click to calculate total KAC.">=</button><span class="printonly">=</span> 10 +</td>
 							<td><input type="text" id="KACArmor" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="KACDexMod" class="input_b UseDexMod"></td>
@@ -906,7 +921,7 @@
 						<tr>
 							<td>AC vs. Combat Maneuvers</td>
 							<td><input type="text" id="MACTotal" class="input_b"></td>
-							<td>= 8 +</td>
+							<td><button class="nonprinting" onclick="AddEight('MACTotal','KACTotal')" title="Click to calculate maneuver KAC.">=</button><span class="printonly">=</span> 8 +</td>
 							<td><b>KAC</b></td>
 							<td></td>
 							<td></td>
@@ -933,7 +948,7 @@
 						<tr>
 							<td>Fortitude (Con)</td>
 							<td><input type="text" id="FortTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUp('FortTotal',['FortBase','FortAbility','FortMisc'])" title="Click to calculate total save.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="FortBase" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="FortAbility" class="input_b UseConMod"></td>
@@ -943,7 +958,7 @@
 						<tr>
 							<td>Reflex (Dex)</td>
 							<td><input type="text" id="RefTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUp('RefTotal',['RefBase','RedAbility','RefMisc'])" title="Click to calculate total save.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="RefBase" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="RefAbility" class="input_b UseDexMod"></td>
@@ -953,7 +968,7 @@
 						<tr>
 							<td>Will (Wis)</td>
 							<td><input type="text" id="WillTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUp('WillTotal',['WillBase','WillAbility','WillMisc'])" title="Click to calculate total save.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="WillBase" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="WillAbility" class="input_b UseWisMod"></td>
@@ -978,7 +993,7 @@
 						</tr>
 						<tr>
 							<td><input type="text" id="MeleeTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUp('MeleeTotal',['MeleeBAB','MeleeAbility','MeleeMisc'])" title="Click to calculate total attack bonus.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="MeleeBAB" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="MeleeAbility" class="input_b UseStrMod"></td>
@@ -997,7 +1012,7 @@
 						</tr>
 						<tr>
 							<td><input type="text" id="RangedTotal" class="input_b"></td>
-							<td>=</td>
+							<td><button class="nonprinting" onclick="SumUp('RangedTotal',['RangedBAB','RangedAbility','RangedMisc'])" title="Click to calculate total attack bonus.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="RangedBAB" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="RangedAbility" class="input_b UseDexMod"></td>
@@ -1207,9 +1222,9 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="onethirdwidth" rowspan="2">
+				<td class="onethirdwidth">
 					<h3>Feats</h3><br>
-					<textarea rows="25" cols="40" id="FeatTextArea"></textarea>
+					<textarea rows="20" cols="40" id="FeatTextArea"></textarea>
 				</td>
 				<td>
 					<h3>Proficiencies</h3>
@@ -1267,6 +1282,10 @@
 			</tr>
 			<tr>
 				<td>
+					<h3>Languages</h3><br>
+					<textarea rows="5" cols="80" id="LanguagesTextArea"></textarea>
+				</td>
+				<td>
 					<h3>Experience</h3>
 					<table>
 						<tr>
@@ -1278,16 +1297,48 @@
 							<td><input type="text" id="XPNext" class="input_b"></td>
 						</tr>
 					</table>
-				</td>
+					<h3>Reputation</h3>
+					<table>
+					<tr>
+						<th>Fame</th><th>Infamy</th>
+					</tr>
+					<tr>
+						<td><input type="text" id="Fame" class="input_b"></td>
+						<td><input type="text" id="Infamy" class="input_b"></td>
+					</tr>					
+					</table>
 			</tr>
-			<tr>
-				<td colspan="2">
-					<h3>Languages</h3><br>
-					<textarea rows="5" cols="80" id="LanguagesTextArea"></textarea>
-				</td>
-			</tr>
+			<td class="onethirdwidth top-aligned">
+			<h3>Factions</h3><br>
+			<table>
+
+				<tr>
+					<th>Faction</th><th>Reputation</th>
+				</tr>
+				<tr>
+					<td><input type="text" id="Faction1" class="input_b"></td>
+					<td><input type="text" id="Faction1Rep" class="input_b"></td>
+				</tr>
+				<tr>
+					<td><input type="text" id="Faction2" class="input_b"></td>
+					<td><input type="text" id="Faction2Rep" class="input_b"></td>
+				</tr>
+				<tr>
+					<td><input type="text" id="Faction3" class="input_b"></td>
+					<td><input type="text" id="Faction3Rep" class="input_b"></td>
+				</tr>
+				<tr>
+					<td><input type="text" id="Faction4" class="input_b"></td>
+					<td><input type="text" id="Faction4Rep" class="input_b"></td>
+				</tr>
+				<tr>
+					<td><input type="text" id="Faction5" class="input_b"></td>
+					<td><input type="text" id="Faction5Rep" class="input_b"></td>
+				</tr>
+			</table>
+		</td>
+		<td></td>
 		</table>
-		<br>This character sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.
 		<p style='overflow:hidden;page-break-before:always;'></p>
 		<table class="fullwidth">
 			<tr>
@@ -1641,10 +1692,11 @@
 		</table>
 		<table class="fullwidth">
 			<tr>
-				<td class="halfwidth">
+				<td class="halfwidth top-aligned">
 					<h3>Other Notes</h3><br>
 					<textarea rows="6" cols="50" id="OtherNotes"></textarea>
 				</td>
+				
 				<td class="halfwidth top-aligned">
 					<h3>Carrying Capacity</h3>
 					<table>
@@ -2902,6 +2954,7 @@
 					</span>
 				</th>
 		</table>
+		<h3>Community Use Policy</h3><br>This character sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.
 	<script>AttachListeners()</script>
 	<script>ModCapacity(1)</script>
 	<script>ModCapacity(2)</script>
