@@ -258,6 +258,15 @@
 		document.getElementById("AmmoCapacity3").value=20;
 		document.getElementById("AmmoCapacity4").value=20;
 		document.getElementById("AmmoCapacity5").value=20;
+		document.getElementById("Faction1").value="Acquisitives";
+		document.getElementById("Faction2").value="Dataphiles";
+		document.getElementById("Faction3").value="Exo-guardians";
+		document.getElementById("Faction4").value="Second Seekers ( )";
+		document.getElementById("Faction5").value="Wayfinders";
+		document.getElementById("Faction6").value="Other";
+		
+		document.getElementById("BackPack").value=0;
+		
 	}
 
 	function LoadFile(){
@@ -326,6 +335,8 @@
 				cjson[boolvars[i].id]=true;
 			}
 		}
+		
+		cjson['BackPack'] = document.getElementById("BackPack").value;
 		
 		var cstring=JSON.stringify(cjson);
 		var charblob = new Blob([cstring], {type: "application/json"});
@@ -421,6 +432,25 @@
 	function SumUp(dstfield,srcfields)
 	{
 		var total = 0;
+		for(var i=0; i < srcfields.length; i++)
+		{
+			field = document.getElementById(srcfields[i])
+			if(field)
+			{
+				var ival = parseInt(field.value);
+				if(!isNaN(ival))
+				{
+					total += ival;
+				}
+			}
+		}
+		
+		document.getElementById(dstfield).value = total;
+	}
+	
+	function SumPlusTen(dstfield,srcfields)
+	{
+		var total = 10;
 		for(var i=0; i < srcfields.length; i++)
 		{
 			field = document.getElementById(srcfields[i])
@@ -930,7 +960,7 @@
 						<tr>
 							<td><b>E</b>nergy <b>A</b>rmor <b>C</b>lass</td>
 							<td><input type="text" id="EACTotal" class="input_b"></td>
-							<td><button class="nonprinting" onclick="SumUp('EACTotal',['EACArmor','EACDexMod','EACMiscMod'])" title="Click to calculate total EAC.">=</button><span class="printonly">=</span> 10 +</td>
+							<td><button class="nonprinting" onclick="SumPlusTen('EACTotal',['EACArmor','EACDexMod','EACMiscMod'])" title="Click to calculate total EAC.">=</button><span class="printonly">=</span> 10 +</td>
 							<td><input type="text" id="EACArmor" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="EACDexMod" class="input_b UseDexMod"></td>
@@ -940,7 +970,7 @@
 						<tr>
 							<td><b>K</b>inetic <b>A</b>rmor <b>C</b>lass</td>
 							<td><input type="text" id="KACTotal" class="input_b"></td>
-							<td><button class="nonprinting" onclick="SumUp('KACTotal',['KACArmor','KACDexMod','KACMiscMod'])" title="Click to calculate total KAC.">=</button><span class="printonly">=</span> 10 +</td>
+							<td><button class="nonprinting" onclick="SumPlusTen('KACTotal',['KACArmor','KACDexMod','KACMiscMod'])" title="Click to calculate total KAC.">=</button><span class="printonly">=</span> 10 +</td>
 							<td><input type="text" id="KACArmor" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="KACDexMod" class="input_b UseDexMod"></td>
