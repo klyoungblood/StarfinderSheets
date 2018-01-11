@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<style type="text/css"> 
+	input[type=text] {
+	}
+
+	input[type=checkbox] {
+		margin: 1px;
+	}
+	
+	button {
+		border-radius: 1em;
+	}
+	
+	.bigbutton {
+		font-size: 120%;
+	}
+
+	@media print {
+	  .nonprinting {
+		visibility: hidden;
+		display: none;
+	  }
+	}
+	
+	@media screen {
+		.printonly {
+		visibility: hidden;
+		display: none;
+	  }
+	}	
+
+	.invisible{
+		display: none;
+	}
+
+	.fixedcontrols{
+		position: fixed;
+		top: 0;
+		left: 0;
+		background-color: white;
+		border: 1px solid;
+	}
+
+	.breaking{
+		break-before: always;
+	}
+
+	.top-aligned{
+		vertical-align: top;
+	}
+
+	.bottom-aligned{
+		vertical-align: bottom;
+	}
+
+	.input_u{
+		border: none;
+		border-bottom: 1px solid;
+		text-align: left;
+		font-weight: bold;
+	}
+
+	.input_w{
+		border: none;
+		text-align: center;
+	}
+
+
+	.input_ubig{
+		font-size: 1.2em;
+		border: none;
+		border-bottom: 1px solid;
+		text-align: center;
+		width: 100%;
+	}
+
+	.input_b{
+		border: 1px solid;
+		border-radius: 0.5em;
+		text-align: center;
+		font-weight: bold;
+	}
+	
+	.bordered {
+		border: 2px solid;
+		border-radius: 0.5em;
+	}
+
+	.thinbordered{
+		border: 1px solid;
+		border-radius: 0.5em;
+	}
+
+	.halfwidth {
+		width: 48%;
+	}
+
+	.twentyfive {
+		width: 25%;
+	}
+
+	textarea {
+		resize: none;
+		width: 98%;
+		overflow: auto;
+		font-family: sans-serif;
+		border: 1px solid;
+		border-radius: 0.5em;
+	}
+
+	.fullwidth {
+		width: 100%;
+	}
+
+	.onethirdwidth {
+		width: 33%;
+	}
+
+	body {
+		font-family: sans-serif;
+		font-variant: small-caps;
+	}
+
+	.right-aligned {
+		text-align: right;
+	}
+
+	th {
+		vertical-align: bottom;
+		font-variant: small-caps;
+	}
+
+	td {
+		font-variant: small-caps;
+		white-space: nowrap;
+	}
+	
+	.wrap {
+		white-space: normal;
+	}
+
+	.nobreak {
+		white-space: nowrap;
+		display: inline-block;
+	}
+
+	h3 {
+		font-size: 1.2em;
+		display: inline-block;
+		padding: 0.1em;
+		font-variant: small-caps;
+		margin-top: 0em;
+		margin-bottom: 0em;
+	}
+
+	h4 {
+		font-family: monospace;
+		font-size: 1.2em;
+		margin-top: 0em;
+		margin-bottom: 0em;
+		margin-left: 0;
+		margin-right: 0;
+		font-weight: bold;
+		display: inline-block;
+		padding: 0.075em;
+		font-variant: small-caps;
+	}
+
+	h6 {
+		margin-top: 0em;
+		margin-bottom: 0em;
+		margin-left: 0;
+		margin-right: 0;
+		font-weight: normal;
+		font-variant: small-caps;
+	}
+
+	</style>
+	<script>
+	function AttachListeners(){
+		var inputs = document.getElementsByTagName("input");
+		var areas = document.getElementsByTagName("textarea");
+		var selects = document.getElementsByTagName("select");
+		for(var i=0; i < inputs.length; i++)
+		{
+			inputs[i].addEventListener("change", UpdateDLLink);
+		}
+		
+		for(var i=0; i < areas.length; i++)
+		{
+			areas[i].addEventListener("change", UpdateDLLink);
+		}
+		
+		for(var i=0; i < selects.length; i++)
+		{
+			selects[i].addEventListener("change", UpdateDLLink);
+		}
+
+	}
+	
+	function PopulateNameAndID()
+	{
+		var shipname = document.getElementById("Shipname").value;
+		var shiptier = document.getElementById("Shiptier").value;
+		
+		document.getElementById("Shipname2").value = shipname;
+		document.getElementById("Shiptier2").value = shiptier;
+	}
+	
+	function LoadFile(){
+		loadbox=document.getElementById('inputfile');
+		var file=loadbox.files[0];
+		if (!file) {
+			return;
+		}
+		ClearInputs();
+		var reader = new FileReader();
+		reader.onloadend = function(e) {
+			var contents = JSON.parse(e.target.result);
+			for (const [ key, value ] of Object.entries(contents)) {
+				thing = document.getElementById(key);
+				if(thing)
+				{
+					if(thing.type && thing.type == 'checkbox' && value == true)
+						thing.checked = true;
+					else
+						thing.value=value;
+				}
+			}
+			PopulateNameAndID();
+			UpdateDLLink();
+		};
+		reader.readAsText(file);
+	}
+	
+	function ClearInputs(){
+		var charvars = document.querySelectorAll("input[type=text]");
+		var longvars = document.getElementsByTagName("textarea");
+		var boolvars = document.querySelectorAll("input[type=checkbox]");
+		
+		for(var i=0; i < charvars.length; i++)
+		{
+			charvars[i].value = "";
+		}
+		
+		for(var i=0; i < longvars.length; i++)
+		{
+			longvars[i].value = "";
+		}
+		
+		for(var i=0; i < boolvars.length; i++)
+		{
+			boolvars[i].checked = false;
+		}
+		
+	}
+
+	function UpdateDLLink(){
+		var cjson = {};
+		var shipname = document.getElementById("Shipname").value;
+		var charvars = document.querySelectorAll("input[type=text]");
+		var longvars = document.getElementsByTagName("textarea");
+		var boolvars = document.querySelectorAll("input[type=checkbox]");
+		
+		if(shipname=="")
+			shipname = "Unnamed Ship";
+		
+		for(var i=0; i < charvars.length; i++)
+		{
+			cjson[charvars[i].id]=charvars[i].value;
+		}
+		
+		for(var i=0; i < longvars.length; i++)
+		{
+			cjson[longvars[i].id]=longvars[i].value;
+		}
+		
+		for(var i=0; i < boolvars.length; i++)
+		{
+			if(boolvars[i].checked)
+			{
+				cjson[boolvars[i].id]=true;
+			}
+		}
+		
+		var cstring=JSON.stringify(cjson);
+		var charblob = new Blob([cstring], {type: "application/json"});
+		var url = URL.createObjectURL(charblob);
+		
+		var a = document.createElement('a');
+		a.download    = shipname+".json";
+		a.href        = url;
+		a.textContent = "Save";
+			
+		document.getElementById('DownloadLink').innerHTML=""
+		document.getElementById('DownloadLink').appendChild(a);
+	}
+	</script>
+	<title>Starfinder Ship Sheet</title>
+	</head>
+	<body>
+		<span class="nonprinting fixedcontrols">
+			Load:<input type="file" id="inputfile" onchange="LoadFile()">
+			<span id="DownloadLink"></span>
+		</span>
+		<table class="fullwidth">
+		<tr>
+			<td><h2>Starfinder</h2></td>
+			<td><input type="text" id="Shipname" class="input_ubig" onchange="PopulateNameAndID()"><br />Ship Name</td>
+			<td><input type="text" id="Shiptier" class="input_ubig" onchange="PopulateNameAndID()"><br />Tier</td>
+			<td class="right-aligned"><h2>Page 1</h2>
+		</tr>
+		</table>
+		<table>
+			<tr>
+				<td></td>
+				<th>
+					<h3>Forward</h3><br>
+					Shields <input type="text" id="ShieldForeCur" class="input_b">/<input type="text" id="ShieldForeTotal" class="input_b">
+					<table>
+						<tr>
+							<td>Weapon</td>
+							<td>Range</td>
+							<td>Ammo</td>
+						</tr>
+						<tr>
+							<td><input type="text" id="WeaponFore1" class="input_u"></td>
+							<td><input type="text" id="WeaponFore1Range" class="input_u"></td>
+							<td><input type="text" id="WeaponFore1Ammo" class="input_u"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="WeaponFore2" class="input_u"></td>
+							<td><input type="text" id="WeaponFore2Range" class="input_u"></td>
+							<td><input type="text" id="WeaponFore2Ammo" class="input_u"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="WeaponFore3" class="input_u"></td>
+							<td><input type="text" id="WeaponFore3Range" class="input_u"></td>
+							<td><input type="text" id="WeaponFore3Ammo" class="input_u"></td>
+						</tr>
+					</table>
+				</th>
+				<td></td>
+			</tr>		
+			<tr>
+				<th><h3>Port</h3><br>
+					Shields <input type="text" id="ShieldPortCur" class="input_b">/<input type="text" id="ShieldPortTotal" class="input_b">
+					<table>
+						<tr>
+							<td>Weapon</td>
+							<td>Range</td>
+							<td>Ammo</td>
+						</tr>
+						<tr>
+							<td><input type="text" id="WeaponPort1" class="input_u"></td>
+							<td><input type="text" id="WeaponPort1Range" class="input_u"></td>
+							<td><input type="text" id="WeaponPort1Ammo" class="input_u"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="WeaponPort2" class="input_u"></td>
+							<td><input type="text" id="WeaponPort2Range" class="input_u"></td>
+							<td><input type="text" id="WeaponPort2Ammo" class="input_u"></td>
+						</tr>
+						<tr>
+							<td><input type="text" id="WeaponPort3" class="input_u"></td>
+							<td><input type="text" id="WeaponPort3Range" class="input_u"></td>
+							<td><input type="text" id="WeaponPort3Ammo" class="input_u"></td>
+						</tr>
+					</table>
+				<th><h3>Turret</h3></th>
+				<th><h3>Starboard</h3><br>
+					Shields <input type="text" id="ShieldSBCur" class="input_b">/<input type="text" id="ShieldSBTotal" class="input_b"></th>
+			</tr>
+			<tr>
+				<td></td>
+				<th><h3>Aft</h3><br>
+					Shields <input type="text" id="ShieldAftCur" class="input_b">/<input type="text" id="ShieldAftTotal" class="input_b"></th>
+				<td></td>
+			</tr>
+		</table>
+		<p style='overflow:hidden;page-break-before:always;'></p>
+		<table class="fullwidth">
+			<tr>
+				<td><h2>Starfinder</h2></td>
+				<td><input type="text" id="Shipname2" class="input_ubig" disabled><br />Ship Name</td>
+				<td><input type="text" id="Shiptier2" class="input_ubig" disabled><br />Tier</td>
+				<td class="right-aligned"><h2>Page 2</h2></td>
+			</tr>
+		</table>
+	</body>
+	<h3>Community Use Policy</h3><br>This character sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.
+	<script>AttachListeners()</script>
+</body>
+</html>
+
