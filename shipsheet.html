@@ -4,6 +4,18 @@
 	<style type="text/css"> 
 	input[type=text] {
 	}
+	
+	.columns {
+		column-count: 2;
+	}
+	
+	.dot {
+	height: 2em;
+	width: 2em;
+	background-color: #bbb;
+	border-radius: 50%;
+	display: inline-block;
+	}
 
 	input[type=checkbox] {
 		margin: 1px;
@@ -81,6 +93,14 @@
 		border-radius: 0.5em;
 		text-align: center;
 		font-weight: bold;
+	}
+	
+	.input_s{
+		border: 1px solid;
+		border-radius: 0.5em;
+		text-align: center;
+		font-weight: bold;
+		width: 5em;
 	}
 	
 	.bordered {
@@ -176,7 +196,7 @@
 		font-weight: normal;
 		font-variant: small-caps;
 	}
-
+	
 	</style>
 	<script>
 	function AttachListeners(){
@@ -308,75 +328,30 @@
 		<table class="fullwidth">
 		<tr>
 			<td><h2>Starfinder</h2></td>
-			<td><input type="text" id="Shipname" class="input_ubig" onchange="PopulateNameAndID()"><br />Ship Name</td>
-			<td><input type="text" id="Shiptier" class="input_ubig" onchange="PopulateNameAndID()"><br />Tier</td>
+			<td class="halfwidth"><input type="text" id="Shipname" class="input_ubig" onchange="PopulateNameAndID()"><br />Ship Name</td>
+			<td class="twentyfive"><input type="text" id="Shiptier" class="input_ubig" onchange="PopulateNameAndID()"><br />Tier</td>
 			<td class="right-aligned"><h2>Page 1</h2>
 		</tr>
 		</table>
-		<table>
+		<table class="bordered">
+			<tr>
+				<th colspan="3"><h3>Shields</h3></td>
+			</tr>
 			<tr>
 				<td></td>
 				<th>
-					<h3>Forward</h3><br>
-					Shields <input type="text" id="ShieldForeCur" class="input_b">/<input type="text" id="ShieldForeTotal" class="input_b">
-					<table>
-						<tr>
-							<td>Weapon</td>
-							<td>Range</td>
-							<td>Ammo</td>
-						</tr>
-						<tr>
-							<td><input type="text" id="WeaponFore1" class="input_u"></td>
-							<td><input type="text" id="WeaponFore1Range" class="input_u"></td>
-							<td><input type="text" id="WeaponFore1Ammo" class="input_u"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="WeaponFore2" class="input_u"></td>
-							<td><input type="text" id="WeaponFore2Range" class="input_u"></td>
-							<td><input type="text" id="WeaponFore2Ammo" class="input_u"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="WeaponFore3" class="input_u"></td>
-							<td><input type="text" id="WeaponFore3Range" class="input_u"></td>
-							<td><input type="text" id="WeaponFore3Ammo" class="input_u"></td>
-						</tr>
-					</table>
+					<h4>Forward</h4><br><input type="text" id="ShieldForeCur" class="input_s">/<input type="text" id="ShieldForeTotal" class="input_s">
 				</th>
 				<td></td>
 			</tr>		
 			<tr>
-				<th><h3>Port</h3><br>
-					Shields <input type="text" id="ShieldPortCur" class="input_b">/<input type="text" id="ShieldPortTotal" class="input_b">
-					<table>
-						<tr>
-							<td>Weapon</td>
-							<td>Range</td>
-							<td>Ammo</td>
-						</tr>
-						<tr>
-							<td><input type="text" id="WeaponPort1" class="input_u"></td>
-							<td><input type="text" id="WeaponPort1Range" class="input_u"></td>
-							<td><input type="text" id="WeaponPort1Ammo" class="input_u"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="WeaponPort2" class="input_u"></td>
-							<td><input type="text" id="WeaponPort2Range" class="input_u"></td>
-							<td><input type="text" id="WeaponPort2Ammo" class="input_u"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="WeaponPort3" class="input_u"></td>
-							<td><input type="text" id="WeaponPort3Range" class="input_u"></td>
-							<td><input type="text" id="WeaponPort3Ammo" class="input_u"></td>
-						</tr>
-					</table>
-				<th><h3>Turret</h3></th>
-				<th><h3>Starboard</h3><br>
-					Shields <input type="text" id="ShieldSBCur" class="input_b">/<input type="text" id="ShieldSBTotal" class="input_b"></th>
+				<th><h4>Port</h4><br><input type="text" id="ShieldPortCur" class="input_s">/<input type="text" id="ShieldPortTotal" class="input_s">
+				<th><span class="dot"></span></th>
+				<th><h4>Starboard</h4><br><input type="text" id="ShieldSBCur" class="input_s">/<input type="text" id="ShieldSBTotal" class="input_s"></th>
 			</tr>
 			<tr>
 				<td></td>
-				<th><h3>Aft</h3><br>
-					Shields <input type="text" id="ShieldAftCur" class="input_b">/<input type="text" id="ShieldAftTotal" class="input_b"></th>
+				<th><h4>Aft</h4><br><input type="text" id="ShieldAftCur" class="input_s">/<input type="text" id="ShieldAftTotal" class="input_s"></th>
 				<td></td>
 			</tr>
 		</table>
@@ -384,11 +359,58 @@
 		<table class="fullwidth">
 			<tr>
 				<td><h2>Starfinder</h2></td>
-				<td><input type="text" id="Shipname2" class="input_ubig" disabled><br />Ship Name</td>
-				<td><input type="text" id="Shiptier2" class="input_ubig" disabled><br />Tier</td>
+				<td class="halfwidth"><input type="text" id="Shipname2" class="input_ubig" disabled><br />Ship Name</td>
+				<td class="twentyfive"><input type="text" id="Shiptier2" class="input_ubig" disabled><br />Tier</td>
 				<td class="right-aligned"><h2>Page 2</h2></td>
 			</tr>
 		</table>
+		<h2>Crew Actions</h2>
+		<div class="columns">
+		<span class="nocbreak">
+			<h3>Captain</h3>
+			<ul>
+				<li><b>Demand</b>: Intimidate <span class="DC15plus150"></span></li>
+				<li><b>Encourage</b>: Diplomacy [DC 15] or same skill as action encouraged [DC 10]</li>
+				<li><b>Taunt</b>*: Bluff or Intimidate <span class="DC15Plus150Enemy"></span></li>
+				<li><b>Orders</b>&dagger;: Computers, Engineering, Gunnery, or Piloting (6th level) <span class="DC15plus150"></span></li>
+				<li><b>Moving Speech</b>&dagger;: Diplomacy (12th level) <span class="DC20plus150"></span></li>
+			</ul>
+		</span>
+		<span class="nocbreak">
+			<h3>Engineer</h3>
+			<ul>
+				<li><b>Divert</b>: Engineering <span class="DC10plus150"></span></li>
+				<li><b>Hold it Together</b>: Engineering <span class="DC15plus150"></span></li>
+				<li><b>Patch</b>: Engineering <span class="DC10plus150"></span> if glitching, <span class="DC15plus150"></span> if malfunctioning, <span class="DC20plus150"></span> if wrecked.</li>
+			</ul>
+		</span>
+		<span class="nocbreak">
+			<h3>Pilot</h3>
+			<ul>
+				<li><b>Back Off</b>: Piloting <span class="DC10plus150"></span></li>
+				<li><b>Barrel Roll</b>: Piloting <span class="DC10plus150"></span></li>
+				<li><b>Evade</b>: Piloting <span class="DC10plus150"></span></li>
+				<li><b>Flip and Burn</b>: Piloting <span class="DC15plus150"></span></li>
+				<li><b>Flyby</b>: Piloting <span class="DC15plus150"></span></li>
+				<li><b>Slide</b>: Piloting <span class="DC10plus150"></span></li>
+				<li><b>Maneuver</b>: Piloting <span class="DC15plus150"></span></li>
+				<li><b>Full Power</b>&dagger;: Piloting (6 ranks) No check</li>
+				<li><b>Audacious Gambit</b>&dagger;: Piloting (12 ranks) <span class="DC20plus150"></span></li>
+			</ul>
+		</span>
+		<span class="nocbreak">
+			<h3>Science Officer</h3>
+			<ul>
+				<li><b>Balance</b>: Computers <span class="DC10plus150"></span></li>
+				<li><b>Scan</b>*: Computers <span class="DC5Plus150Enemy"></span></li>
+				<li><b>Target System</b>*: Computers <span class="DC5Plus150Enemy"></span></li>
+				<li><b>Lock On</b>*&dagger;: Computers (6 ranks) <span class="DC5Plus150Enemy"></span></li>
+				<li><b>Improve Countermeasures</b>*&dagger;: Computers (12 ranks) <span class="DC5Plus150Enemy"></span></li>
+			</ul>
+			</div>
+		</span>
+		<p>*: DC depends on tier of enemy ship.</p>
+		<p>&dagger;: Action costs resolve.</p>
 	</body>
 	<h3>Community Use Policy</h3><br>This character sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.
 	<script>AttachListeners()</script>
