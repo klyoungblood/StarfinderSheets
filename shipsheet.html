@@ -16,6 +16,11 @@
 	border-radius: 50%;
 	display: inline-block;
 	}
+	
+	.readout {
+		border: 2px solid;
+		border-radius: 50%;
+	}
 
 	input[type=checkbox] {
 		margin: 1px;
@@ -65,6 +70,10 @@
 
 	.bottom-aligned{
 		vertical-align: bottom;
+	}
+	
+	.middle-aligned{
+		vertical-align: middle;
 	}
 
 	.input_u{
@@ -229,6 +238,158 @@
 		document.getElementById("Shiptier2").value = shiptier;
 	}
 	
+	// Hex math defined here: http://blog.ruslans.com/2011/02/hexagonal-grid-math.html
+
+	function HexagonGrid(canvasId, radius) {
+		this.radius = radius;
+
+		this.height = Math.sqrt(3) * radius;
+		this.width = 2 * radius;
+		this.side = (3 / 2) * radius;
+
+		this.canvas = document.getElementById(canvasId);
+		this.context = this.canvas.getContext('2d');
+
+		this.canvasOriginX = 0;
+		this.canvasOriginY = 0;
+	};
+
+	HexagonGrid.prototype.drawHexGrid = function (rows, cols, originX, originY, isDebug) {
+		this.canvasOriginX = originX;
+		this.canvasOriginY = originY;
+		
+		var currentHexX;
+		var currentHexY;
+		var debugText = "";
+
+		var offsetColumn = false;
+
+		for (var col = 0; col < cols; col++) {
+		    for (var row = 0; row < rows; row++) {
+
+		        if (!offsetColumn) {
+		            currentHexX = (col * this.side) + originX;
+		            currentHexY = (row * this.height) + originY;
+		        } else {
+		            currentHexX = col * this.side + originX;
+		            currentHexY = (row * this.height) + originY + (this.height * 0.5);
+		        }
+
+		        if (isDebug) {
+		            debugText = col + "," + row;
+		        }
+
+				if((row==2||row==5) && (col==2||col==4))
+			        this.drawHex(currentHexX, currentHexY, "grey", debugText);
+			    else
+				    this.drawHex(currentHexX, currentHexY, "white", debugText);
+		    }
+		    offsetColumn = !offsetColumn;
+		}
+	};
+
+	HexagonGrid.prototype.drawHexAtColRow = function(column, row, color) {
+		var drawy = column % 2 == 0 ? (row * this.height) + this.canvasOriginY : (row * this.height) + this.canvasOriginY + (this.height / 2);
+		var drawx = (column * this.side) + this.canvasOriginX;
+
+		this.drawHex(drawx, drawy, color, "");
+	};
+
+	HexagonGrid.prototype.drawHex = function(x0, y0, fillColor, debugText) {
+		this.context.strokeStyle = "#000";
+		this.context.beginPath();
+		this.context.moveTo(x0 + this.width - this.side, y0);
+		this.context.lineTo(x0 + this.side, y0);
+		this.context.lineTo(x0 + this.width, y0 + (this.height / 2));
+		this.context.lineTo(x0 + this.side, y0 + this.height);
+		this.context.lineTo(x0 + this.width - this.side, y0 + this.height);
+		this.context.lineTo(x0, y0 + (this.height / 2));
+
+		if (fillColor) {
+		    this.context.fillStyle = fillColor;
+		    this.context.fill();
+		}
+
+		this.context.closePath();
+		this.context.stroke();
+
+		if (debugText) {
+		    this.context.font = "8px";
+		    this.context.fillStyle = "#000";
+		    this.context.fillText(debugText, x0 + (this.width / 2) - (this.width/4), y0 + (this.height - 5));
+		}
+	};
+
+	//Recusivly step up to the body to calculate canvas offset.
+	HexagonGrid.prototype.getRelativeCanvasOffset = function() {
+		var x = 0, y = 0;
+		var layoutElement = this.canvas;
+		if (layoutElement.offsetParent) {
+		    do {
+		        x += layoutElement.offsetLeft;
+		        y += layoutElement.offsetTop;
+		    } while (layoutElement = layoutElement.offsetParent);
+		    
+		    return { x: x, y: y };
+		}
+	}
+
+	//Uses a grid overlay algorithm to determine hexagon location
+	//Left edge of grid has a test to acuratly determin correct hex
+
+	HexagonGrid.prototype.sign = function(p1, p2, p3) {
+		return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
+	};
+
+	//TODO: Replace with optimized barycentric coordinate method
+	HexagonGrid.prototype.isPointInTriangle = function isPointInTriangle(pt, v1, v2, v3) {
+		var b1, b2, b3;
+
+		b1 = this.sign(pt, v1, v2) < 0.0;
+		b2 = this.sign(pt, v2, v3) < 0.0;
+		b3 = this.sign(pt, v3, v1) < 0.0;
+
+		return ((b1 == b2) && (b2 == b3));
+	};
+
+	function DrawReadout()
+	{
+		var HexGrid = new HexagonGrid('readout',20);
+		HexGrid.drawHexGrid(10, 10, -10, -37, false);
+		readout=document.getElementById("readout");
+		var c=readout.getContext("2d");
+		c.lineWidth=3;
+
+		c.beginPath();
+		c.moveTo(90,84);
+		c.lineTo(50,14);
+		c.stroke();
+		
+		c.moveTo(110,84);
+		c.lineTo(150,14);
+		c.stroke();
+		
+		c.moveTo(90,119);
+		c.lineTo(50,189);
+		c.stroke();
+		
+		c.moveTo(110,119);
+		c.lineTo(150,189);
+		c.stroke();
+		
+		c.font="25px Sans";
+		c.textAlign="center";
+		c.textBaseline="middle";
+		c.lineWidth=1; 
+		c.fillStyle="Black";
+		c.save();
+		c.translate(100,100);
+		c.rotate(45*Math.PI/180);
+		c.fillText("🚀",0,0);
+		c.restore();
+
+	}
+	
 	function LoadFile(){
 		loadbox=document.getElementById('inputfile');
 		var file=loadbox.files[0];
@@ -345,9 +506,9 @@
 				<td></td>
 			</tr>		
 			<tr>
-				<th><h4>Port</h4><br><input type="text" id="ShieldPortCur" class="input_s">/<input type="text" id="ShieldPortTotal" class="input_s">
-				<th><span class="dot"></span></th>
-				<th><h4>Starboard</h4><br><input type="text" id="ShieldSBCur" class="input_s">/<input type="text" id="ShieldSBTotal" class="input_s"></th>
+				<th class="middle-aligned"><h4>Port</h4><br><input type="text" id="ShieldPortCur" class="input_s">/<input type="text" id="ShieldPortTotal" class="input_s">
+				<th><canvas class="readout" id="readout" width="200" height="200"></canvas></th>
+				<th class="middle-aligned"><h4>Starboard</h4><br><input type="text" id="ShieldSBCur" class="input_s">/<input type="text" id="ShieldSBTotal" class="input_s"></th>
 			</tr>
 			<tr>
 				<td></td>
@@ -414,6 +575,7 @@
 	</body>
 	<h3>Community Use Policy</h3><br>This character sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.
 	<script>AttachListeners()</script>
+	<script>DrawReadout()</script>
 </body>
 </html>
 
