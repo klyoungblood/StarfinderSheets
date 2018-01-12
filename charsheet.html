@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
-	<style type="text/css"> 
+	<meta charset="utf-8">
+	<style> 
 	input[type=text] {
 	width: 100%;
 	}
@@ -45,7 +46,7 @@
 	}
 
 	.breaking{
-		break-before: always;
+		break-before: page;
 	}
 
 	.top-aligned{
@@ -1367,30 +1368,32 @@
 					</tr>					
 					</table>
 			</tr>
-			<td class="top-aligned" colspan="3">
-			<h3>Factions</h3><br>
-			<table>
+			<tr>
+				<td class="top-aligned" colspan="3">
+				<h3>Factions</h3><br>
+				<table>
 
-				<tr>
-					<th>Faction</th>
-					<td><input type="text" id="Faction1" class="input_b" value="Acquisitives"></td>					
-					<td><input type="text" id="Faction2" class="input_b" value="Dataphiles"></td>
-					<td><input type="text" id="Faction3" class="input_b" value="Exo-guardians"></td>
-					<td><input type="text" id="Faction4" class="input_b" value="Second Seekers ( )"></td>
-					<td><input type="text" id="Faction5" class="input_b" value="Wayfinders"></td>
-					<td><input type="text" id="Faction6" class="input_b" value="Other"></td>
-				</tr>
-				<tr>
-					<th>Reputation</th>
-					<td><input type="text" id="Faction1Rep" class="input_b"></td>
-					<td><input type="text" id="Faction2Rep" class="input_b"></td>
-					<td><input type="text" id="Faction3Rep" class="input_b"></td>
-					<td><input type="text" id="Faction4Rep" class="input_b"></td>
-					<td><input type="text" id="Faction5Rep" class="input_b"></td>
-					<td><input type="text" id="Faction6Rep" class="input_b"></td>
-				</tr>
-			</table>
-		</td>
+					<tr>
+						<th>Faction</th>
+						<td><input type="text" id="Faction1" class="input_b" value="Acquisitives"></td>					
+						<td><input type="text" id="Faction2" class="input_b" value="Dataphiles"></td>
+						<td><input type="text" id="Faction3" class="input_b" value="Exo-guardians"></td>
+						<td><input type="text" id="Faction4" class="input_b" value="Second Seekers ( )"></td>
+						<td><input type="text" id="Faction5" class="input_b" value="Wayfinders"></td>
+						<td><input type="text" id="Faction6" class="input_b" value="Other"></td>
+					</tr>
+					<tr>
+						<th>Reputation</th>
+						<td><input type="text" id="Faction1Rep" class="input_b"></td>
+						<td><input type="text" id="Faction2Rep" class="input_b"></td>
+						<td><input type="text" id="Faction3Rep" class="input_b"></td>
+						<td><input type="text" id="Faction4Rep" class="input_b"></td>
+						<td><input type="text" id="Faction5Rep" class="input_b"></td>
+						<td><input type="text" id="Faction6Rep" class="input_b"></td>
+					</tr>
+				</table>
+				</td>
+			</tr>
 		</table>
 		<p style='overflow:hidden;page-break-before:always;'></p>
 		<table class="fullwidth">
@@ -1782,7 +1785,7 @@
 							<th><button class="nonprinting" onclick="CalculateCarry()" title="Click to calculate carrying capacity.">Calculate</button></th>						
 							<th><span class="nonprinting">6th Level Mercenary</span></th>
 							<td><input class="nonprinting" type="checkbox" id="Mercenary6"></td>
-						<tr>
+						</tr>
 					</table>
 				</td>
 			</tr>
