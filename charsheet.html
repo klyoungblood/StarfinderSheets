@@ -392,9 +392,9 @@
 				eStrMod+=1
 			}
 			var uBulk = Math.trunc(eStrMod/2);
-			document.getElementById('CapacityU').value = "<" + uBulk;
-			document.getElementById('CapacityE').value = uBulk + "-" + eStrMod;
-			document.getElementById('CapacityO').value = ">" + eStrMod;
+			document.getElementById('CapacityU').value = "" + uBulk;
+			document.getElementById('CapacityE').value = (uBulk+1) + "-" + eStrMod;
+			document.getElementById('CapacityO').value = (eStrMod + 1);
 			UpdateDLLink();
 		}
 	}
@@ -1018,7 +1018,7 @@
 						<tr>
 							<td>Reflex (Dex)</td>
 							<td><input type="text" id="RefTotal" class="input_b"></td>
-							<td><button class="nonprinting" onclick="SumUp('RefTotal',['RefBase','RedAbility','RefMisc'])" title="Click to calculate total save.">=</button><span class="printonly">=</span></td>
+							<td><button class="nonprinting" onclick="SumUp('RefTotal',['RefBase','RefAbility','RefMisc'])" title="Click to calculate total save.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="RefBase" class="input_b"></td>
 							<td>+</td>
 							<td><input type="text" id="RefAbility" class="input_b UseDexMod"></td>
