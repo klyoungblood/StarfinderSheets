@@ -6,52 +6,15 @@
 	input[type=text] {
 	}
 	
-	.columns {
-		column-count: 2;
-	}
-	
 	.smalltext {
 		font-size: 80%;
 	}
-	
-	.dot {
-	height: 2em;
-	width: 2em;
-	background-color: #bbb;
-	border-radius: 50%;
-	display: inline-block;
-	}
-	
-	.readout {
-		border: 2px solid;
-		border-radius: 50%;
-	}
-	
-	.centered {
-		text-align: center;
-	}
-	
-	.filler {
-		border: 2px solid;
-		border-radius: 2em;
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	
+
 	input[type=checkbox] {
 		margin: 3px;
-		transform: scale(1.5);
+		transform: scale(1.25);
 	}
 	
-	button {
-		border-radius: 1em;
-	}
-	
-	.bigbutton {
-		font-size: 120%;
-	}
-
 	@media print {
 	  .nonprinting {
 		visibility: hidden;
@@ -65,10 +28,6 @@
 		display: none;
 	  }
 	}	
-
-	.invisible{
-		display: none;
-	}
 
 	.fixedcontrols{
 		position: fixed;
@@ -110,14 +69,6 @@
 		width: 5em;
 	}
 	
-	.input_u3{
-		border: none;
-		border-bottom: 1px solid;
-		text-align: left;
-		font-weight: bold;
-		width: 20em;
-	}
-
 	.input_w{
 		border: none;
 		text-align: center;
@@ -190,6 +141,12 @@
 		width: 33%;
 	}
 
+	@media print {
+		body {
+			font-size: 75%;
+		}
+	}
+	
 	body {
 		font-family: sans-serif;
 		font-variant: small-caps;
@@ -220,7 +177,7 @@
 	}
 
 	h3 {
-		font-size: 1.2em;
+		font-size: 1.1em;
 		display: inline-block;
 		padding: 0.1em;
 		font-variant: small-caps;
@@ -252,9 +209,6 @@
 	
 	.collapsed {
 		border-collapse: collapse;
-	}
-	
-	.nocbreak {
 	}
 	
 	</style>
@@ -316,216 +270,12 @@
 		var shipname = document.getElementById("Shipname").value;
 		var shiptier = document.getElementById("Shiptier").value;
 		
-		document.getElementById("Shipname2").value = shipname;
-		document.getElementById("Shiptier2").value = shiptier;
-		
-		document.getElementById("Shipname3").value = shipname;
-		document.getElementById("Shiptier3").value = shiptier;
+		//document.getElementById("Shipname2").value = shipname;
+		//document.getElementById("Shiptier2").value = shiptier;
 		
 		PopulateDCs();
 	}
-	
-	// Hex math defined here: http://blog.ruslans.com/2011/02/hexagonal-grid-math.html
-
-	function HexagonGrid(canvasId, radius) {
-		this.radius = radius;
-
-		this.height = Math.sqrt(3) * radius;
-		this.width = 2 * radius;
-		this.side = (3 / 2) * radius;
-
-		this.canvas = document.getElementById(canvasId);
-		this.context = this.canvas.getContext('2d');
-
-		this.canvasOriginX = 0;
-		this.canvasOriginY = 0;
-	};
-
-	HexagonGrid.prototype.drawHexGrid = function (rows, cols, originX, originY, isDebug, altshading) {
-		this.canvasOriginX = originX;
-		this.canvasOriginY = originY;
 		
-		var currentHexX;
-		var currentHexY;
-		var debugText = "";
-
-		var offsetColumn = false;
-
-		for (var col = 0; col < cols; col++) {
-		    for (var row = 0; row < rows; row++) {
-
-		        if (!offsetColumn) {
-		            currentHexX = (col * this.side) + originX;
-		            currentHexY = (row * this.height) + originY;
-		        } else {
-		            currentHexX = col * this.side + originX;
-		            currentHexY = (row * this.height) + originY + (this.height * 0.5);
-		        }
-
-		        if (isDebug) {
-		            debugText = col + "," + row;
-		        }
-				
-				if(altshading)
-					if(((row==8||row==5) && (col==9||col==11)) || ((row==10||row==4) && (col==8||col==12)) ||
-						((row==2||row==11) && (col==7||col==13)) || ((row==1||row==13) && (col==6||col==14)))
-						this.drawHex(currentHexX, currentHexY, "grey", debugText);
-					else
-						this.drawHex(currentHexX, currentHexY, "white", debugText);
-				else
-					if((row==2||row==5) && (col==2||col==4))
-						this.drawHex(currentHexX, currentHexY, "grey", debugText);
-					else
-						this.drawHex(currentHexX, currentHexY, "white", debugText);
-		    }
-		    offsetColumn = !offsetColumn;
-		}
-	};
-
-	HexagonGrid.prototype.drawHexAtColRow = function(column, row, color) {
-		var drawy = column % 2 == 0 ? (row * this.height) + this.canvasOriginY : (row * this.height) + this.canvasOriginY + (this.height / 2);
-		var drawx = (column * this.side) + this.canvasOriginX;
-
-		this.drawHex(drawx, drawy, color, "");
-	};
-
-	HexagonGrid.prototype.drawHex = function(x0, y0, fillColor, debugText) {
-		this.context.strokeStyle = "#000";
-		this.context.beginPath();
-		this.context.moveTo(x0 + this.width - this.side, y0);
-		this.context.lineTo(x0 + this.side, y0);
-		this.context.lineTo(x0 + this.width, y0 + (this.height / 2));
-		this.context.lineTo(x0 + this.side, y0 + this.height);
-		this.context.lineTo(x0 + this.width - this.side, y0 + this.height);
-		this.context.lineTo(x0, y0 + (this.height / 2));
-
-		if (fillColor) {
-		    this.context.fillStyle = fillColor;
-		    this.context.fill();
-		}
-
-		this.context.closePath();
-		this.context.stroke();
-
-		if (debugText) {
-		    this.context.font = "8px";
-		    this.context.fillStyle = "#000";
-		    this.context.fillText(debugText, x0 + (this.width / 2) - (this.width/4), y0 + (this.height - 5));
-		}
-	};
-
-	//Recusivly step up to the body to calculate canvas offset.
-	HexagonGrid.prototype.getRelativeCanvasOffset = function() {
-		var x = 0, y = 0;
-		var layoutElement = this.canvas;
-		if (layoutElement.offsetParent) {
-		    do {
-		        x += layoutElement.offsetLeft;
-		        y += layoutElement.offsetTop;
-		    } while (layoutElement = layoutElement.offsetParent);
-		    
-		    return { x: x, y: y };
-		}
-	}
-
-	//Uses a grid overlay algorithm to determine hexagon location
-	//Left edge of grid has a test to acuratly determin correct hex
-
-	HexagonGrid.prototype.sign = function(p1, p2, p3) {
-		return (p1.x - p3.x) * (p2.y - p3.y) - (p2.x - p3.x) * (p1.y - p3.y);
-	};
-
-	//TODO: Replace with optimized barycentric coordinate method
-	HexagonGrid.prototype.isPointInTriangle = function isPointInTriangle(pt, v1, v2, v3) {
-		var b1, b2, b3;
-
-		b1 = this.sign(pt, v1, v2) < 0.0;
-		b2 = this.sign(pt, v2, v3) < 0.0;
-		b3 = this.sign(pt, v3, v1) < 0.0;
-
-		return ((b1 == b2) && (b2 == b3));
-	};
-
-	function DrawReadout()
-	{
-		var HexGrid = new HexagonGrid('readout',20);
-		HexGrid.drawHexGrid(10, 10, -10, -37, false, false);
-		readout=document.getElementById("readout");
-		var c=readout.getContext("2d");
-		c.lineWidth=3;
-
-		c.beginPath();
-		c.moveTo(90,84);
-		c.lineTo(50,14);
-		c.stroke();
-		
-		c.moveTo(110,84);
-		c.lineTo(150,14);
-		c.stroke();
-		
-		c.moveTo(90,119);
-		c.lineTo(50,189);
-		c.stroke();
-		
-		c.moveTo(110,119);
-		c.lineTo(150,189);
-		c.stroke();
-		
-		c.font="20px Sans";
-		c.textAlign="center";
-		c.textBaseline="middle";
-		c.lineWidth=3; 
-		c.strokeText("|",100,97);
-		c.strokeText("^^",100,99);
-		c.strokeText("^",100,112);
-		
-	}
-	
-	function DrawFiller()
-	{
-		var HexGrid = new HexagonGrid('filler',20);
-		HexGrid.drawHexGrid(15, 21, -20, -69, false, true);
-		readout=document.getElementById("filler");
-		var c=readout.getContext("2d");
-		c.lineWidth=3;
-
-		c.beginPath();
-		c.moveTo(310,183-10);
-		c.lineTo(414,-10);
-		c.stroke();
-
-		c.moveTo(290,183-10);
-		c.lineTo(184,-10);
-		c.stroke();
-	
-		c.moveTo(310,218-10);
-		c.lineTo(414,400-10);
-		c.stroke();
-		
-		c.moveTo(290,218-10);
-		c.lineTo(184,400-10);
-		c.stroke();
-	
-		c.font="20px Sans";
-		c.textAlign="center";
-		c.textBaseline="middle";
-		c.lineWidth=3; 
-		c.strokeText("|",300,196-10);
-		c.strokeText("^^",300,198-10);
-		c.strokeText("^",300,211-10);
-		
-		c.font="20px Sans";
-		c.textAlign="center";
-		c.textBaseline="middle";
-		c.lineWidth=1.5; 
-		
-		c.strokeText("Forward Arc",300,35);
-		c.strokeText("Aft Arc",300,380-35);
-		c.strokeText("Port Arc",100,190);
-		c.strokeText("Starboard Arc",500,190);
-	}
-	
-	
 	function LoadFile(){
 		loadbox=document.getElementById('inputfile');
 		var file=loadbox.files[0];
@@ -680,49 +430,36 @@
 							<td colspan="2"><b>Systems</b></td>
 						</tr>
 						<tr>
-							<td colspan="2"><textarea rows="7" cols="30" id="Systems"></textarea></td>
+							<td colspan="2"><textarea rows="5" cols="30" id="Systems"></textarea></td>
 						</tr>
 						<tr>
 							<td colspan="2"><b>Expansion Bays</b></td>
 						</tr>
 						<tr>
-							<td colspan="2"><textarea rows="7" cols="30" id="Expansions"></textarea></td>
-						</tr>
-						<tr>
-							<td colspan="2"><b>Cargo/Passengers</b></td>
-						</tr>
-						<tr>
-							<td colspan="2"><textarea rows="7" cols="30" id="Cargo"></textarea></td>
-						</tr>
-						<tr>
-							<td colspan="2"><b>Notes</b></td>
-						</tr>
-						<tr>
-							<td colspan="2"><textarea rows="7" cols="30" id="Notes"></textarea></td>
+							<td colspan="2"><textarea rows="5" cols="30" id="Expansions"></textarea></td>
 						</tr>
 					</table>
 				</td>
 				<td class="halfwidth">
-					<table class="fullwidth bordered">
+					<b>Shields</b>
+					<table class="fullwidth">
 						<tr>
-							<td><h3>Shields</h3></td>
-							<th>
-								<b>Forward</b><br><input type="text" id="ShieldForeCur" class="input_s">/<input type="text" id="ShieldForeTotal" class="input_s">
-							</th>
 							<td></td>
-						</tr>		
+							<th><b>Forward</b><br><input type="text" id="ShieldForeCur" class="input_s">/<input type="text" id="ShieldForeTotal" class="input_s"></th>
+							<td class="right-aligned top-aligned"><h4>Total</h4><br><input type="text" id="ShieldTotal" class="input_s"></td>
+						</tr>
 						<tr>
-							<th class="middle-aligned"><b>Port</b><br><input type="text" id="ShieldPortCur" class="input_s">/<input type="text" id="ShieldPortTotal" class="input_s">
-							<th><canvas class="readout" id="readout" width="200" height="200"></canvas></th>
+							<th class="middle-aligned"><b>Port</b><br><input type="text" id="ShieldPortCur" class="input_s">/<input type="text" id="ShieldPortTotal" class="input_s"></th>
+							<th><img width="100" src="data:image/png;base64,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"></th>
 							<th class="middle-aligned"><b>Starboard</b><br><input type="text" id="ShieldSBCur" class="input_s">/<input type="text" id="ShieldSBTotal" class="input_s"></th>
 						</tr>
 						<tr>
-							<td></td>
+							<td class="left-aligned bottom-aligned"><h4>Restore</h4><br><input type="text" id="ShieldRestore" class="input_s"></td>
 							<th><b>Aft</b><br><input type="text" id="ShieldAftCur" class="input_s">/<input type="text" id="ShieldAftTotal" class="input_s"></th>
-							<td class="right-aligned"><h4>Total</h4><input type="text" id="ShieldTotal" class="input_s"></td>
+							<td></td>
 						</tr>
 					</table>
-					<table class="fullwidth bordered">
+					<table class="fullwidth">
 						<tr>
 							<td rowspan="4" class="top-aligned"><h3>Hull</h3></td>
 							<th>Current</th>
@@ -794,98 +531,119 @@
 						<tr>
 							<td colspan="10">Modifiers</td>
 						</tr>
-					</table>
-					<table>
-						<tr>
-							<th>Arc</th>
-							<th>Weapon</th>
-							<th>Range</th>
-							<th>Damage</th>
-							<th>Special</th>
-						</tr>
-						<tr>						
-							<td><input type="text" id="Weap1Arc" class="input_u"></td>
-							<td><input type="text" id="Weap1Name" class="input_u3"></td>
-							<td><input type="text" id="Weap1Range" class="input_u"></td>
-							<td><input type="text" id="Weap1Damage" class="input_u"></td>
-							<td><input type="text" id="Weap1Special" class="input_u"></td>
-						</tr>
-						<tr>						
-							<td><input type="text" id="Weap2Arc" class="input_u"></td>
-							<td><input type="text" id="Weap2Name" class="input_u3"></td>
-							<td><input type="text" id="Weap2Range" class="input_u"></td>
-							<td><input type="text" id="Weap2Damage" class="input_u"></td>
-							<td><input type="text" id="Weap2Special" class="input_u"></td>
-						</tr>
-						<tr>						
-							<td><input type="text" id="Weap3Arc" class="input_u"></td>
-							<td><input type="text" id="Weap3Name" class="input_u3"></td>
-							<td><input type="text" id="Weap3Range" class="input_u"></td>
-							<td><input type="text" id="Weap3Damage" class="input_u"></td>
-							<td><input type="text" id="Weap3Special" class="input_u"></td>
-						</tr>
-						<tr>						
-							<td><input type="text" id="Weap4Arc" class="input_u"></td>
-							<td><input type="text" id="Weap4Name" class="input_u3"></td>
-							<td><input type="text" id="Weap4Range" class="input_u"></td>
-							<td><input type="text" id="Weap4Damage" class="input_u"></td>
-							<td><input type="text" id="Weap4Special" class="input_u"></td>
-						</tr>
-						<tr>						
-							<td><input type="text" id="Weap5Arc" class="input_u"></td>
-							<td><input type="text" id="Weap5Name" class="input_u3"></td>
-							<td><input type="text" id="Weap5Range" class="input_u"></td>
-							<td><input type="text" id="Weap5Damage" class="input_u"></td>
-							<td><input type="text" id="Weap5Special" class="input_u"></td>
-						</tr>
-						<tr>						
-							<td><input type="text" id="Weap6Arc" class="input_u"></td>
-							<td><input type="text" id="Weap6Name" class="input_u3"></td>
-							<td><input type="text" id="Weap6Range" class="input_u"></td>
-							<td><input type="text" id="Weap6Damage" class="input_u"></td>
-							<td><input type="text" id="Weap6Special" class="input_u"></td>
-						</tr>
-						<tr>						
-							<td><input type="text" id="Weap7Arc" class="input_u"></td>
-							<td><input type="text" id="Weap7Name" class="input_u3"></td>
-							<td><input type="text" id="Weap7Range" class="input_u"></td>
-							<td><input type="text" id="Weap7Damage" class="input_u"></td>
-							<td><input type="text" id="Weap7Special" class="input_u"></td>
-						</tr>
-						<tr>						
-							<td><input type="text" id="Weap8Arc" class="input_u"></td>
-							<td><input type="text" id="Weap8Name" class="input_u3"></td>
-							<td><input type="text" id="Weap8Range" class="input_u"></td>
-							<td><input type="text" id="Weap8Damage" class="input_u"></td>
-							<td><input type="text" id="Weap8Special" class="input_u"></td>
-						</tr>
-						<tr>						
-							<td><input type="text" id="Weap9Arc" class="input_u"></td>
-							<td><input type="text" id="Weap9Name" class="input_u3"></td>
-							<td><input type="text" id="Weap9Range" class="input_u"></td>
-							<td><input type="text" id="Weap9Damage" class="input_u"></td>
-							<td><input type="text" id="Weap9Special" class="input_u"></td>
-						</tr>
-						<tr>						
-							<td><input type="text" id="Weap10Arc" class="input_u"></td>
-							<td><input type="text" id="Weap10Name" class="input_u3"></td>
-							<td><input type="text" id="Weap10Range" class="input_u"></td>
-							<td><input type="text" id="Weap10Damage" class="input_u"></td>
-							<td><input type="text" id="Weap10Special" class="input_u"></td>
-						</tr>
-					</table>
+					</table>					
+
 				</td>
 			</tr>
 		</table>
-		<p style='overflow:hidden;page-break-before:always;'></p>
 		<table class="fullwidth">
 			<tr>
-				<td><h2>Starfinder</h2></td>
-				<td class="halfwidth"><input type="text" id="Shipname2" class="input_ubig" disabled><br />Ship Name</td>
-				<td class="twentyfive"><input type="text" id="Shiptier2" class="input_ubig" disabled><br />Tier</td>
-				<td class="right-aligned"><h2>Page 2</h2></td>
+				<td>
+					<b>Cargo/Passengers</b><br>
+					<textarea rows="5" cols="30" id="Cargo"></textarea>
+				</td>
+				<td>
+					<b>Notes</b><br>
+					<textarea rows="5" cols="30" id="Notes"></textarea>		
+				</td>
 			</tr>
 		</table>
+		<h2>Weapons</h2>
+		<table class="fullwidth">
+			<tr>
+				<th>Arc</th>
+				<th class="twentyfive">Weapon</th>
+				<th>Range</th>
+				<th>Damage</th>
+				<th class="twentyfive">Special</th>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap1Arc" class="input_u"></td>
+				<td><input type="text" id="Weap1Name" class="input_u"></td>
+				<td><input type="text" id="Weap1Range" class="input_u"></td>
+				<td><input type="text" id="Weap1Damage" class="input_u"></td>
+				<td><input type="text" id="Weap1Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap2Arc" class="input_u"></td>
+				<td><input type="text" id="Weap2Name" class="input_u"></td>
+				<td><input type="text" id="Weap2Range" class="input_u"></td>
+				<td><input type="text" id="Weap2Damage" class="input_u"></td>
+				<td><input type="text" id="Weap2Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap3Arc" class="input_u"></td>
+				<td><input type="text" id="Weap3Name" class="input_u"></td>
+				<td><input type="text" id="Weap3Range" class="input_u"></td>
+				<td><input type="text" id="Weap3Damage" class="input_u"></td>
+				<td><input type="text" id="Weap3Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap4Arc" class="input_u"></td>
+				<td><input type="text" id="Weap4Name" class="input_u"></td>
+				<td><input type="text" id="Weap4Range" class="input_u"></td>
+				<td><input type="text" id="Weap4Damage" class="input_u"></td>
+				<td><input type="text" id="Weap4Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap5Arc" class="input_u"></td>
+				<td><input type="text" id="Weap5Name" class="input_u"></td>
+				<td><input type="text" id="Weap5Range" class="input_u"></td>
+				<td><input type="text" id="Weap5Damage" class="input_u"></td>
+				<td><input type="text" id="Weap5Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap6Arc" class="input_u"></td>
+				<td><input type="text" id="Weap6Name" class="input_u"></td>
+				<td><input type="text" id="Weap6Range" class="input_u"></td>
+				<td><input type="text" id="Weap6Damage" class="input_u"></td>
+				<td><input type="text" id="Weap6Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap7Arc" class="input_u"></td>
+				<td><input type="text" id="Weap7Name" class="input_u"></td>
+				<td><input type="text" id="Weap7Range" class="input_u"></td>
+				<td><input type="text" id="Weap7Damage" class="input_u"></td>
+				<td><input type="text" id="Weap7Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap8Arc" class="input_u"></td>
+				<td><input type="text" id="Weap8Name" class="input_u"></td>
+				<td><input type="text" id="Weap8Range" class="input_u"></td>
+				<td><input type="text" id="Weap8Damage" class="input_u"></td>
+				<td><input type="text" id="Weap8Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap9Arc" class="input_u"></td>
+				<td><input type="text" id="Weap9Name" class="input_u"></td>
+				<td><input type="text" id="Weap9Range" class="input_u"></td>
+				<td><input type="text" id="Weap9Damage" class="input_u"></td>
+				<td><input type="text" id="Weap9Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap10Arc" class="input_u"></td>
+				<td><input type="text" id="Weap10Name" class="input_u"></td>
+				<td><input type="text" id="Weap10Range" class="input_u"></td>
+				<td><input type="text" id="Weap10Damage" class="input_u"></td>
+				<td><input type="text" id="Weap10Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap11Arc" class="input_u"></td>
+				<td><input type="text" id="Weap11Name" class="input_u"></td>
+				<td><input type="text" id="Weap11Range" class="input_u"></td>
+				<td><input type="text" id="Weap11Damage" class="input_u"></td>
+				<td><input type="text" id="Weap11Special" class="input_u"></td>
+			</tr>
+			<tr>						
+				<td><input type="text" id="Weap12Arc" class="input_u"></td>
+				<td><input type="text" id="Weap12Name" class="input_u"></td>
+				<td><input type="text" id="Weap12Range" class="input_u"></td>
+				<td><input type="text" id="Weap12Damage" class="input_u"></td>
+				<td><input type="text" id="Weap12Special" class="input_u"></td>
+			</tr>
+		</table>
+
+		<p style='overflow:hidden;page-break-before:always;'></p>
 		<h2>Critical Damage</h2>
 		<table class="fullwidth collapsed">
 			<tr>
@@ -953,7 +711,7 @@
 				<th class="underlined"><input type="checkbox" id="CoreGlitch"></th>
 				<th class="underlined">&nbsp;&nbsp;<input type="checkbox" id="CoreMalf">&dagger;</th>
 				<th class="underlined">&nbsp;&nbsp;<input type="checkbox" id="CoreWreck">&Dagger;</th>
-			</tr>
+			</tr>		
 			<tr>
 				<td class="top-aligned"></td>
 				<td class="top-aligned"></td>
@@ -961,25 +719,15 @@
 				<th class="top-aligned">-2 penalty</th>
 				<th class="top-aligned">-4 penalty.<br> Push actions fail.</th>
 				<th class="top-aligned">All actions fail.</th>
-			</tr>			
+			</tr>	
 		</table>
 		<p class="smalltext">* Penalty does not apply to the hold it together or patch actions.</p>
 		<p class="smalltext">&dagger; If the power core is malfunctioning, all actions aboard the starship not involving the power core take a -2 penalty; this penalty stacks with penalties from critical damage conditions affecting other systems.</p>
 		<p class="smalltext">&Dagger; If the power core is wrecked, all crew actions aboard the starship not involving the power core take a -4 penalty; this penalty stacks with penalties from critical damage conditions affecting other systems. A ship with a wrecked power core also risks crew damage.</p>
-		<canvas class="filler" id="filler" width="600" height="380"></canvas>
-		<p class="centered">Shaded hexes are in both arcs (attacker's choice).</p>
-		<p style='overflow:hidden;page-break-before:always;'></p>
-		<table class="fullwidth">
-			<tr>
-				<td><h2>Starfinder</h2></td>
-				<td class="halfwidth"><input type="text" id="Shipname3" class="input_ubig" disabled><br />Ship Name</td>
-				<td class="twentyfive"><input type="text" id="Shiptier3" class="input_ubig" disabled><br />Tier</td>
-				<td class="right-aligned"><h2>Page 3</h2></td>
-			</tr>
-		</table>		
 		<h2>Crew Actions</h2>
-		<div class="columns">
-		<div class="nocbreak">
+		<table class="fullwidth">
+		<tr>
+		<td class="halfwidth wrap">
 			<h3>Captain</h3>
 			<ul>
 				<li><b>Demand</b>: Intimidate <span class="DC15plus150"></span></li>
@@ -988,8 +736,6 @@
 				<li><b>Orders</b><sup>P</sup>&dagger;: Computers, Engineering, Gunnery, or Piloting (6th level) <span class="DC15plus150"></span></li>
 				<li><b>Moving Speech</b>&dagger;: Diplomacy (12th level) <span class="DC20plus150"></span></li>
 			</ul>
-		</div>
-		<div class="nocbreak">
 			<h3>Engineer</h3>
 			<ul>
 				<li><b>Divert</b>: Engineering <span class="DC10plus150"></span></li>
@@ -998,8 +744,6 @@
 				<li><b>Overpower</b><sup>P</sup>&dagger;: Engineering (6 ranks) <span class="DC15plus150"></span></li>
 				<li><b>Quick Fix</b>&dagger;: Engineering (12 ranks) <span class="DC20plus150"></span></li>
 			</ul>
-		</div>
-		<div class="nocbreak">
 			<h3>Gunner</h3>
 			<ul>
 				<li><b>Fire at Will</b>*<sup>P</sup>: Gunnery</li>
@@ -1007,8 +751,8 @@
 				<li><b>Broadside</b>*<sup>P</sup>&dagger;: Gunnery (6th level)</li>
 				<li><b>Precise Targeting</b>*<sup>P</sup>&dagger;: Gunnery (12th level)</li>
 			</ul>
-		</div>
-		<div class="nocbreak">
+		</td>
+		<td class="halfwidth wrap">
 			<h3>Pilot</h3>
 			<ul>
 				<li><b>Back Off</b><sup>P</sup>: Piloting <span class="DC10plus150"></span></li>
@@ -1022,8 +766,6 @@
 				<li><b>Full Power</b><sup>P</sup>&dagger;: Piloting (6 ranks) No check</li>
 				<li><b>Audacious Gambit</b>&dagger;: Piloting (12 ranks) <span class="DC20plus150"></span></li>
 			</ul>
-		</div>
-		<div class="nocbreak">
 			<h3>Science Officer</h3>
 			<ul>
 				<li><b>Balance</b>: Computers <span class="DC10plus150"></span></li>
@@ -1032,15 +774,18 @@
 				<li><b>Lock On</b>*<sup>P</sup>&dagger;: Computers (6 ranks)</li>
 				<li><b>Improve Countermeasures</b>*&dagger;: Computers (12 ranks)</li>
 			</ul>
-		</div>
-	</div>		
-	<p>*: DC depends on tier of enemy ship.</p>
-	<p><sup>P</sup>: Push action.</p>
-	<p>&dagger;: Action costs resolve.</p>
-	<h3>Community Use Policy</h3><br>This character sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This character sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.
+	</tr>
+	</table>
+	<table class="fullwidth">
+	<tr>
+		<td class="onethirdwidth">*: DC depends on tier of enemy ship.</td>
+		<td class="onethirdwidth"><sup>P</sup>: Push action.</td>
+		<td class="onethirdwidth">&dagger;: Action costs resolve.</td>
+	</tr>
+	</table>
+	<h2>Community Use Policy</h2>
+	This starship sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This starship sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.
 	<script>AttachListeners()</script>
-	<script>DrawReadout()</script>
-	<script>DrawFiller()</script>
 </body>
 </html>
 
