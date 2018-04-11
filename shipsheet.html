@@ -7,7 +7,7 @@
 	}
 	
 	.smalltext {
-		font-size: 80%;
+		font-size: 90%;
 	}
 
 	input[type=checkbox] {
@@ -174,6 +174,11 @@
 	.nobreak {
 		white-space: nowrap;
 		display: inline-block;
+	}
+	
+	h2 {		
+		margin-top: 0em;
+		margin-bottom: 0em;
 	}
 
 	h3 {
@@ -377,7 +382,6 @@
 			<td><h2>Starfinder</h2></td>
 			<td class="halfwidth"><input type="text" id="Shipname" class="input_ubig" onchange="PopulateNameAndID()"><br />Ship Name</td>
 			<td class="twentyfive"><input type="text" id="Shiptier" class="input_ubig" onchange="PopulateNameAndID()"><br />Tier</td>
-			<td class="right-aligned"><h2>Page 1</h2>
 		</tr>
 		</table>
 		<table class="fullwidth">
@@ -430,13 +434,13 @@
 							<td colspan="2"><b>Systems</b></td>
 						</tr>
 						<tr>
-							<td colspan="2"><textarea rows="5" cols="30" id="Systems"></textarea></td>
+							<td colspan="2"><textarea rows="4" cols="30" id="Systems"></textarea></td>
 						</tr>
 						<tr>
 							<td colspan="2"><b>Expansion Bays</b></td>
 						</tr>
 						<tr>
-							<td colspan="2"><textarea rows="5" cols="30" id="Expansions"></textarea></td>
+							<td colspan="2"><textarea rows="4" cols="30" id="Expansions"></textarea></td>
 						</tr>
 					</table>
 				</td>
@@ -540,11 +544,11 @@
 			<tr>
 				<td>
 					<b>Cargo/Passengers</b><br>
-					<textarea rows="5" cols="30" id="Cargo"></textarea>
+					<textarea rows="4" cols="30" id="Cargo"></textarea>
 				</td>
 				<td>
 					<b>Notes</b><br>
-					<textarea rows="5" cols="30" id="Notes"></textarea>		
+					<textarea rows="4" cols="30" id="Notes"></textarea>		
 				</td>
 			</tr>
 		</table>
@@ -626,20 +630,6 @@
 				<td><input type="text" id="Weap10Range" class="input_u"></td>
 				<td><input type="text" id="Weap10Damage" class="input_u"></td>
 				<td><input type="text" id="Weap10Special" class="input_u"></td>
-			</tr>
-			<tr>						
-				<td><input type="text" id="Weap11Arc" class="input_u"></td>
-				<td><input type="text" id="Weap11Name" class="input_u"></td>
-				<td><input type="text" id="Weap11Range" class="input_u"></td>
-				<td><input type="text" id="Weap11Damage" class="input_u"></td>
-				<td><input type="text" id="Weap11Special" class="input_u"></td>
-			</tr>
-			<tr>						
-				<td><input type="text" id="Weap12Arc" class="input_u"></td>
-				<td><input type="text" id="Weap12Name" class="input_u"></td>
-				<td><input type="text" id="Weap12Range" class="input_u"></td>
-				<td><input type="text" id="Weap12Damage" class="input_u"></td>
-				<td><input type="text" id="Weap12Special" class="input_u"></td>
 			</tr>
 		</table>
 
@@ -784,7 +774,7 @@
 	</tr>
 	</table>
 	<h2>Community Use Policy</h2>
-	This starship sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This starship sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.
+	<p class="smalltext">This starship sheet uses trademarks and/or copyrights owned by Paizo Inc., which are used under Paizo's Community Use Policy. We are expressly prohibited from charging you to use or access this content. This starship sheet is not published, endorsed, or specifically approved by Paizo Inc. For more information about Paizo's Community Use Policy, please visit <a href="http://paizo.com/paizo/about/communityuse">paizo.com/communityuse</a>. For more information about Paizo Inc. and Paizo products, please visit <a href="http://paizo.com/">paizo.com</a>.</p>
 	<script>AttachListeners()</script>
 </body>
 </html>
