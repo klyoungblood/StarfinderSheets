@@ -275,10 +275,33 @@
 		var shipname = document.getElementById("Shipname").value;
 		var shiptier = document.getElementById("Shiptier").value;
 		
-		//document.getElementById("Shipname2").value = shipname;
-		//document.getElementById("Shiptier2").value = shiptier;
-		
 		PopulateDCs();
+	}
+	
+	function LoadJSON(jstring){
+		var contents = JSON.parse(jstring);
+		for (const [ key, value ] of Object.entries(contents)) {
+			thing = document.getElementById(key);
+			if(thing)
+			{
+				if(thing.type && thing.type == 'checkbox' && value == true)
+					thing.checked = true;
+				else
+					thing.value=value;
+			}
+		}
+		PopulateNameAndID();
+		UpdateDLLink();
+
+	}
+	
+	function CrashRecovery(){
+		var jstring = localStorage.getItem("SFShipCrashRecovery");
+		if(jstring)
+		{
+			ClearInputs();
+			LoadJSON(jstring);	
+		}
 	}
 		
 	function LoadFile(){
@@ -290,19 +313,7 @@
 		ClearInputs();
 		var reader = new FileReader();
 		reader.onloadend = function(e) {
-			var contents = JSON.parse(e.target.result);
-			for (const [ key, value ] of Object.entries(contents)) {
-				thing = document.getElementById(key);
-				if(thing)
-				{
-					if(thing.type && thing.type == 'checkbox' && value == true)
-						thing.checked = true;
-					else
-						thing.value=value;
-				}
-			}
-			PopulateNameAndID();
-			UpdateDLLink();
+			LoadJSON (e.target.result);
 		};
 		reader.readAsText(file);
 	}
@@ -335,9 +346,12 @@
 		var charvars = document.querySelectorAll("input[type=text]");
 		var longvars = document.getElementsByTagName("textarea");
 		var boolvars = document.querySelectorAll("input[type=checkbox]");
-		
+		var allowrecoverysave = false;
+
 		if(shipname=="")
 			shipname = "Unnamed Ship";
+		else
+			allowrecoverysave = true;
 		
 		for(var i=0; i < charvars.length; i++)
 		{
@@ -368,6 +382,10 @@
 			
 		document.getElementById('DownloadLink').innerHTML=""
 		document.getElementById('DownloadLink').appendChild(a);
+		
+		if(allowrecoverysave)
+			localStorage.setItem("SFShipCrashRecovery", cstring);
+
 	}
 	</script>
 	<title>Starfinder Ship Sheet</title>
@@ -376,6 +394,7 @@
 		<span class="nonprinting fixedcontrols">
 			Load:<input type="file" id="inputfile" onchange="LoadFile()">
 			<span id="DownloadLink"></span>
+			<button onclick="CrashRecovery()" title="Load last auto-saved ship.">Crash Recovery</button>
 		</span>
 		<table class="fullwidth">
 		<tr>

@@ -269,6 +269,43 @@
 		document.getElementById("BackPack").value=0;
 		
 	}
+	
+	function LoadJSON(jstring){
+		var contents = JSON.parse(jstring);
+		for (const [ key, value ] of Object.entries(contents)) {
+			thing = document.getElementById(key);
+			if(thing)
+			{
+				if(thing.type && thing.type == 'checkbox' && value == true)
+					thing.checked = true;
+				else
+					thing.value=value;
+			} else {
+				if (key.startsWith("AbilityText"))
+					document.getElementById("AbilityTextArea").value += (value + "\n");
+				if (key.startsWith("FeatText"))
+					document.getElementById("FeatTextArea").value += (value + "\n");
+				if (key.startsWith("LanguagesText"))
+					document.getElementById("LanguagesTextArea").value += (value + "\n");
+				}
+		}
+		PopulateNameAndID();
+		UpdateDLLink();
+		ModCapacity(1);
+		ModCapacity(2);
+		ModCapacity(3);
+		ModCapacity(4);
+		ModCapacity(5);		
+	}
+	
+	function CrashRecovery(){
+		var jstring = localStorage.getItem("SFSheetCrashRecovery");
+		if(jstring)
+		{
+			ClearInputs();
+			LoadJSON(jstring);	
+		}
+	}
 
 	function LoadFile(){
 		loadbox=document.getElementById('inputfile');
@@ -279,32 +316,7 @@
 		ClearInputs();
 		var reader = new FileReader();
 		reader.onloadend = function(e) {
-			var contents = JSON.parse(e.target.result);
-			for (const [ key, value ] of Object.entries(contents)) {
-				thing = document.getElementById(key);
-				if(thing)
-				{
-					if(thing.type && thing.type == 'checkbox' && value == true)
-						thing.checked = true;
-					else
-						thing.value=value;
-				} else {
-					if (key.startsWith("AbilityText"))
-						document.getElementById("AbilityTextArea").value += (value + "\n");
-					if (key.startsWith("FeatText"))
-						document.getElementById("FeatTextArea").value += (value + "\n");
-					if (key.startsWith("LanguagesText"))
-						document.getElementById("LanguagesTextArea").value += (value + "\n");
-
-				}
-			}
-			PopulateNameAndID();
-			UpdateDLLink();
-			ModCapacity(1);
-			ModCapacity(2);
-			ModCapacity(3);
-			ModCapacity(4);
-			ModCapacity(5);
+			LoadJSON(e.target.result);
 		};
 		reader.readAsText(file);
 	}
@@ -315,9 +327,12 @@
 		var charvars = document.querySelectorAll("input[type=text]");
 		var longvars = document.getElementsByTagName("textarea");
 		var boolvars = document.querySelectorAll("input[type=checkbox]");
+		var allowrecoverysave = false;
 		
 		if(charname=="")
 			charname = "Unnamed Character";
+		else
+			allowrecoverysave = true;
 		
 		for(var i=0; i < charvars.length; i++)
 		{
@@ -350,6 +365,9 @@
 			
 		document.getElementById('DownloadLink').innerHTML=""
 		document.getElementById('DownloadLink').appendChild(a);
+		
+		if(allowrecoverysave)
+			localStorage.setItem("SFSheetCrashRecovery", cstring);
 	}
 	
 	function PopulateAbMod(fallbackmod, prefmod, fieldclass){
@@ -428,6 +446,7 @@
 			}
 		}
 		document.getElementById(dstfield).value = total;
+		UpdateDLLink();
 	}
 	
 	function SumUp(dstfield,srcfields)
@@ -447,6 +466,7 @@
 		}
 		
 		document.getElementById(dstfield).value = total;
+		UpdateDLLink();
 	}
 	
 	function SumPlusTen(dstfield,srcfields)
@@ -466,6 +486,7 @@
 		}
 		
 		document.getElementById(dstfield).value = total;
+		UpdateDLLink();
 	}
 	
 	function SumUpSkill(skill, trainedonly)
@@ -485,6 +506,7 @@
 				document.getElementById(SkillTotal).value = "-";
 			}
 		}
+		UpdateDLLink();
 	}
 	
 	function CalcAllSkills()
@@ -518,6 +540,7 @@
 		<span class="nonprinting fixedcontrols">
 			Load:<input type="file" id="inputfile" onchange="LoadFile()">
 			<span id="DownloadLink"></span>
+			<button onclick="CrashRecovery()" title="Load last auto-saved character.">Crash Recovery</button>
 		</span>
 		<table class="fullwidth">
 			<tr>
