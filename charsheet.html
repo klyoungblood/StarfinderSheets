@@ -3,9 +3,6 @@
 	<head>
 	<meta charset="utf-8">
 	<style> 
-	input[type=text] {
-	width: 100%;
-	}
 
 	input[type=checkbox] {
 		margin: 1px;
@@ -62,19 +59,32 @@
 		border-bottom: 1px solid;
 		text-align: left;
 		font-weight: bold;
+		width: 100%;
 	}
-
-	.input_w{
+	
+	.input_u3{
 		border: none;
-		text-align: center;
+		border-bottom: 1px solid;
+		text-align: left;
+		width: 2em;
+		font-family: sans-serif;
+		font-variant: small-caps;
 	}
-
+	
+	.input_uc{
+		border: none;
+		border-bottom: 1px solid;
+		text-align: center;
+		font-weight: bold;
+		width: 100%;
+	}
 
 	.input_ubig{
 		font-size: 1.2em;
 		border: none;
 		border-bottom: 1px solid;
 		text-align: center;
+		width: 100%;
 	}
 
 	.input_b{
@@ -82,6 +92,7 @@
 		border-radius: 0.5em;
 		text-align: center;
 		font-weight: bold;
+		width: 100%;
 	}
 
 	.bordered {
@@ -265,7 +276,8 @@
 		document.getElementById("Faction4").value="Second Seekers ( )";
 		document.getElementById("Faction5").value="Wayfinders";
 		document.getElementById("Faction6").value="Other";
-		
+		document.getElementById("Faction7").value="Other";
+
 		document.getElementById("BackPack").value=0;
 		
 	}
@@ -537,6 +549,8 @@
 		SumUpSkill('Sleight',true, true);
 		SumUpSkill('Stealth',false, true);
 		SumUpSkill('Survival',false, false);
+		
+		SumUp('TotalSkillSpent',['AcrobaticsRanks','AthleticsRanks','BluffRanks','ComputersRanks','CultureRanks','DiplomacyRanks','DisguiseRanks','EngineeringRanks','IntimidateRanks','LifeSciRanks','MedicineRanks','MysticismRanks','PerceptionRanks','PhysSciRanks','PilotRanks','Profession1Ranks','Profession2Ranks','SenseRanks','SleightRanks','StealthRanks','SurvivalRanks'])
 	}
 	</script>
 	<title>Starfinder Character Sheet</title>
@@ -884,8 +898,8 @@
 							<td><input type="text" id="PilotMisc" class="input_b"></td>
 						</tr>	
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="Profession1Class"></td>
-							<td>Profession (varies)<br /><input type="text" id="Profession1Type" class="input_u"></td>
+							<td class="right-aligned top-aligned"><sup>&dagger;</sup><input type="checkbox" id="Profession1Class"></td>
+							<td>Profession (<input type="text" class="input_u3" id="Profession1ABScore">)<br /><input type="text" id="Profession1Type" class="input_u"></td>
 							<td><input type="text" id="Profession1Total" class="input_b"></td>
 							<td><button class="nonprinting" onclick="SumUpSkill('Profession1',true,false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="Profession1Ranks" class="input_b"></td>
@@ -899,8 +913,8 @@
 							<td><input type="text" id="Profession1Misc" class="input_b"></td>
 						</tr>						
 						<tr>
-							<td class="right-aligned"><sup>&dagger;</sup><input type="checkbox" id="Profession2Class"></td>
-							<td>Profession (varies)<br /><input type="text" id="Profession2Type" class="input_u"></td>
+							<td class="right-aligned top-aligned"><sup>&dagger;</sup><input type="checkbox" id="Profession2Class"></td>
+							<td>Profession (<input type="text" class="input_u3" id="Profession2ABScore">)<br /><input type="text" id="Profession2Type" class="input_u"></td>
 							<td><input type="text" id="Profession2Total" class="input_b"></td>
 							<td><button class="nonprinting" onclick="SumUpSkill('Profession2',true,false)" title="Click to calculate this skill's total.">=</button><span class="printonly">=</span></td>
 							<td><input type="text" id="Profession2Ranks" class="input_b"></td>
@@ -975,9 +989,11 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td colspan=3 class="right-aligned">Total Skill Points</td>
+							<td colspan=3 class="right-aligned">Skill Points Spent/Total</td>
+							<td><input type="text" id="TotalSkillSpent" class="input_b"></td>
+							<td>/</td>
 							<td><input type="text" id="TotalSkillPoints" class="input_b"></td>
-							<td colspan=7 class="right-aligned">Armor Check Penalty</td>
+							<td colspan=5 class="right-aligned">Armor Check Penalty</td>
 							<td><input type="text" id="ACP" class="input_b" title="Will be automatically applied to relevant skills when you hit the = button."></td>
 						</tr>
 					</table>
@@ -1232,9 +1248,9 @@
 			<tr>
 				<td colspan="2">
 					<h3>Abilities</h3><br>
-					<textarea rows="30" cols="80" id="AbilityTextArea"></textarea>
+					<textarea rows="42" cols="80" id="AbilityTextArea"></textarea>
 				</td>
-				<td rowspan="3" class="onethirdwidth">
+				<td rowspan="2" class="onethirdwidth">
 					<h3>Spells</h3>
 					<table>
 						<tr>
@@ -1267,7 +1283,8 @@
 					<input type="text" id="SpellText13" class="input_u"><br>
 					<input type="text" id="SpellText14" class="input_u"><br>
 					<input type="text" id="SpellText15" class="input_u"><br>
-					<input type="text" id="SpellText16" class="input_u">
+					<input type="text" id="SpellText16" class="input_u"><br>
+					<input type="text" id="SpellText17" class="input_u">
 					<table>
 						<tr>
 							<th rowspan="2">2</th>
@@ -1286,7 +1303,8 @@
 					<input type="text" id="SpellText23" class="input_u"><br>
 					<input type="text" id="SpellText24" class="input_u"><br>
 					<input type="text" id="SpellText25" class="input_u"><br>
-					<input type="text" id="SpellText26" class="input_u">
+					<input type="text" id="SpellText26" class="input_u"><br>
+					<input type="text" id="SpellText27" class="input_u">
 					<table>
 						<tr>
 							<th rowspan="2">3</th>
@@ -1305,7 +1323,8 @@
 					<input type="text" id="SpellText33" class="input_u"><br>
 					<input type="text" id="SpellText34" class="input_u"><br>
 					<input type="text" id="SpellText35" class="input_u"><br>
-					<input type="text" id="SpellText36" class="input_u">
+					<input type="text" id="SpellText36" class="input_u"><br>
+					<input type="text" id="SpellText37" class="input_u">
 					<table>
 						<tr>
 							<th rowspan="2">4</th>
@@ -1323,7 +1342,8 @@
 					<input type="text" id="SpellText42" class="input_u"><br>
 					<input type="text" id="SpellText43" class="input_u"><br>
 					<input type="text" id="SpellText44" class="input_u"><br>
-					<input type="text" id="SpellText45" class="input_u">
+					<input type="text" id="SpellText45" class="input_u"><br>
+					<input type="text" id="SpellText46" class="input_u">
 					<table>
 						<tr>
 							<th rowspan="2">5</th>
@@ -1340,7 +1360,8 @@
 					<input type="text" id="SpellText51" class="input_u"><br>
 					<input type="text" id="SpellText52" class="input_u"><br>
 					<input type="text" id="SpellText53" class="input_u"><br>
-					<input type="text" id="SpellText54" class="input_u">
+					<input type="text" id="SpellText54" class="input_u"><br>
+					<input type="text" id="SpellText55" class="input_u">
 					<table>
 						<tr>
 							<th rowspan="2">6</th>
@@ -1357,120 +1378,66 @@
 					<input type="text" id="SpellText61" class="input_u"><br>
 					<input type="text" id="SpellText62" class="input_u"><br>
 					<input type="text" id="SpellText63" class="input_u"><br>
-					<input type="text" id="SpellText64" class="input_u">
+					<input type="text" id="SpellText64" class="input_u"><br>
+					<input type="text" id="SpellText65" class="input_u">
 				</td>
 			</tr>
 			<tr>
-				<td class="onethirdwidth">
+				<td class="onethirdwidth top-aligned">
 					<h3>Feats</h3><br>
-					<textarea rows="20" cols="40" id="FeatTextArea"></textarea>
+					<textarea rows="22" cols="40" id="FeatTextArea"></textarea>
 				</td>
-				<td>
+				<td class="top-aligned">
+					<h3>Languages</h3><br>
+					<textarea rows="5" cols="80" id="LanguagesTextArea"></textarea><br>
 					<h3>Proficiencies</h3>
 					<table>
 						<tr>
 							<td><input type="checkbox" id="ProfLightArmor"></td>
 							<td>Light Armor</td>
-						</tr>
-						<tr>
 							<td><input type="checkbox" id="ProfHeavyArmor"></td>
 							<td>Heavy Armor</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" id="ProfPowerArmor"></td>
 							<td>Power Armor</td>
+							<td><input type="checkbox" id="ProfGrenades"></td>
+							<td>Grenades</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" id="ProfBasicMelee"></td>
 							<td>Basic Melee</td>
-						</tr>
-						<tr>
 							<td><input type="checkbox" id="ProfAdvmelee"></td>
 							<td>Advanced Melee</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" id="ProfSmallArms"></td>
 							<td>Small Arms</td>
-						</tr>
-						<tr>
 							<td><input type="checkbox" id="ProfLongarms"></td>
 							<td>Longarms</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" id="ProfHeavyWeapons"></td>
 							<td>Heavy Weapons</td>
-						</tr>
-						<tr>
 							<td><input type="checkbox" id="ProfSniper"></td>
 							<td>Sniper Weapons</td>
 						</tr>
 						<tr>
-							<td><input type="checkbox" id="ProfGrenades"></td>
-							<td>Grenades</td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" id="ProfSpecial1"></td>
+							<td class="top-aligned"><input type="checkbox" id="ProfSpecial1"></td>
 							<td><input type="text" id="Special1Type" class="input_u"><br /><sup>Special</sup></td>
-						</tr>
-						<tr>
-							<td><input type="checkbox" id="ProfSpecial2"></td>
+							<td class="top-aligned"><input type="checkbox" id="ProfSpecial2"></td>
 							<td><input type="text" id="Special2Type" class="input_u"><br /><sup>Special</sup></td>
 						</tr>
 					</table>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<h3>Languages</h3><br>
-					<textarea rows="5" cols="80" id="LanguagesTextArea"></textarea>
-				</td>
-				<td>
 					<h3>Experience</h3>
 					<table>
 						<tr>
-							<th>XP Earned</th>
-							<th>Next Level</th>
-						</tr>
-						<tr>
-							<td><input type="text" id="XPCurrent" class="input_b"></td>
-							<td><input type="text" id="XPNext" class="input_b"></td>
+							<td><input type="text" id="XPCurrent" class="input_u"><br>
+							XP Earned</td>
+							<td><input type="text" id="XPNext" class="input_u"><br>
+							Next Level</td>
 						</tr>
 					</table>
-					<h3>Reputation</h3>
-					<table>
-					<tr>
-						<th>Fame</th><th>Infamy</th>
-					</tr>
-					<tr>
-						<td><input type="text" id="Fame" class="input_b"></td>
-						<td><input type="text" id="Infamy" class="input_b"></td>
-					</tr>					
-					</table>
-			</tr>
-			<tr>
-				<td class="top-aligned" colspan="3">
-				<h3>Factions</h3><br>
-				<table>
-
-					<tr>
-						<th>Faction</th>
-						<td><input type="text" id="Faction1" class="input_b" value="Acquisitives"></td>					
-						<td><input type="text" id="Faction2" class="input_b" value="Dataphiles"></td>
-						<td><input type="text" id="Faction3" class="input_b" value="Exo-guardians"></td>
-						<td><input type="text" id="Faction4" class="input_b" value="Second Seekers ( )"></td>
-						<td><input type="text" id="Faction5" class="input_b" value="Wayfinders"></td>
-						<td><input type="text" id="Faction6" class="input_b" value="Other"></td>
-					</tr>
-					<tr>
-						<th>Reputation</th>
-						<td><input type="text" id="Faction1Rep" class="input_b"></td>
-						<td><input type="text" id="Faction2Rep" class="input_b"></td>
-						<td><input type="text" id="Faction3Rep" class="input_b"></td>
-						<td><input type="text" id="Faction4Rep" class="input_b"></td>
-						<td><input type="text" id="Faction5Rep" class="input_b"></td>
-						<td><input type="text" id="Faction6Rep" class="input_b"></td>
-					</tr>
-				</table>
 				</td>
 			</tr>
 		</table>
@@ -1878,6 +1845,38 @@
 				<td class="right-aligned"><h2>Page 4</h2></td>
 			</tr>
 		</table>
+		<table class="fullwidth">
+		<tr>
+			<td><h3>Reputation</h3></td>
+			<th>Fame</th>
+			<td><input type="text" id="Fame" class="input_uc"></td>
+			<th>Infamy</th>
+			<td><input type="text" id="Infamy" class="input_uc"></td>
+		</tr>
+		</table>
+		<h3>Factions</h3><br>
+			<table>
+				<tr>
+					<th>Faction</th>
+					<td><input type="text" id="Faction1" class="input_uc" value="Acquisitives"></td>					
+					<td><input type="text" id="Faction2" class="input_uc" value="Dataphiles"></td>
+					<td><input type="text" id="Faction3" class="input_uc" value="Exo-guardians"></td>
+					<td><input type="text" id="Faction4" class="input_uc" value="Second Seekers ( )"></td>
+					<td><input type="text" id="Faction5" class="input_uc" value="Wayfinders"></td>
+					<td><input type="text" id="Faction6" class="input_uc" value="Other"></td>
+					<td><input type="text" id="Faction7" class="input_uc" value="Other"></td>
+				</tr>
+				<tr>
+					<th>Reputation</th>
+					<td><input type="text" id="Faction1Rep" class="input_b"></td>
+					<td><input type="text" id="Faction2Rep" class="input_b"></td>
+					<td><input type="text" id="Faction3Rep" class="input_b"></td>
+					<td><input type="text" id="Faction4Rep" class="input_b"></td>
+					<td><input type="text" id="Faction5Rep" class="input_b"></td>
+					<td><input type="text" id="Faction6Rep" class="input_b"></td>
+					<td><input type="text" id="Faction7Rep" class="input_b"></td>
+				</tr>
+			</table>
 		<h3>Inventory Log</h3>
 		<table class="fullwidth bordered">
 			<tr>
@@ -2037,6 +2036,18 @@
 							<td><input type="text" id="LogSold21" class="input_b"></td>
 							<td><input type="text" id="LogUsed21" class="input_b"></td>
 						</tr>
+				</table>
+					
+				</td>
+				<td class="halfwidth">
+					<table>
+						<tr>
+							<th class="halfwidth">Item</th>
+							<th>Cost</th>
+							<th>Bought</th>
+							<th>Sold</th>
+							<th>Expended</th>
+						</tr>
 						<tr>
 							<td><input type="text" id="LogName22" class="input_u"></td>
 							<td><input type="text" id="LogCost22" class="input_u"></td>
@@ -2065,18 +2076,7 @@
 							<td><input type="text" id="LogSold25" class="input_b"></td>
 							<td><input type="text" id="LogUsed25" class="input_b"></td>
 						</tr>						
-					</table>
-					
-				</td>
-				<td class="halfwidth">
-					<table>
-						<tr>
-							<th class="halfwidth">Item</th>
-							<th>Cost</th>
-							<th>Bought</th>
-							<th>Sold</th>
-							<th>Expended</th>
-						</tr>
+
 						<tr>
 							<td><input type="text" id="LogName26" class="input_u"></td>
 							<td><input type="text" id="LogCost26" class="input_u"></td>
@@ -2195,62 +2195,6 @@
 							<td><input type="text" id="LogBought42" class="input_b"></td>
 							<td><input type="text" id="LogSold42" class="input_b"></td>
 							<td><input type="text" id="LogUsed42" class="input_b"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="LogName43" class="input_u"></td>
-							<td><input type="text" id="LogCost43" class="input_u"></td>
-							<td><input type="text" id="LogBought43" class="input_b"></td>
-							<td><input type="text" id="LogSold43" class="input_b"></td>
-							<td><input type="text" id="LogUsed43" class="input_b"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="LogName44" class="input_u"></td>
-							<td><input type="text" id="LogCost44" class="input_u"></td>
-							<td><input type="text" id="LogBought44" class="input_b"></td>
-							<td><input type="text" id="LogSold44" class="input_b"></td>
-							<td><input type="text" id="LogUsed44" class="input_b"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="LogName45" class="input_u"></td>
-							<td><input type="text" id="LogCost45" class="input_u"></td>
-							<td><input type="text" id="LogBought45" class="input_b"></td>
-							<td><input type="text" id="LogSold45" class="input_b"></td>
-							<td><input type="text" id="LogUsed45" class="input_b"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="LogName46" class="input_u"></td>
-							<td><input type="text" id="LogCost46" class="input_u"></td>
-							<td><input type="text" id="LogBought46" class="input_b"></td>
-							<td><input type="text" id="LogSold46" class="input_b"></td>
-							<td><input type="text" id="LogUsed46" class="input_b"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="LogName47" class="input_u"></td>
-							<td><input type="text" id="LogCost47" class="input_u"></td>
-							<td><input type="text" id="LogBought47" class="input_b"></td>
-							<td><input type="text" id="LogSold47" class="input_b"></td>
-							<td><input type="text" id="LogUsed47" class="input_b"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="LogName48" class="input_u"></td>
-							<td><input type="text" id="LogCost48" class="input_u"></td>
-							<td><input type="text" id="LogBought48" class="input_b"></td>
-							<td><input type="text" id="LogSold48" class="input_b"></td>
-							<td><input type="text" id="LogUsed48" class="input_b"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="LogName49" class="input_u"></td>
-							<td><input type="text" id="LogCost49" class="input_u"></td>
-							<td><input type="text" id="LogBought49" class="input_b"></td>
-							<td><input type="text" id="LogSold49" class="input_b"></td>
-							<td><input type="text" id="LogUsed49" class="input_b"></td>
-						</tr>
-						<tr>
-							<td><input type="text" id="LogName50" class="input_u"></td>
-							<td><input type="text" id="LogCost50" class="input_u"></td>
-							<td><input type="text" id="LogBought50" class="input_b"></td>
-							<td><input type="text" id="LogSold50" class="input_b"></td>
-							<td><input type="text" id="LogUsed50" class="input_b"></td>
 						</tr>
 					</table>
 				</td>
