@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 	<head>
 	<meta charset="utf-8">
-	<style type="text/css"> 
+	<style> 
 	input[type=text] {
 	}
 	
@@ -35,10 +35,6 @@
 		left: 0;
 		background-color: white;
 		border: 1px solid;
-	}
-
-	.breaking{
-		break-before: always;
 	}
 
 	.top-aligned{
@@ -275,10 +271,33 @@
 		var shipname = document.getElementById("Shipname").value;
 		var shiptier = document.getElementById("Shiptier").value;
 		
-		//document.getElementById("Shipname2").value = shipname;
-		//document.getElementById("Shiptier2").value = shiptier;
-		
 		PopulateDCs();
+	}
+	
+	function LoadJSON(jstring){
+		var contents = JSON.parse(jstring);
+		for (const [ key, value ] of Object.entries(contents)) {
+			thing = document.getElementById(key);
+			if(thing)
+			{
+				if(thing.type && thing.type == 'checkbox' && value == true)
+					thing.checked = true;
+				else
+					thing.value=value;
+			}
+		}
+		PopulateNameAndID();
+		UpdateDLLink();
+
+	}
+	
+	function CrashRecovery(){
+		var jstring = localStorage.getItem("SFShipCrashRecovery");
+		if(jstring)
+		{
+			ClearInputs();
+			LoadJSON(jstring);	
+		}
 	}
 		
 	function LoadFile(){
@@ -290,19 +309,7 @@
 		ClearInputs();
 		var reader = new FileReader();
 		reader.onloadend = function(e) {
-			var contents = JSON.parse(e.target.result);
-			for (const [ key, value ] of Object.entries(contents)) {
-				thing = document.getElementById(key);
-				if(thing)
-				{
-					if(thing.type && thing.type == 'checkbox' && value == true)
-						thing.checked = true;
-					else
-						thing.value=value;
-				}
-			}
-			PopulateNameAndID();
-			UpdateDLLink();
+			LoadJSON (e.target.result);
 		};
 		reader.readAsText(file);
 	}
@@ -335,9 +342,12 @@
 		var charvars = document.querySelectorAll("input[type=text]");
 		var longvars = document.getElementsByTagName("textarea");
 		var boolvars = document.querySelectorAll("input[type=checkbox]");
-		
+		var allowrecoverysave = false;
+
 		if(shipname=="")
 			shipname = "Unnamed Ship";
+		else
+			allowrecoverysave = true;
 		
 		for(var i=0; i < charvars.length; i++)
 		{
@@ -368,6 +378,10 @@
 			
 		document.getElementById('DownloadLink').innerHTML=""
 		document.getElementById('DownloadLink').appendChild(a);
+		
+		if(allowrecoverysave)
+			localStorage.setItem("SFShipCrashRecovery", cstring);
+
 	}
 	</script>
 	<title>Starfinder Ship Sheet</title>
@@ -376,6 +390,7 @@
 		<span class="nonprinting fixedcontrols">
 			Load:<input type="file" id="inputfile" onchange="LoadFile()">
 			<span id="DownloadLink"></span>
+			<button onclick="CrashRecovery()" title="Load last auto-saved ship.">Crash Recovery</button>
 		</span>
 		<table class="fullwidth">
 		<tr>
@@ -454,7 +469,7 @@
 						</tr>
 						<tr>
 							<th class="middle-aligned"><b>Port</b><br><input type="text" id="ShieldPortCur" class="input_s">/<input type="text" id="ShieldPortTotal" class="input_s"></th>
-							<th><img width="100" src="data:image/png;base64,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"></th>
+							<th><img width="100" alt="Starship Image with Facings" src="data:image/png;base64,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"></th>
 							<th class="middle-aligned"><b>Starboard</b><br><input type="text" id="ShieldSBCur" class="input_s">/<input type="text" id="ShieldSBTotal" class="input_s"></th>
 						</tr>
 						<tr>
