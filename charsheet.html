@@ -188,6 +188,14 @@
 		font-weight: normal;
 		font-variant: small-caps;
 	}
+	
+	.sobox {
+		transform: scale(2.0);
+	}
+	
+	.sobox2 {
+		transform: scale(2.5);
+	}
 
 	</style>
 	<script>
@@ -282,6 +290,20 @@
 		
 	}
 	
+	function changeP2(){
+		var p2bar=document.getElementById('p2_sidebarselect').value;
+		var bars=['p2_envoy','p2_mechexo','p2_mechdrone','p2_spellcaster','p2_operative','p2_solarion','p2_soldier'];
+		
+		for(b in bars)
+		{
+			if(bars[b]==p2bar)
+				document.getElementById(bars[b]).classList.remove('invisible');
+			else
+				document.getElementById(bars[b]).classList.add('invisible');
+		}
+	
+	}
+	
 	function LoadJSON(jstring){
 		var contents = JSON.parse(jstring);
 		for (const [ key, value ] of Object.entries(contents)) {
@@ -307,7 +329,8 @@
 		ModCapacity(2);
 		ModCapacity(3);
 		ModCapacity(4);
-		ModCapacity(5);		
+		ModCapacity(5);	
+		changeP2();
 	}
 	
 	function CrashRecovery(){
@@ -339,6 +362,7 @@
 		var charvars = document.querySelectorAll("input[type=text]");
 		var longvars = document.getElementsByTagName("textarea");
 		var boolvars = document.querySelectorAll("input[type=checkbox]");
+		var dropdowns = document.getElementsByTagName("select");
 		var allowrecoverysave = false;
 		
 		if(charname=="")
@@ -354,6 +378,11 @@
 		for(var i=0; i < longvars.length; i++)
 		{
 			cjson[longvars[i].id]=longvars[i].value;
+		}
+				
+		for(var i=0; i < dropdowns.length; i++)
+		{
+			cjson[dropdowns[i].id]=dropdowns[i].value;
 		}
 		
 		for(var i=0; i < boolvars.length; i++)
@@ -1246,140 +1275,393 @@
 		</table>
 		<table class="fullwidth">
 			<tr>
-				<td colspan="2">
+				<td colspan="2" class="top-aligned">
 					<h3>Abilities</h3><br>
 					<textarea rows="42" cols="80" id="AbilityTextArea"></textarea>
 				</td>
-				<td rowspan="2" class="onethirdwidth">
-					<h3>Spells</h3>
-					<table>
-						<tr>
-							<th>0</th>
-							<td>Spells Known</td>
-							<td><input type="text" id="SpellsKnown0" class="input_b"></td>
-						</tr>
-					</table>
-					<input type="text" id="SpellText01" class="input_u"><br>
-					<input type="text" id="SpellText02" class="input_u"><br>
-					<input type="text" id="SpellText03" class="input_u"><br>
-					<input type="text" id="SpellText04" class="input_u"><br>
-					<input type="text" id="SpellText05" class="input_u"><br>
-					<input type="text" id="SpellText06" class="input_u">
-					<table>
-						<tr>
-							<th rowspan="2">1</th>
-							<td>Spells Known</td>
-							<td>Spells Per Day</td>
-							<td>Spells Used</td>
-						</tr>
-						<tr>
-							<td><input type="text" id="SpellsKnown1" class="input_b"></td>
-							<td><input type="text" id="SpellsDaily1" class="input_b"></td>
-							<td><input type="text" id="SpellsUsed1" class="input_b"></td>
-						</tr>
-					</table>
-					<input type="text" id="SpellText11" class="input_u"><br>
-					<input type="text" id="SpellText12" class="input_u"><br>
-					<input type="text" id="SpellText13" class="input_u"><br>
-					<input type="text" id="SpellText14" class="input_u"><br>
-					<input type="text" id="SpellText15" class="input_u"><br>
-					<input type="text" id="SpellText16" class="input_u"><br>
-					<input type="text" id="SpellText17" class="input_u">
-					<table>
-						<tr>
-							<th rowspan="2">2</th>
-							<td>Spells Known</td>
-							<td>Spells Per Day</td>
-							<td>Spells Used</td>
-						</tr>
-						<tr>
-							<td><input type="text" id="SpellsKnown2" class="input_b"></td>
-							<td><input type="text" id="SpellsDaily2" class="input_b"></td>
-							<td><input type="text" id="SpellsUsed2" class="input_b"></td>
-						</tr>
-					</table>
-					<input type="text" id="SpellText21" class="input_u"><br>
-					<input type="text" id="SpellText22" class="input_u"><br>
-					<input type="text" id="SpellText23" class="input_u"><br>
-					<input type="text" id="SpellText24" class="input_u"><br>
-					<input type="text" id="SpellText25" class="input_u"><br>
-					<input type="text" id="SpellText26" class="input_u"><br>
-					<input type="text" id="SpellText27" class="input_u">
-					<table>
-						<tr>
-							<th rowspan="2">3</th>
-							<td>Spells Known</td>
-							<td>Spells Per Day</td>
-							<td>Spells Used</td>
-						</tr>
-						<tr>
-							<td><input type="text" id="SpellsKnown3" class="input_b"></td>
-							<td><input type="text" id="SpellsDaily3" class="input_b"></td>
-							<td><input type="text" id="SpellsUsed3" class="input_b"></td>
-						</tr>
-					</table>
-					<input type="text" id="SpellText31" class="input_u"><br>
-					<input type="text" id="SpellText32" class="input_u"><br>
-					<input type="text" id="SpellText33" class="input_u"><br>
-					<input type="text" id="SpellText34" class="input_u"><br>
-					<input type="text" id="SpellText35" class="input_u"><br>
-					<input type="text" id="SpellText36" class="input_u"><br>
-					<input type="text" id="SpellText37" class="input_u">
-					<table>
-						<tr>
-							<th rowspan="2">4</th>
-							<td>Spells Known</td>
-							<td>Spells Per Day</td>
-							<td>Spells Used</td>
-						</tr>
-						<tr>
-							<td><input type="text" id="SpellsKnown4" class="input_b"></td>
-							<td><input type="text" id="SpellsDaily4" class="input_b"></td>
-							<td><input type="text" id="SpellsUsed4" class="input_b"></td>
-						</tr>
-					</table>
-					<input type="text" id="SpellText41" class="input_u"><br>
-					<input type="text" id="SpellText42" class="input_u"><br>
-					<input type="text" id="SpellText43" class="input_u"><br>
-					<input type="text" id="SpellText44" class="input_u"><br>
-					<input type="text" id="SpellText45" class="input_u"><br>
-					<input type="text" id="SpellText46" class="input_u">
-					<table>
-						<tr>
-							<th rowspan="2">5</th>
-							<td>Spells Known</td>
-							<td>Spells Per Day</td>
-							<td>Spells Used</td>
-						</tr>
-						<tr>
-							<td><input type="text" id="SpellsKnown5" class="input_b"></td>
-							<td><input type="text" id="SpellsDaily5" class="input_b"></td>
-							<td><input type="text" id="SpellsUsed5" class="input_b"></td>
-						</tr>
-					</table>
-					<input type="text" id="SpellText51" class="input_u"><br>
-					<input type="text" id="SpellText52" class="input_u"><br>
-					<input type="text" id="SpellText53" class="input_u"><br>
-					<input type="text" id="SpellText54" class="input_u"><br>
-					<input type="text" id="SpellText55" class="input_u">
-					<table>
-						<tr>
-							<th rowspan="2">6</th>
-							<td>Spells Known</td>
-							<td>Spells Per Day</td>
-							<td>Spells Used</td>
-						</tr>
-						<tr>
-							<td><input type="text" id="SpellsKnown6" class="input_b"></td>
-							<td><input type="text" id="SpellsDaily6" class="input_b"></td>
-							<td><input type="text" id="SpellsUsed6" class="input_b"></td>
-						</tr>
-					</table>
-					<input type="text" id="SpellText61" class="input_u"><br>
-					<input type="text" id="SpellText62" class="input_u"><br>
-					<input type="text" id="SpellText63" class="input_u"><br>
-					<input type="text" id="SpellText64" class="input_u"><br>
-					<input type="text" id="SpellText65" class="input_u">
+				<td rowspan="2" class="onethirdwidth top-aligned">
+					<select class="nonprinting" id="p2_sidebarselect" onchange="changeP2()">
+						<option value="p2_envoy">Envoy</option>
+						<option value="p2_mechdrone">Mechanic (Drone)</option>
+						<option value="p2_mechexo">Mechanic (Exocortex)</option>
+						<option value="p2_spellcaster" selected>Mystic/Technomancer</option>
+						<option value="p2_operative">Operative</option>
+						<option value="p2_solarion">Solarion</option>
+						<option value="p2_soldier">Soldier</option>
+					</select>
+					<div id="p2_mechexo" class="invisible">
+						<h3>Mechanic (Exocortex)</h3><br>
+						<input type="text" id="me_trackingbonus" class="input_u"><br>
+						Combat Tracking Bonus<br><br>
+						<input type="text" id="me_moduleskill" class="input_u"><br>
+						Memory Module Skill<br><br>
+						Memory Module Reroll Used <input type="checkbox" id="me_rerollused"><br><br>
+						<h3>Mechanic Tricks</h3><br>
+						<textarea rows="40" cols="40" id="me_tricks"></textarea><br>
+						<h3>Exocortex Mods</h3><br>
+						<textarea rows="15" cols="40" id="me_mods"></textarea>
+					</div>
+					<div id="p2_mechdrone" class="invisible">
+						<h3>Mechanic (Drone)</h3><br>
+						<input type="text" id="md_dronename" class="input_u"><br>
+						Drone Name<br><br>
+						<input type="text" id="md_dronechassis" class="input_u"><br>
+						Drone Chassis<br><br>
+						<input type="text" id="md_droneskill" class="input_u"><br>
+						Skill Unit Skill<br><br>
+						<h3>Drone Mods</h3><br>
+						<textarea rows="15" cols="40" id="md_mods"></textarea><br>
+						<h3>Drone Feats</h3><br>
+						<textarea rows="8" cols="40" id="md_feats"></textarea><br>
+						<h3>Mechanic Tricks</h3><br>
+						<textarea rows="25" cols="40" id="md_tricks"></textarea>						
+					</div>
+					<div id="p2_envoy" class="invisible">
+						<h3>Envoy</h3><br>
+						<h3>Skill Expertise</h3><br>
+						<input type="text" id="en_expertisebonus" class="input_u"><br>
+						Expertise Bonus<br><br>
+						Expertise Skills<br>
+						<table class="fullwidth">
+							<tr>
+								<td><input type="text" id="en_sid_1" class="input_u"></td>
+								<td><input type="text" id="en_sid_2" class="input_u"></td>
+							</tr>
+							<tr>
+								<td><input type="text" id="en_sid_3" class="input_u"></td>
+								<td><input type="text" id="en_sid_4" class="input_u"></td>
+							</tr>
+							<tr>
+								<td><input type="text" id="en_sid_5" class="input_u"></td>
+								<td><input type="text" id="en_sid_6" class="input_u"></td>
+							</tr>
+							<tr>
+								<td><input type="text" id="en_sid_7" class="input_u"></td>
+								<td><input type="text" id="en_sid_8" class="input_u"></td>
+							</tr>
+							<tr>
+								<td><input type="text" id="en_sid_9" class="input_u"></td>
+								<td><input type="text" id="en_sid_10" class="input_u"></td>
+							</tr>
+						</table><br>
+						<h3>Improvisations</h3><br>
+						<textarea rows="30" cols="40" id="en_improvs"></textarea><br>
+						<h3>Expertise Talents</h3><br>
+						<textarea rows="18" cols="40" id="en_talents"></textarea>
+					</div>
+					<div id="p2_soldier" class="invisible">
+						<h3>Soldier</h3><br>
+						<input type="text" id="sl_style1" class="input_u"><br>
+						Primary Fighting Style<br>
+						<input type="text" id="sl_style2" class="input_u"><br>
+						Secondary Fighting Style<br>
+						<h3>Style Techniques</h3><br>
+						<textarea rows="35" cols="40" id="sl_textarea_style"></textarea><br><br>
+						<h3>Gear Boosts</h3><br>
+						<textarea rows="22" cols="40" id="sl_textarea_boost"></textarea><br>
+					</div>
+					<div id="p2_solarion" class="invisible">
+						<h3>Solarion</h3><br>
+						<input type="text" id="so_manifesation" class="input_u"><br>
+						Stellar Manifestation<br><br>
+						<input type="text" id="so_manifesationb" class="input_u"><br>
+						Solar Weapon Damage / Solar Armor Bonus<br><br>
+						Skill Adept Skills<br>
+						<select id="so_skill_1">
+							<option value="Acrobatics">Acrobatics</option>
+							<option value="Athletics">Athletics</option>
+							<option value="Bluff">Bluff</option>
+							<option value="Computers">Computers</option>
+							<option value="Culture">Culture</option>
+							<option value="Diplomacy">Diplomacy</option>
+							<option value="Disguise">Disguise</option>
+							<option value="Engineering">Engineering</option>
+							<option value="Intimidate">Intimidate</option>
+							<option value="LifeSci">Life Science</option>
+							<option value="Medicine">Medicine</option>
+							<option value="Mysticism">Mysticism</option>
+							<option value="Perception">Perception</option>
+							<option value="PhysSci">Physical Science</option>
+							<option value="Pilot">Piloting</option>
+							<option value="Profession">Profession</option>
+							<option value="Sense">Sense Motive</option>
+							<option value="Sleight">Sleight of Hand</option>
+							<option value="Stealth">Stealth</option>
+							<option value="Survival">Survival</option>
+						</select>
+						<select id="so_skill_2">
+							<option value="Acrobatics">Acrobatics</option>
+							<option value="Athletics">Athletics</option>
+							<option value="Bluff">Bluff</option>
+							<option value="Computers">Computers</option>
+							<option value="Culture">Culture</option>
+							<option value="Diplomacy">Diplomacy</option>
+							<option value="Disguise">Disguise</option>
+							<option value="Engineering">Engineering</option>
+							<option value="Intimidate">Intimidate</option>
+							<option value="LifeSci">Life Science</option>
+							<option value="Medicine">Medicine</option>
+							<option value="Mysticism">Mysticism</option>
+							<option value="Perception">Perception</option>
+							<option value="PhysSci">Physical Science</option>
+							<option value="Pilot">Piloting</option>
+							<option value="Profession">Profession</option>
+							<option value="Sense">Sense Motive</option>
+							<option value="Sleight">Sleight of Hand</option>
+							<option value="Stealth">Stealth</option>
+							<option value="Survival">Survival</option>
+						</select><br>
+						<h3>Attunement</h3>
+						<table class="fullwidth">
+							<tr>
+								<th>Full<br>Graviton</th>
+								<th colspan="2">Graviton</th>
+								<th>Unattuned</th>
+								<th colspan="2">Photon</th>
+								<th>Full<br>Photon</th>
+							</tr>
+							<tr>
+								<th><input type="checkbox" class="sobox2" id="so_graviton3"></th>
+								<th><input type="checkbox" class="sobox" id="so_graviton2"></th>
+								<th><input type="checkbox" class="sobox" id="so_graviton1"></th>
+								<th><input type="checkbox" class="sobox" id="so_unnatuned"></th>
+								<th><input type="checkbox" class="sobox" id="so_photon1"></th>
+								<th><input type="checkbox" class="sobox" id="so_photon2"></th>
+								<th><input type="checkbox" class="sobox2" id="so_photon3"></th>
+							</tr>
+						</table><br>
+						<h3>Sidereal Influence Skills</h3><br>
+						<table class="fullwidth">
+							<tr>
+								<td><input type="text" id="so_sid_1" class="input_u"></td>
+								<td><input type="text" id="so_sid_2" class="input_u"></td>
+							</tr>
+							<tr>
+								<td><input type="text" id="so_sid_3" class="input_u"></td>
+								<td><input type="text" id="so_sid_4" class="input_u"></td>
+							</tr>
+							<tr>
+								<td><input type="text" id="so_sid_5" class="input_u"></td>
+								<td><input type="text" id="so_sid_6" class="input_u"></td>
+							</tr>
+						</table><br>
+						<h3>Stellar Revelations</h3><br>
+						<textarea rows="26" cols="40" id="so_textarea"></textarea><br>
+						<h3>Zenith Revelations</h3><br>
+						<textarea rows="14" cols="40" id="so_textareaz"></textarea>
+						
+
+					</div>
+					<div id="p2_operative" class="invisible">
+						<h3>Operative</h3><br>
+						<input type="text" id="op_specialization" class="input_u"><br>
+						Specialization<br><br>
+						Specialization Skills<br>
+						<select id="op_spec_1">
+							<option value="Acrobatics">Acrobatics</option>
+							<option value="Athletics">Athletics</option>
+							<option value="Bluff">Bluff</option>
+							<option value="Computers">Computers</option>
+							<option value="Culture">Culture</option>
+							<option value="Diplomacy">Diplomacy</option>
+							<option value="Disguise">Disguise</option>
+							<option value="Engineering">Engineering</option>
+							<option value="Intimidate">Intimidate</option>
+							<option value="LifeSci">Life Science</option>
+							<option value="Medicine">Medicine</option>
+							<option value="Mysticism">Mysticism</option>
+							<option value="Perception">Perception</option>
+							<option value="PhysSci">Physical Science</option>
+							<option value="Pilot">Piloting</option>
+							<option value="Profession">Profession</option>
+							<option value="Sense">Sense Motive</option>
+							<option value="Sleight">Sleight of Hand</option>
+							<option value="Stealth">Stealth</option>
+							<option value="Survival">Survival</option>
+						</select>
+						<select id="op_spec_2">
+							<option value="Acrobatics">Acrobatics</option>
+							<option value="Athletics">Athletics</option>
+							<option value="Bluff">Bluff</option>
+							<option value="Computers">Computers</option>
+							<option value="Culture">Culture</option>
+							<option value="Diplomacy">Diplomacy</option>
+							<option value="Disguise">Disguise</option>
+							<option value="Engineering">Engineering</option>
+							<option value="Intimidate">Intimidate</option>
+							<option value="LifeSci">Life Science</option>
+							<option value="Medicine">Medicine</option>
+							<option value="Mysticism">Mysticism</option>
+							<option value="Perception">Perception</option>
+							<option value="PhysSci">Physical Science</option>
+							<option value="Pilot">Piloting</option>
+							<option value="Profession">Profession</option>
+							<option value="Sense">Sense Motive</option>
+							<option value="Sleight">Sleight of Hand</option>
+							<option value="Stealth">Stealth</option>
+							<option value="Survival">Survival</option>
+						</select>
+						<br><br>
+						<h3>Trick Attack</h3><br>
+						<input type="text" id="op_ta_dice" class="input_u"><br>
+						Bonus Damage<br><br>
+						<b>Skill Modifiers</b><br>
+						<table>
+							<tr>
+								<td>Bluff</td>
+								<td><input type="text" id="op_bluff_ta" class="input_b"></td>
+							</tr>
+							<tr>
+								<td>Intimidate</td>
+								<td><input type="text" id="op_intimidate_ta" class="input_b"></td>
+							</tr>
+							<tr>
+								<td>Stealth</td>
+								<td><input type="text" id="op_stealth_ta" class="input_b"></td>
+							</tr>
+							<tr>
+								<td><input type="text" id="op_other_tas" class="input_u"></td>
+								<td><input type="text" id="op_other_ta" class="input_b"></td>
+							</tr>
+						</table>
+						<br>
+						<h3>Quick Movement</h3><br>
+						<input type="text" id="op_quickmovement" class="input_u"><br>
+						Bonus Speed<br><br>
+						<h3>Exploits</h3><br>
+						<textarea rows="38" cols="40" id="op_textarea"></textarea>
+						</div>
+					<div id="p2_spellcaster">
+						<h3>Spells</h3>
+						<table>
+							<tr>
+								<th>0</th>
+								<td>Spells Known</td>
+								<td><input type="text" id="SpellsKnown0" class="input_b"></td>
+							</tr>
+						</table>
+						<input type="text" id="SpellText01" class="input_u"><br>
+						<input type="text" id="SpellText02" class="input_u"><br>
+						<input type="text" id="SpellText03" class="input_u"><br>
+						<input type="text" id="SpellText04" class="input_u"><br>
+						<input type="text" id="SpellText05" class="input_u"><br>
+						<input type="text" id="SpellText06" class="input_u">
+						<table>
+							<tr>
+								<th rowspan="2">1</th>
+								<td>Spells Known</td>
+								<td>Spells Per Day</td>
+								<td>Spells Used</td>
+							</tr>
+							<tr>
+								<td><input type="text" id="SpellsKnown1" class="input_b"></td>
+								<td><input type="text" id="SpellsDaily1" class="input_b"></td>
+								<td><input type="text" id="SpellsUsed1" class="input_b"></td>
+							</tr>
+						</table>
+						<input type="text" id="SpellText11" class="input_u"><br>
+						<input type="text" id="SpellText12" class="input_u"><br>
+						<input type="text" id="SpellText13" class="input_u"><br>
+						<input type="text" id="SpellText14" class="input_u"><br>
+						<input type="text" id="SpellText15" class="input_u"><br>
+						<input type="text" id="SpellText16" class="input_u"><br>
+						<input type="text" id="SpellText17" class="input_u">
+						<table>
+							<tr>
+								<th rowspan="2">2</th>
+								<td>Spells Known</td>
+								<td>Spells Per Day</td>
+								<td>Spells Used</td>
+							</tr>
+							<tr>
+								<td><input type="text" id="SpellsKnown2" class="input_b"></td>
+								<td><input type="text" id="SpellsDaily2" class="input_b"></td>
+								<td><input type="text" id="SpellsUsed2" class="input_b"></td>
+							</tr>
+						</table>
+						<input type="text" id="SpellText21" class="input_u"><br>
+						<input type="text" id="SpellText22" class="input_u"><br>
+						<input type="text" id="SpellText23" class="input_u"><br>
+						<input type="text" id="SpellText24" class="input_u"><br>
+						<input type="text" id="SpellText25" class="input_u"><br>
+						<input type="text" id="SpellText26" class="input_u"><br>
+						<input type="text" id="SpellText27" class="input_u">
+						<table>
+							<tr>
+								<th rowspan="2">3</th>
+								<td>Spells Known</td>
+								<td>Spells Per Day</td>
+								<td>Spells Used</td>
+							</tr>
+							<tr>
+								<td><input type="text" id="SpellsKnown3" class="input_b"></td>
+								<td><input type="text" id="SpellsDaily3" class="input_b"></td>
+								<td><input type="text" id="SpellsUsed3" class="input_b"></td>
+							</tr>
+						</table>
+						<input type="text" id="SpellText31" class="input_u"><br>
+						<input type="text" id="SpellText32" class="input_u"><br>
+						<input type="text" id="SpellText33" class="input_u"><br>
+						<input type="text" id="SpellText34" class="input_u"><br>
+						<input type="text" id="SpellText35" class="input_u"><br>
+						<input type="text" id="SpellText36" class="input_u"><br>
+						<input type="text" id="SpellText37" class="input_u">
+						<table>
+							<tr>
+								<th rowspan="2">4</th>
+								<td>Spells Known</td>
+								<td>Spells Per Day</td>
+								<td>Spells Used</td>
+							</tr>
+							<tr>
+								<td><input type="text" id="SpellsKnown4" class="input_b"></td>
+								<td><input type="text" id="SpellsDaily4" class="input_b"></td>
+								<td><input type="text" id="SpellsUsed4" class="input_b"></td>
+							</tr>
+						</table>
+						<input type="text" id="SpellText41" class="input_u"><br>
+						<input type="text" id="SpellText42" class="input_u"><br>
+						<input type="text" id="SpellText43" class="input_u"><br>
+						<input type="text" id="SpellText44" class="input_u"><br>
+						<input type="text" id="SpellText45" class="input_u"><br>
+						<input type="text" id="SpellText46" class="input_u">
+						<table>
+							<tr>
+								<th rowspan="2">5</th>
+								<td>Spells Known</td>
+								<td>Spells Per Day</td>
+								<td>Spells Used</td>
+							</tr>
+							<tr>
+								<td><input type="text" id="SpellsKnown5" class="input_b"></td>
+								<td><input type="text" id="SpellsDaily5" class="input_b"></td>
+								<td><input type="text" id="SpellsUsed5" class="input_b"></td>
+							</tr>
+						</table>
+						<input type="text" id="SpellText51" class="input_u"><br>
+						<input type="text" id="SpellText52" class="input_u"><br>
+						<input type="text" id="SpellText53" class="input_u"><br>
+						<input type="text" id="SpellText54" class="input_u"><br>
+						<input type="text" id="SpellText55" class="input_u">
+						<table>
+							<tr>
+								<th rowspan="2">6</th>
+								<td>Spells Known</td>
+								<td>Spells Per Day</td>
+								<td>Spells Used</td>
+							</tr>
+							<tr>
+								<td><input type="text" id="SpellsKnown6" class="input_b"></td>
+								<td><input type="text" id="SpellsDaily6" class="input_b"></td>
+								<td><input type="text" id="SpellsUsed6" class="input_b"></td>
+							</tr>
+						</table>
+						<input type="text" id="SpellText61" class="input_u"><br>
+						<input type="text" id="SpellText62" class="input_u"><br>
+						<input type="text" id="SpellText63" class="input_u"><br>
+						<input type="text" id="SpellText64" class="input_u"><br>
+						<input type="text" id="SpellText65" class="input_u">
+					</div>
 				</td>
 			</tr>
 			<tr>
