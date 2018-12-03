@@ -157,6 +157,11 @@
 		white-space: nowrap;
 		display: inline-block;
 	}
+    
+    h2 {
+        margin-top: 0em;
+		margin-bottom: 0em;
+    }
 
 	h3 {
 		font-size: 1.2em;
@@ -195,6 +200,10 @@
 	
 	.sobox2 {
 		transform: scale(2.5);
+	}
+	
+	.smaller {
+		font-size: 80%;
 	}
 
 	</style>
@@ -292,7 +301,7 @@
 	
 	function changeP2(){
 		var p2bar=document.getElementById('p2_sidebarselect').value;
-		var bars=['p2_envoy','p2_mechexo','p2_mechdrone','p2_spellcaster','p2_operative','p2_solarion','p2_soldier'];
+		var bars=['p2_biohacker','p2_envoy','p2_mechexo','p2_mechdrone','p2_spellcaster','p2_operative','p2_solarion','p2_soldier','p2_vanguard'];
 		
 		for(b in bars)
 		{
@@ -603,7 +612,7 @@
 				<td colspan="3"><input type="text" id="ClassLevels" class="input_u"><br />Class/Level</td>
 				<td><input type="text" id="Race" class="input_u"><br />Race</td>
 				<td><input type="text" id="Theme" class="input_u"><br />Theme</td>
-				<th rowspan=3>Description<br /><textarea rows="8" cols="30" id="CharDesc"></textarea></th>
+				<th rowspan=3>Description<br /><textarea rows="6" cols="30" id="CharDesc"></textarea></th>
 			</tr>
 			<tr>
 				<td><input type="text" id="Size" class="input_u"><br />Size</td>
@@ -689,17 +698,17 @@
 						<tr>
 							<td><button class="nonprinting bigbutton" onclick="CalcAllSkills()" title="Click to calculate all skill totals.">=</button></td>
 							<th></th>
-							<th>Total</th>
+							<th class="smaller">Total</th>
 							<th></th>
-							<th>Ranks</th>
+							<th class="smaller">Ranks</th>
 							<th></th>
-							<th>Class<br />Bonus</th>
+							<th class="smaller">Class<br />Bonus</th>
 							<th></th>
-							<th>Ability<br />Mod</th>
+							<th class="smaller">Ability<br />Mod</th>
 							<th></th>
-							<th>Insight<br />Bonus</th>
+							<th class="smaller">Insight<br />Bonus</th>
 							<th></th>
-							<th>Misc<br />Mod</th>
+							<th class="smaller">Misc<br />Mod</th>
 						</tr>
 						<tr>
 							<td class="right-aligned"><input type="checkbox" id="AcrobaticsClass"></td>
@@ -1018,11 +1027,11 @@
 						</tr>
 						<tr>
 							<td></td>
-							<td colspan=3 class="right-aligned">Skill Points Spent/Total</td>
+							<td colspan=3 class="right-aligned smaller">Skill Points Spent/Total</td>
 							<td><input type="text" id="TotalSkillSpent" class="input_b"></td>
 							<td>/</td>
 							<td><input type="text" id="TotalSkillPoints" class="input_b"></td>
-							<td colspan=5 class="right-aligned">Armor Check Penalty</td>
+							<td colspan=5 class="right-aligned smaller">Armor Check Penalty</td>
 							<td><input type="text" id="ACP" class="input_b" title="Will be automatically applied to relevant skills when you hit the = button."></td>
 						</tr>
 					</table>
@@ -1281,14 +1290,145 @@
 				</td>
 				<td rowspan="2" class="onethirdwidth top-aligned">
 					<select class="nonprinting" id="p2_sidebarselect" onchange="changeP2()">
+                        <option value="p2_biohacker">Biohacker</option>
 						<option value="p2_envoy">Envoy</option>
 						<option value="p2_mechdrone">Mechanic (Drone)</option>
 						<option value="p2_mechexo">Mechanic (Exocortex)</option>
-						<option value="p2_spellcaster" selected>Mystic/Technomancer</option>
+						<option value="p2_spellcaster" selected>Mystic/Technomancer/Witchwarper</option>
 						<option value="p2_operative">Operative</option>
 						<option value="p2_solarion">Solarion</option>
 						<option value="p2_soldier">Soldier</option>
+                        <option value="p2_vanguard">Vanguard</option>
 					</select>
+                    <div id="p2_vanguard" class="invisible">
+                        <h3>Entropic Pool</h3><br>
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="text" id="vg_emax" class="input_u"><br>
+                                    Maximum<br>
+                                </td>
+                                <td>
+                                    <input type="text" id="vg_ecur" class="input_u"><br>
+                                    Current<br>
+                                </td>
+                            </tr>
+                        </table>
+                        <div class="bordered">
+                            <input type="text" id="vg_aspect1" class="input_u"><br>
+                            <h3>Primary Aspect</h3><br><br>
+                            <input type="text" id="vg_aspect1i" class="input_u"><br>
+                            Aspect Insight<br><br>
+                            <input type="text" id="vg_aspect1e" class="input_u"><br>
+                            Aspect Embodiment<br><br>
+                            <input type="text" id="vg_aspect1c" class="input_u"><br>
+                            Aspect Catalyst<br><br>
+                            <input type="text" id="vg_aspect1f" class="input_u"><br>
+                            Aspect Finale<br><br>
+                        </div>
+                        <div class="bordered">
+                            <input type="text" id="vg_aspect2" class="input_u"><br>
+                            <h3>Secondary Aspect</h3><br><br>
+                            <input type="text" id="vg_aspect2i" class="input_u"><br>
+                            Aspect Insight<br><br>
+                            <input type="text" id="vg_aspect2e" class="input_u"><br>
+                            Aspect Embodiment<br><br>
+                            <input type="text" id="vg_aspect2c" class="input_u"><br>
+                            Aspect Catalyst<br><br>
+                        </div>
+                        <h3>Disciplines</h3><br>
+                        <textarea rows="16" cols="40" id="vg_disciplines"></textarea><br>
+                        <h3>Entropic Attunements</h3><br>
+                        <textarea rows="10" cols="40" id="vg_attumenents"></textarea>
+                    </div>
+                    <div id="p2_biohacker" class="invisible">
+                        <h3>Biohacker</h3><br>
+                        <input type="text" id="bh_method" class="input_u"><br>
+						Scientific Method<br><br>
+                        <div class="bordered">
+                            <input type="text" id="bh_field1" class="input_u"><br>
+                            <h3>Primary Field of Study</h3><br><br>
+                            <b>Primary Breakthrough</b><br>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="text" id="bh_bt1total" class="input_u"><br>
+                                        Per Day<br>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="bh_bt1used" class="input_u"><br>
+                                        Used<br>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="bordered">
+                            <input type="text" id="bh_field2" class="input_u"><br>
+                            <h3>Secondary Field of Study</h3><br><br>
+                            <b>Secondary Breakthrough</b><br>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="text" id="bh_bt2total" class="input_u"><br>
+                                        Per Day<br>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="bh_bt2used" class="input_u"><br>
+                                        Used<br>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="bordered">
+                            <input type="text" id="bh_field3" class="input_u"><br>
+                            <h3>Tertiary Field of Study</h3><br><br>
+                            <b>Tertiary Breakthrough</b><br>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <input type="text" id="bh_bt3total" class="input_u"><br>
+                                        Per Day<br>
+                                    </td>
+                                    <td>
+                                        <input type="text" id="bh_bt3used" class="input_u"><br>
+                                        Used<br>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <h3>Injections</h3><br>
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="text" id="bh_injectionstotal" class="input_u"><br>
+                                    Per Day<br><br>
+                                </td>
+                                <td>
+                                    <input type="text" id="bh_injectionsused" class="input_u"><br>
+                                    Used<br><br>
+                                </td>
+                            </tr>
+                        </table>
+                        <h3>Spark of Ingenuity</h3><br>
+                        <table>
+                            <tr>
+                                <td>
+                                    <input type="text" id="bh_sparkstotal" class="input_u"><br>
+                                    Per Day<br><br>
+                                </td>
+                                <td>
+                                    <input type="text" id="bh_sparksused" class="input_u"><br>
+                                    Used<br><br>
+                                </td>
+                            </tr>
+                        </table>
+                        <h3>Theorems</h3><br>
+						<textarea rows="9" cols="40" id="bh_theorems"></textarea><br>
+                        <h3>Counteragents</h3><br>
+						<textarea rows="6" cols="40" id="bh_counteragents"></textarea><br>
+                        <h3>Restoratives</h3><br>
+						<textarea rows="6" cols="40" id="bh_restoratives"></textarea>
+                    </div>
 					<div id="p2_mechexo" class="invisible">
 						<h3>Mechanic (Exocortex)</h3><br>
 						<input type="text" id="me_trackingbonus" class="input_u"><br>
@@ -1683,8 +1823,8 @@
 						<tr>
 							<td><input type="checkbox" id="ProfPowerArmor"></td>
 							<td>Power Armor</td>
-							<td><input type="checkbox" id="ProfGrenades"></td>
-							<td>Grenades</td>
+							<td><input type="checkbox" id="ProfShields"></td>
+							<td>Shields</td>
 						</tr>
 						<tr>
 							<td><input type="checkbox" id="ProfBasicMelee"></td>
@@ -1704,6 +1844,10 @@
 							<td><input type="checkbox" id="ProfSniper"></td>
 							<td>Sniper Weapons</td>
 						</tr>
+                        <tr>
+                            <td><input type="checkbox" id="ProfGrenades"></td>
+							<td>Grenades</td>
+                        </tr>                           
 						<tr>
 							<td class="top-aligned"><input type="checkbox" id="ProfSpecial1"></td>
 							<td><input type="text" id="Special1Type" class="input_u"><br /><sup>Special</sup></td>
